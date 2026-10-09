@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agropet Pets — Rações, banho e tosa e entrega em Taguatinga Sul</title>
+<meta name="description" content="Agropet Pets: rações, petiscos, medicamentos, banho e tosa e acessórios em Taguatinga Sul e Vereda da Cruz. Monte seu pedido e finalize pelo WhatsApp.">
+<meta property="og:title" content="Agropet Pets — Tudo que o seu pet precisa">
+<meta property="og:description" content="Acabou a ração? A gente leva até você. Peça pelo WhatsApp (61) 99902-2443.">
+<meta property="og:image" content="img/ai-hero-dog.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&amp;family=Nunito+Sans:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#ffffff}
+.is-hidden{display:none !important}
+a{color:#0F7A35}a:hover{color:#0A5626}
+*{box-sizing:border-box}
+.disp{font-family:'Baloo 2',system-ui,sans-serif;letter-spacing:-0.01em}
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border-radius:999px;border:0;font-family:'Nunito Sans',sans-serif;font-weight:900;font-size:16px;text-decoration:none;cursor:pointer;transition:transform .18s ease, box-shadow .18s ease, background .18s ease}
+.btn:hover{transform:translateY(-2px) scale(1.03)}
+.btn:active{transform:scale(.97)}
+.btn-red{background:#D7191F;color:#ffffff;box-shadow:0 8px 20px rgba(215,25,31,.28)}.btn-red:hover{background:#B5121A;color:#ffffff}
+.btn-yellow{background:#FFD21F;color:#14241A;box-shadow:0 8px 20px rgba(0,0,0,.18)}.btn-yellow:hover{background:#F2C200;color:#14241A}
+.btn-green{background:#0F7A35;color:#ffffff}.btn-green:hover{background:#0A5626;color:#ffffff}
+.btn-white{background:#ffffff;color:#0F7A35}.btn-white:hover{background:#F1FFF5;color:#0A5626}
+.btn-ghost{background:transparent;color:#ffffff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.75)}.btn-ghost:hover{background:rgba(255,255,255,.14);color:#ffffff}
+.pulse{animation:pulseRing 2s ease-out infinite}
+.pulse-red{animation:pulseRed 2s ease-out infinite}
+.navbtn{min-height:44px;padding:0 16px;border:0;background:transparent;color:#ffffff;font-family:'Nunito Sans',sans-serif;font-weight:800;font-size:15px;cursor:pointer;border-radius:999px;transition:background .2s}
+.navbtn:hover{background:rgba(255,255,255,.14)}
+.navbtn-on{background:#FFD21F;color:#14241A}.navbtn-on:hover{background:#FFD21F}
+.catbtn{border:0;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:10px;font-family:'Nunito Sans',sans-serif;font-weight:800;font-size:15px;color:#14241A;padding:4px}
+.catbtn .ring{width:118px;height:118px;border-radius:999px;padding:5px;background:conic-gradient(#0F7A35,#FFD21F,#D7191F,#0F7A35);transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.catbtn:hover .ring{transform:scale(1.08) rotate(-4deg)}
+.catbtn .ring img{width:100%;height:100%;border-radius:999px;object-fit:cover;border:4px solid #ffffff;display:block}
+.catbtn-on .ring{animation:spinPop .6s ease}
+.catbtn-on span{color:#D7191F}
+.card{background:#ffffff;border-radius:22px;box-shadow:0 1px 0 rgba(20,36,26,.06),0 10px 26px rgba(20,36,26,.08);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s ease, box-shadow .25s ease}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(20,36,26,.16)}
+.card .pimg{transition:transform .35s ease}
+.card:hover .pimg{transform:scale(1.07) rotate(-1.5deg)}
+.qbtn{width:36px;height:36px;border-radius:999px;border:2px solid #0F7A35;background:#ffffff;color:#0F7A35;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.field{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:14px;color:#14241A}
+.field input,.field select{min-height:46px;border:2px solid #D6DED8;border-radius:12px;padding:0 14px;font-family:'Nunito Sans',sans-serif;font-size:15px;color:#14241A;background:#ffffff}
+.field input:focus,.field select:focus{outline:3px solid #FFD21F;border-color:#0F7A35}
+.search{min-height:48px;width:100%;border:2px solid #D6DED8;border-radius:999px;padding:0 20px 0 46px;font-family:'Nunito Sans',sans-serif;font-size:15px;color:#14241A}
+.search:focus{outline:3px solid #FFD21F;border-color:#0F7A35}
+.marquee{display:flex;width:max-content;animation:marquee 28s linear infinite}
+.marquee-slow{display:flex;width:max-content;animation:marquee 40s linear infinite}
+.marquee-wrap:hover .marquee,.marquee-wrap:hover .marquee-slow{animation-play-state:paused}
+.floaty{animation:floaty 5s ease-in-out infinite}
+.floaty-2{animation:floaty 6.5s ease-in-out infinite reverse}
+.wiggle{animation:wiggle 3s ease-in-out infinite}
+.pop{animation:pop .7s cubic-bezier(.3,1.6,.5,1) both}
+.pop-2{animation:pop .7s .15s cubic-bezier(.3,1.6,.5,1) both}
+.pop-3{animation:pop .7s .3s cubic-bezier(.3,1.6,.5,1) both}
+.pop-4{animation:pop .7s .45s cubic-bezier(.3,1.6,.5,1) both}
+.paw{position:absolute;opacity:0;animation:paw 7s linear infinite}
+.bumpA{animation:bumpA .5s cubic-bezier(.3,1.8,.5,1)}
+.bumpB{animation:bumpB .5s cubic-bezier(.3,1.8,.5,1)}
+.toast{animation:toastIn .35s cubic-bezier(.3,1.5,.5,1) both}
+.blink{animation:blink 1s steps(2) infinite}
+.shine{position:relative;overflow:hidden}
+.shine::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);animation:shine 3.2s ease-in-out infinite}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
+@keyframes wiggle{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes pop{0%{opacity:0;transform:translateY(24px) scale(.85)}100%{opacity:1;transform:none}}
+@keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(255,210,31,.75)}70%{box-shadow:0 0 0 20px rgba(255,210,31,0)}100%{box-shadow:0 0 0 0 rgba(255,210,31,0)}}
+@keyframes pulseRed{0%{box-shadow:0 0 0 0 rgba(215,25,31,.6)}70%{box-shadow:0 0 0 22px rgba(215,25,31,0)}100%{box-shadow:0 0 0 0 rgba(215,25,31,0)}}
+@keyframes paw{0%{opacity:0;transform:translateY(40px) rotate(-10deg)}15%{opacity:.35}85%{opacity:.2}100%{opacity:0;transform:translateY(-260px) rotate(15deg)}}
+@keyframes spinPop{0%{transform:scale(1) rotate(0)}50%{transform:scale(1.15) rotate(-12deg)}100%{transform:scale(1) rotate(0)}}
+@keyframes bumpA{0%{transform:scale(1)}50%{transform:scale(1.5)}100%{transform:scale(1)}}
+@keyframes bumpB{0%{transform:scale(1)}50%{transform:scale(1.5)}100%{transform:scale(1)}}
+@keyframes toastIn{0%{opacity:0;transform:translate(-50%,30px) scale(.9)}100%{opacity:1;transform:translate(-50%,0) scale(1)}}
+@keyframes blink{50%{opacity:.35}}
+@keyframes shine{0%{left:-60%}60%,100%{left:130%}}
+@keyframes reveal{from{opacity:0;transform:translateY(48px) scale(.98)}to{opacity:1;transform:none}}
+@supports (animation-timeline: view()){
+  .reveal{animation:reveal linear both;animation-timeline:view();animation-range:entry 0% cover 22%}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+}
+</style>
+</head>
+<body>
+
+
+<div style="font-family: 'Nunito Sans', system-ui, sans-serif; color: #14241A; background: #ffffff; min-height: 100vh; position: relative; overflow-x: hidden;">
+
+  <!-- Faixa animada -->
+  <div class="marquee-wrap" style="background: #D7191F; color: #ffffff; overflow: hidden; font-weight: 800; font-size: 14px;">
+    <div class="marquee">
+      <div id="list-ticker" style="display:contents"></div>
+    </div>
+  </div>
+
+  <!-- Cabeçalho -->
+  <header style="position: sticky; top: 0; z-index: 20; background: #ffffff; box-shadow: 0 2px 14px rgba(20,36,26,.08);">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 12px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px;">
+      <a href="#topo" aria-label="Agropet Pets — início" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+        <div class="wiggle" style="width: 62px; height: 62px; border-radius: 999px; background: #0F7A35; border: 4px solid #FFD21F; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1;">
+          <span class="disp" style="color: #ffffff; font-weight: 700; font-size: 12px;">Agropet</span>
+          <span class="disp" style="color: #D7191F; font-weight: 800; font-size: 19px; -webkit-text-stroke: 1px #ffffff;">PETS</span>
+        </div>
+        <div style="display: flex; flex-direction: column; line-height: 1.05;">
+          <span class="disp" style="font-weight: 800; font-size: 25px; color: #0F7A35;">Agropet <span style="color: #D7191F;">Pets</span></span>
+          <span style="font-size: 13px; font-weight: 700; color: #4B5A50;">Tudo que o seu pet precisa está aqui</span>
+        </div>
+      </a>
+      <div style="flex: 1 1 300px; position: relative;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4B5A50" stroke-width="2.2" stroke-linecap="round" style="position: absolute; left: 16px; top: 14px;"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
+        <label for="busca" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Buscar produtos</label>
+        <input id="busca" class="search" type="search" placeholder="O que seu pet está precisando hoje?" data-change="onSearch">
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+        <a href="#lojas" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 12px; color: #14241A; text-decoration: none; font-weight: 800; font-size: 14px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F7A35" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>
+          Nossas lojas
+        </a>
+        <button class="btn btn-green" data-action="openCart" aria-label="Abrir carrinho">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"></path><circle cx="10" cy="20" r="1.4"></circle><circle cx="17" cy="20" r="1.4"></circle></svg>
+          <span>Meu pedido</span>
+          <span id="cartCount" style="min-width: 26px; height: 26px; padding: 0 6px; border-radius: 999px; background: #FFD21F; color: #14241A; font-size: 14px; display: inline-flex; align-items: center; justify-content: center;"><span data-bind="count"></span></span>
+        </button>
+      </div>
+    </div>
+    <nav aria-label="Categorias" style="background: #0F7A35;">
+      <div style="max-width: 1240px; margin: 0 auto; padding: 6px 24px; display: flex; flex-wrap: wrap; gap: 4px; justify-content: space-between;">
+        <div id="list-cats" style="display:contents"></div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="topo" style="background: #0F7A35; color: #ffffff; overflow: hidden; position: relative;">
+    <svg class="paw" style="left: 6%; bottom: 0; animation-delay: 0s;" width="46" height="46" viewBox="0 0 24 24" fill="#FFD21F"><circle cx="6" cy="9" r="2.4"></circle><circle cx="10.5" cy="5.5" r="2.4"></circle><circle cx="15" cy="6" r="2.4"></circle><circle cx="18.5" cy="10" r="2.4"></circle><path d="M12 11c3 0 6 4 6 6.5 0 2-1.6 2.5-3 2.5-1.2 0-2-.6-3-.6s-1.8.6-3 .6c-1.4 0-3-.5-3-2.5C6 15 9 11 12 11z"></path></svg>
+    <svg class="paw" style="left: 38%; bottom: 0; animation-delay: 2.3s;" width="34" height="34" viewBox="0 0 24 24" fill="#ffffff"><circle cx="6" cy="9" r="2.4"></circle><circle cx="10.5" cy="5.5" r="2.4"></circle><circle cx="15" cy="6" r="2.4"></circle><circle cx="18.5" cy="10" r="2.4"></circle><path d="M12 11c3 0 6 4 6 6.5 0 2-1.6 2.5-3 2.5-1.2 0-2-.6-3-.6s-1.8.6-3 .6c-1.4 0-3-.5-3-2.5C6 15 9 11 12 11z"></path></svg>
+    <svg class="paw" style="left: 62%; bottom: 0; animation-delay: 4.1s;" width="40" height="40" viewBox="0 0 24 24" fill="#FFD21F"><circle cx="6" cy="9" r="2.4"></circle><circle cx="10.5" cy="5.5" r="2.4"></circle><circle cx="15" cy="6" r="2.4"></circle><circle cx="18.5" cy="10" r="2.4"></circle><path d="M12 11c3 0 6 4 6 6.5 0 2-1.6 2.5-3 2.5-1.2 0-2-.6-3-.6s-1.8.6-3 .6c-1.4 0-3-.5-3-2.5C6 15 9 11 12 11z"></path></svg>
+    <svg class="paw" style="left: 88%; bottom: 0; animation-delay: 5.6s;" width="30" height="30" viewBox="0 0 24 24" fill="#ffffff"><circle cx="6" cy="9" r="2.4"></circle><circle cx="10.5" cy="5.5" r="2.4"></circle><circle cx="15" cy="6" r="2.4"></circle><circle cx="18.5" cy="10" r="2.4"></circle><path d="M12 11c3 0 6 4 6 6.5 0 2-1.6 2.5-3 2.5-1.2 0-2-.6-3-.6s-1.8.6-3 .6c-1.4 0-3-.5-3-2.5C6 15 9 11 12 11z"></path></svg>
+
+    <div style="max-width: 1240px; margin: 0 auto; padding: 56px 24px 76px; display: flex; flex-wrap: wrap; align-items: center; gap: 40px; position: relative;">
+      <div style="flex: 1 1 500px; min-width: 0; display: flex; flex-direction: column; gap: 22px;">
+        <span class="pop" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; background: #FFD21F; color: #14241A; font-weight: 900; font-size: 14px; padding: 8px 16px; border-radius: 999px;">
+          <span class="blink" style="width: 9px; height: 9px; border-radius: 999px; background: #D7191F;"></span>
+          <span data-bind="openLabel"></span>
+        </span>
+        <h1 class="disp pop-2" style="margin: 0; font-size: clamp(44px, 6.4vw, 80px); line-height: 0.95; font-weight: 800;">Acabou a ração?<br><span style="color: #FFD21F;">Não deixe seu melhor amigo esperando.</span></h1>
+        <p class="pop-3" style="margin: 0; font-size: 19px; line-height: 1.5; max-width: 560px; color: #E6F3EA;">Monte seu pedido em 1 minuto, mande pelo WhatsApp e a gente leva até a sua porta. Rações, petiscos, remédios e acessórios com cuidado, qualidade e amor.</p>
+        <div class="pop-4" style="display: flex; flex-wrap: wrap; gap: 14px;">
+          <a class="btn btn-yellow pulse" href="#ofertas" style="min-height: 56px; font-size: 17px;">Quero fazer meu pedido</a>
+          <a class="btn btn-ghost" href="#" data-wa="waHello" target="_blank" rel="noopener" style="min-height: 56px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.2A8.5 8.5 0 1 1 20 11.5z"></path></svg>
+            Falar com um atendente
+          </a>
+        </div>
+        <div class="pop-4" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; font-size: 14px; font-weight: 700; color: #E6F3EA;">
+          <span style="display: inline-flex; align-items: center; gap: 6px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="#FFD21F"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"></path></svg>Nota 5,0 no Google</span>
+          <span>Entrega rápida em Taguatinga Sul e região</span>
+          <span>Pix ou cartão na entrega</span>
+        </div>
+      </div>
+
+      <div style="flex: 1 1 420px; min-width: 0; position: relative; display: flex; justify-content: center; min-height: 460px;">
+        <div class="floaty" style="width: min(420px, 86%); aspect-ratio: 1 / 1; border-radius: 999px; border: 10px solid #FFD21F; overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,.3);">
+          <img src="img/ai-hero-dog.jpg" alt="Cachorro feliz pulando" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+        <div class="floaty-2" style="position: absolute; left: 0; bottom: 6px; width: 150px; height: 150px; border-radius: 999px; border: 6px solid #ffffff; overflow: hidden; box-shadow: 0 14px 30px rgba(0,0,0,.25);">
+          <img src="img/ai-cat.jpg" alt="Gato curioso" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        </div>
+        <div class="wiggle shine" style="position: absolute; right: 0; top: 10px; background: #D7191F; color: #ffffff; border-radius: 22px; padding: 16px 18px; box-shadow: 0 16px 34px rgba(0,0,0,.3); display: flex; flex-direction: column; gap: 2px; max-width: 220px;">
+          <span style="font-size: 12px; font-weight: 900; letter-spacing: .06em; color: #FFE88A;">OFERTA DO ENCARTE</span>
+          <span style="font-weight: 800; font-size: 15px; line-height: 1.2;">Premier Nattu 2,5kg</span>
+          <span class="disp" style="font-weight: 800; font-size: 36px; line-height: 1;">R$ 84,99</span>
+          <button class="btn btn-yellow" style="min-height: 44px; font-size: 14px; margin-top: 6px;" data-action="offerAdd">Quero essa oferta</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefícios -->
+  <section style="background: #FFD21F;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 22px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#14241A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"></path><circle cx="7" cy="17.5" r="1.6"></circle><circle cx="17" cy="17.5" r="1.6"></circle></svg>
+        <div style="display: flex; flex-direction: column;"><strong>Entrega rápida</strong><span style="font-size: 13px;">Taguatinga Sul, Águas Claras, Areal e região</span></div>
+      </div>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#14241A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.2A8.5 8.5 0 1 1 20 11.5z"></path></svg>
+        <div style="display: flex; flex-direction: column;"><strong>Pedido em 1 minuto</strong><span style="font-size: 13px;">Monte aqui, finalize no WhatsApp</span></div>
+      </div>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#14241A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><rect x="3" y="6" width="18" height="12" rx="2"></rect><path d="M3 10h18"></path></svg>
+        <div style="display: flex; flex-direction: column;"><strong>Pague como preferir</strong><span style="font-size: 13px;">Pix, cartão ou dinheiro na entrega</span></div>
+      </div>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#14241A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><path d="M12 21s-7-4.4-9-9.2C1.6 8.4 3.6 5 7 5c2 0 3.4 1.2 5 3 1.6-1.8 3-3 5-3 3.4 0 5.4 3.4 4 6.8-2 4.8-9 9.2-9 9.2z"></path></svg>
+        <div style="display: flex; flex-direction: column;"><strong>Duas lojas físicas</strong><span style="font-size: 13px;">Taguatinga Sul e Vereda da Cruz</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categorias -->
+  <section class="reveal" style="max-width: 1240px; margin: 0 auto; padding: 64px 24px 16px; display: flex; flex-direction: column; gap: 28px; align-items: center;">
+    <div style="text-align: center; display: flex; flex-direction: column; gap: 6px;">
+      <span style="color: #D7191F; font-weight: 900; font-size: 14px; text-transform: uppercase; letter-spacing: .08em;">Escolha por quem você cuida</span>
+      <h2 class="disp" style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1; color: #0F7A35; font-weight: 800;">Pra qual amigo vai ser hoje?</h2>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 22px 28px;">
+      <div id="list-catCircles" style="display:contents"></div>
+    </div>
+  </section>
+
+  <!-- Ofertas / catálogo -->
+  <section id="ofertas" style="max-width: 1240px; margin: 0 auto; padding: 40px 24px 40px; display: flex; flex-direction: column; gap: 26px;">
+    <div class="reveal" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px;">
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <span style="color: #D7191F; font-weight: 900; font-size: 14px; text-transform: uppercase; letter-spacing: .08em;">Preços do encarte da loja</span>
+        <h2 class="disp" style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1; color: #0F7A35; font-weight: 800;">Vamos aproveitar! <span data-bind="catTitle"></span></h2>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; background: #FFF4F4; color: #B5121A; border-radius: 999px; padding: 10px 16px; font-weight: 800; font-size: 14px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 1.5M9 2h6"></path></svg>
+        <span data-bind="closeLabel"></span>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(232px, 1fr)); gap: 22px;">
+      <div id="list-products" style="display:contents"></div>
+    </div>
+
+    <div data-if="noResults" class="is-hidden" style="display:contents">
+      <div style="padding: 32px; border-radius: 22px; background: #F3F6F4; text-align: center; display: flex; flex-direction: column; gap: 12px; align-items: center;">
+        <strong style="font-size: 19px;">Não achou? A loja tem muito mais.</strong>
+        <span style="color: #4B5A50;">Manda uma foto do que seu pet usa e a gente separa pra você.</span>
+        <a class="btn btn-green" href="#" data-wa="waHello" target="_blank" rel="noopener">Mandar foto no WhatsApp</a>
+      </div>
+    </div>
+    <span style="font-size: 13px; color: #4B5A50; text-align: center;">Preços tirados do encarte e da fachada da loja. Podem mudar sem aviso — a confirmação vem no WhatsApp.</span>
+  </section>
+
+  <!-- Encarte da semana -->
+  <section style="background: #D7191F; color: #ffffff; overflow: hidden;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 64px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 44px;">
+      <div class="reveal" style="flex: 1 1 300px; min-width: 0; display: flex; justify-content: center;">
+        <img class="wiggle" src="img/ig-flyer.jpg" alt="Encarte de ofertas da Agropet Pets" style="width: min(330px, 100%); border-radius: 18px; border: 6px solid #ffffff; box-shadow: 0 24px 50px rgba(0,0,0,.35);">
+      </div>
+      <div class="reveal" style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 18px;">
+        <span style="font-weight: 900; font-size: 14px; letter-spacing: .08em; color: #FFE88A;">ENCARTE DA SEMANA</span>
+        <h2 class="disp" style="margin: 0; font-size: clamp(34px, 4.6vw, 56px); line-height: 1; font-weight: 800;">Cuidado, qualidade e amor para o seu melhor amigo!</h2>
+        <p style="margin: 0; font-size: 18px; line-height: 1.5; color: #FFE4E4;">Viu alguma oferta no encarte? Não precisa digitar nada: mande a foto do encarte no WhatsApp, diga o que quer e a gente monta seu pedido.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+          <a class="btn btn-yellow pulse" href="#" data-wa="waFlyer" target="_blank" rel="noopener">Quero pedir do encarte</a>
+          <a class="btn btn-ghost" href="#ofertas">Ver ofertas no site</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marcas parceiras -->
+  <section style="padding: 64px 0 28px; display: flex; flex-direction: column; gap: 26px;">
+    <div class="reveal" style="max-width: 1240px; width: 100%; margin: 0 auto; padding: 0 24px; display: flex; flex-direction: column; gap: 6px; text-align: center;">
+      <span style="color: #D7191F; font-weight: 900; font-size: 14px; text-transform: uppercase; letter-spacing: .08em;">Marcas parceiras</span>
+      <h2 class="disp" style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1; color: #0F7A35; font-weight: 800;">As marcas que você confia, no preço que você procura</h2>
+    </div>
+    <div class="marquee-wrap" style="overflow: hidden; border-top: 1px solid #E7ECE8; border-bottom: 1px solid #E7ECE8; background: #FBFCFA;">
+      <div class="marquee-slow">
+        <div id="list-brandsLoop" style="display:contents"></div>
+      </div>
+    </div>
+    <div class="reveal" style="max-width: 1240px; width: 100%; margin: 0 auto; padding: 20px 24px 0;">
+      <div style="background: #0F7A35; color: #ffffff; border-radius: 28px; overflow: hidden; display: flex; flex-wrap: wrap; align-items: stretch;">
+        <div style="flex: 1 1 300px; min-height: 320px; position: relative;">
+          <img src="img/ig-carnaval.jpg" alt="Cachorro com colar de flores no Carnaval da Agropet" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div style="flex: 1 1 460px; min-width: 0; padding: 40px; display: flex; flex-direction: column; gap: 16px; justify-content: center;">
+          <span style="align-self: flex-start; background: #FFD21F; color: #14241A; font-weight: 900; font-size: 13px; padding: 6px 12px; border-radius: 999px;">PARCERIA OFICIAL</span>
+          <h3 class="disp" style="margin: 0; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.02; font-weight: 800;">Agropet + PremierPet + Cinoplan/Cinotec</h3>
+          <p style="margin: 0; font-size: 17px; line-height: 1.5; color: #E6F3EA;">Junto com a PremierPet e a Cinoplan/Cinotec, a gente garante a qualidade que seu pet merece para brilhar com muita energia e saúde. As linhas Premier e Golden estão sempre na loja.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+            <a class="btn btn-yellow" href="#ofertas" data-action="showPremier">Ver produtos PremierPet</a>
+            <a class="btn btn-ghost" href="#" data-wa="waBrand" target="_blank" rel="noopener">Perguntar por outra marca</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Entrega -->
+  <section style="max-width: 1240px; margin: 0 auto; padding: 56px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 40px;">
+    <div class="reveal" style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 18px;">
+      <span style="color: #D7191F; font-weight: 900; font-size: 14px; text-transform: uppercase; letter-spacing: .08em;">Areal, tem novidade!</span>
+      <h2 class="disp" style="margin: 0; font-size: clamp(32px, 4vw, 50px); line-height: 1; color: #0F7A35; font-weight: 800;">A entrega mais rápida de Taguatinga Sul, agora na sua casa</h2>
+      <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #33443A;">Ração pesada? Deixa com a gente. Você escolhe, manda pelo WhatsApp e a gente confirma se entrega no seu endereço e quanto fica a taxa — antes de você pagar qualquer coisa.</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+        <div style="display: flex; gap: 12px; align-items: center; background: #F3F6F4; border-radius: 16px; padding: 14px;"><span class="disp" style="flex: none; width: 40px; height: 40px; border-radius: 999px; background: #D7191F; color: #ffffff; font-weight: 800; font-size: 20px; display: flex; align-items: center; justify-content: center;">1</span><span style="font-weight: 800;">Escolha os produtos</span></div>
+        <div style="display: flex; gap: 12px; align-items: center; background: #F3F6F4; border-radius: 16px; padding: 14px;"><span class="disp" style="flex: none; width: 40px; height: 40px; border-radius: 999px; background: #D7191F; color: #ffffff; font-weight: 800; font-size: 20px; display: flex; align-items: center; justify-content: center;">2</span><span style="font-weight: 800;">Envie pelo WhatsApp</span></div>
+        <div style="display: flex; gap: 12px; align-items: center; background: #F3F6F4; border-radius: 16px; padding: 14px;"><span class="disp" style="flex: none; width: 40px; height: 40px; border-radius: 999px; background: #D7191F; color: #ffffff; font-weight: 800; font-size: 20px; display: flex; align-items: center; justify-content: center;">3</span><span style="font-weight: 800;">Receba em casa</span></div>
+      </div>
+      <a class="btn btn-red pulse-red" style="align-self: flex-start; min-height: 56px; font-size: 17px;" href="#" data-wa="waArea" target="_blank" rel="noopener">Vocês entregam no meu bairro?</a>
+    </div>
+    <div class="reveal" style="flex: 1 1 420px; min-width: 0; position: relative; min-height: 420px;">
+      <img src="img/ig-drone.jpg" alt="Vista aérea da avenida com a localização da loja" style="position: absolute; right: 0; top: 0; width: 56%; height: 360px; object-fit: cover; border-radius: 24px; box-shadow: 0 16px 36px rgba(20,36,26,.18);">
+      <img class="floaty" src="img/ai-delivery.jpg" alt="Entregador entregando um saco de ração" style="position: absolute; left: 0; bottom: 0; width: 68%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 24px; border: 6px solid #ffffff; box-shadow: 0 22px 44px rgba(20,36,26,.25);">
+    </div>
+  </section>
+
+  <!-- Banho e tosa + calopsitas -->
+  <section style="max-width: 1240px; margin: 0 auto; padding: 16px 24px 64px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 22px;">
+    <div class="reveal" style="background: #0F7A35; color: #ffffff; border-radius: 28px; overflow: hidden; display: flex; flex-direction: column;">
+      <img src="img/ai-bath.jpg" alt="Cachorro tomando banho com espuma" style="width: 100%; height: 260px; object-fit: cover; display: block;">
+      <div style="padding: 30px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1;">
+        <span style="font-weight: 900; font-size: 13px; letter-spacing: .08em; color: #FFD21F;">BANHO E TOSA</span>
+        <h3 class="disp" style="margin: 0; font-size: 34px; line-height: 1.02; font-weight: 800;">Vamos que está na hora do banho!</h3>
+        <p style="margin: 0; font-size: 16px; line-height: 1.5; color: #E6F3EA; flex-grow: 1;">Transformando rabos abanando em sorrisos sinceros. Seu pet volta cheiroso, macio e feliz.</p>
+        <a class="btn btn-yellow" style="align-self: flex-start;" href="#" data-wa="waBath" target="_blank" rel="noopener">Agendar o banho agora</a>
+      </div>
+    </div>
+    <div class="reveal" style="background: #FFF7D1; border-radius: 28px; overflow: hidden; display: flex; flex-direction: column;">
+      <img src="img/ig-calopsita.jpg" alt="Calopsita no dedo de um cliente na loja" style="width: 100%; height: 260px; object-fit: cover; object-position: center 30%; display: block;">
+      <div style="padding: 30px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1;">
+        <span style="font-weight: 900; font-size: 13px; letter-spacing: .08em; color: #D7191F;">NOVO AMIGO</span>
+        <h3 class="disp" style="margin: 0; font-size: 34px; line-height: 1.02; font-weight: 800; color: #0F7A35;">Procurando um novo amigo para alegrar a sua casa?</h3>
+        <p style="margin: 0; font-size: 16px; line-height: 1.5; color: #33443A; flex-grow: 1;">As calopsitas são companheiras, inteligentes e super dóceis. Temos aves lindas esperando por você.</p>
+        <a class="btn btn-green" style="align-self: flex-start;" href="#" data-wa="waBird" target="_blank" rel="noopener">Quero conhecer as calopsitas</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lembrete de ração -->
+  <section class="reveal" style="max-width: 1240px; margin: 0 auto; padding: 0 24px 64px;">
+    <div class="shine" style="background: #FFD21F; border-radius: 28px; padding: 36px 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px;">
+      <div style="flex: 1 1 520px; min-width: 0; display: flex; gap: 18px; align-items: center;">
+        <img src="img/ai-puppy.jpg" alt="Filhote ao lado do pote de ração" style="flex: none; width: 96px; height: 96px; border-radius: 999px; object-fit: cover; border: 4px solid #ffffff;">
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <h3 class="disp" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.02; font-weight: 800;">Nunca mais fique sem ração</h3>
+          <span style="font-size: 16px; line-height: 1.45;">Diga qual ração seu pet come e a gente te chama no WhatsApp quando estiver na hora de repor.</span>
+        </div>
+      </div>
+      <a class="btn btn-red" href="#" data-wa="waRemind" target="_blank" rel="noopener" style="min-height: 56px;">Quero ser lembrado</a>
+    </div>
+  </section>
+
+  <!-- Avaliações -->
+  <section style="background: #F3F6F4;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 64px 24px; display: flex; flex-direction: column; gap: 28px;">
+      <div class="reveal" style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px;">
+        <h2 class="disp" style="margin: 0; font-size: clamp(30px, 4vw, 44px); color: #0F7A35; font-weight: 800; line-height: 1;">Quem compra, recomenda</h2>
+        <span style="display: inline-flex; align-items: center; gap: 4px; background: #ffffff; border-radius: 999px; padding: 8px 16px; font-weight: 900;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F2B200"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"></path></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F2B200"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"></path></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F2B200"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"></path></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F2B200"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"></path></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F2B200"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"></path></svg>
+          <span style="margin-left: 6px;">5,0 no Google</span>
+        </span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+        <figure class="reveal card" style="margin: 0; padding: 26px; gap: 14px;">
+          <blockquote style="margin: 0; font-size: 18px; line-height: 1.45; font-weight: 800;">“A melhor loja de Brasília em ração, produtos e medicamentos pet está aqui.”</blockquote>
+          <figcaption style="color: #4B5A50; font-size: 14px;">Cliente no Google</figcaption>
+        </figure>
+        <figure class="reveal card" style="margin: 0; padding: 26px; gap: 14px;">
+          <blockquote style="margin: 0; font-size: 18px; line-height: 1.45; font-weight: 800;">“Ótimo atendimento, todos super prestativos e entregas pontuais.”</blockquote>
+          <figcaption style="color: #4B5A50; font-size: 14px;">Cliente no Google</figcaption>
+        </figure>
+        <figure class="reveal card" style="margin: 0; padding: 26px; gap: 14px;">
+          <blockquote style="margin: 0; font-size: 18px; line-height: 1.45; font-weight: 800;">“Compro tudo lá: vacinas, ração, petiscos.”</blockquote>
+          <figcaption style="color: #4B5A50; font-size: 14px;">Cliente no Google</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lojas -->
+  <section id="lojas" style="max-width: 1240px; margin: 0 auto; padding: 64px 24px; display: flex; flex-direction: column; gap: 28px;">
+    <h2 class="disp reveal" style="margin: 0; font-size: clamp(30px, 4vw, 44px); color: #0F7A35; font-weight: 800; line-height: 1;">Prefere vir pessoalmente? Venha conhecer e surpreenda-se!</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 22px;">
+      <div class="card reveal">
+        <div style="height: 200px; background: #0F7A35; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+          <img src="img/ai-fish.jpg" alt="Peixe betta no aquário" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .9;">
+          <span style="position: absolute; left: 16px; bottom: 16px; background: #FFD21F; color: #14241A; font-weight: 900; font-size: 13px; padding: 6px 12px; border-radius: 999px;">Loja 1 · Taguatinga Sul</span>
+        </div>
+        <div style="padding: 24px; display: flex; flex-direction: column; gap: 12px;">
+          <strong style="font-size: 17px; line-height: 1.4;">QSE 2, Lote 1, Loja 5 — Av. Boca da Mata<br><span style="font-weight: 600; color: #4B5A50;">Próximo ao Santa Lúcia</span></strong>
+          <span>Das 9h às 20h</span>
+          <a class="btn btn-green" style="align-self: flex-start;" href="https://www.google.com/maps/search/?api=1&amp;query=Agropet+Pets+QSE+2+Taguatinga+Sul" target="_blank" rel="noopener">Traçar rota até a loja</a>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div style="height: 200px; position: relative; overflow: hidden;">
+          <img src="img/ig-facade.jpg" alt="Fachada da segunda unidade da Agropet Pets" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 62%;">
+          <span style="position: absolute; left: 16px; bottom: 16px; background: #FFD21F; color: #14241A; font-weight: 900; font-size: 13px; padding: 6px 12px; border-radius: 999px;">Loja 2 · Vereda da Cruz · Nova!</span>
+        </div>
+        <div style="padding: 24px; display: flex; flex-direction: column; gap: 12px;">
+          <strong style="font-size: 17px; line-height: 1.4;">CHC 491, Lote 1B — Av. Vereda da Cruz<br><span style="font-weight: 600; color: #4B5A50;">Águas Claras · CEP 71996-395</span></strong>
+          <span>Das 8h30 às 19h</span>
+          <a class="btn btn-green" style="align-self: flex-start;" href="https://www.google.com/maps/search/?api=1&amp;query=Agropet+Pets+Vereda+da+Cruz" target="_blank" rel="noopener">Traçar rota até a loja</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section style="background: #0F7A35; color: #ffffff; overflow: hidden; position: relative;">
+    <div class="reveal" style="max-width: 1000px; margin: 0 auto; padding: 72px 24px; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center;">
+      <div style="display: flex; align-items: center;">
+        <img class="floaty" src="img/ai-bird.jpg" alt="" style="width: 76px; height: 76px; border-radius: 999px; object-fit: cover; border: 4px solid #FFD21F;">
+        <img class="floaty-2" src="img/ai-puppy.jpg" alt="" style="width: 92px; height: 92px; border-radius: 999px; object-fit: cover; border: 4px solid #FFD21F; margin-left: -14px;">
+        <img class="floaty" src="img/ai-hamster.jpg" alt="" style="width: 76px; height: 76px; border-radius: 999px; object-fit: cover; border: 4px solid #FFD21F; margin-left: -14px;">
+      </div>
+      <h2 class="disp" style="margin: 0; font-size: clamp(36px, 5vw, 62px); line-height: .98; font-weight: 800;">Seu pet está esperando.<br><span style="color: #FFD21F;">Que tal resolver isso agora?</span></h2>
+      <p style="margin: 0; font-size: 18px; color: #E6F3EA;"><span data-bind="closeLabel"></span></p>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 14px;">
+        <a class="btn btn-yellow pulse" href="#ofertas" style="min-height: 58px; font-size: 18px;">Montar meu pedido</a>
+        <a class="btn btn-ghost" href="#" data-wa="waHello" target="_blank" rel="noopener" style="min-height: 58px;">Chamar no WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer style="background: #0A5626; color: #DCEFE2;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 44px 24px 100px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px;">
+      <div style="display: flex; flex-direction: column; gap: 8px; max-width: 420px;">
+        <span class="disp" style="font-weight: 800; font-size: 28px; color: #ffffff;">Agropet <span style="color: #FFD21F;">Pets</span></span>
+        <span style="line-height: 1.5;">Rações, banho e tosa, medicamentos, aquarismo, aves e acessórios. Loja mais completa da região!</span>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <strong style="color: #ffffff;">Fale com a gente</strong>
+        <a href="#" data-wa="waHello" target="_blank" rel="noopener" style="color: #FFD21F; font-weight: 900;">WhatsApp (61) 99902-2443</a>
+        <a href="https://www.instagram.com/agropet.pets/" target="_blank" rel="noopener" style="color: #DCEFE2;">Instagram @agropet.pets</a>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px;">
+        <span>Agropet Pets LTDA · CNPJ 39.422.801/0001-80</span>
+        <span>Protótipo · imagens de IA e do Instagram da loja</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botões flutuantes -->
+  <div style="position: fixed; right: 20px; bottom: 20px; z-index: 30; display: flex; flex-direction: column; align-items: flex-end; gap: 12px;">
+    <div data-if="showFab" class="is-hidden" style="display:contents">
+      <button class="btn btn-red pop" data-action="openCart" style="min-height: 56px; padding: 0 22px; box-shadow: 0 12px 28px rgba(215,25,31,.4);">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"></path><circle cx="10" cy="20" r="1.4"></circle><circle cx="17" cy="20" r="1.4"></circle></svg>
+        Finalizar · <span data-bind="totalLabel"></span>
+      </button>
+    </div>
+    <a class="pulse" href="#" data-wa="waHello" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp" style="width: 62px; height: 62px; border-radius: 999px; background: #0F7A35; color: #ffffff; display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 26px rgba(15,122,53,.45);">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.2A8.5 8.5 0 1 1 20 11.5z"></path><path d="M9 9.5c.3 1.8 1.7 3.6 3.6 4.6l1.2-1 1.7.8-.4 1.6c-3.2.2-6.4-2.8-6.6-6l1.6-.4.7 1.7z"></path></svg>
+    </a>
+  </div>
+
+  <!-- Toast -->
+  <div data-if="showToast" class="is-hidden" style="display:contents">
+    <div class="toast" role="status" style="position: fixed; left: 50%; bottom: 28px; z-index: 35; background: #14241A; color: #ffffff; border-radius: 999px; padding: 12px 14px 12px 20px; display: flex; align-items: center; gap: 14px; box-shadow: 0 16px 34px rgba(0,0,0,.3); font-weight: 800; max-width: calc(100% - 32px);">
+      <span style="color: #FFD21F;">✓</span>
+      <span><span data-bind="toast"></span></span>
+      <button class="btn btn-yellow" style="min-height: 40px; font-size: 14px; padding: 0 16px;" data-action="openCart">Ver pedido</button>
+    </div>
+  </div>
+
+  <!-- Carrinho -->
+  <div data-if="open" class="is-hidden" style="display:contents">
+    <div style="position: fixed; inset: 0; z-index: 40; display: flex; justify-content: flex-end;">
+      <button aria-label="Fechar carrinho" data-action="closeCart" style="position: absolute; inset: 0; border: 0; background: rgba(20,36,26,.45); cursor: pointer;"></button>
+      <aside aria-label="Seu pedido" style="position: relative; width: min(440px, 100%); height: 100%; background: #ffffff; display: flex; flex-direction: column; box-shadow: -12px 0 40px rgba(0,0,0,.2);">
+        <div style="padding: 20px 22px; background: #0F7A35; color: #ffffff; display: flex; align-items: center; justify-content: space-between;">
+          <span class="disp" style="font-weight: 800; font-size: 26px;">Seu pedido</span>
+          <button aria-label="Fechar" data-action="closeCart" style="width: 44px; height: 44px; border-radius: 999px; border: 0; background: rgba(255,255,255,.15); color: #ffffff; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+          </button>
+        </div>
+
+        <div style="flex: 1; overflow-y: auto; padding: 20px 22px; display: flex; flex-direction: column; gap: 18px;">
+          <div data-if="empty" class="is-hidden" style="display:contents">
+            <div style="padding: 28px 8px; text-align: center; display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <img src="img/ai-puppy.jpg" alt="" style="width: 110px; height: 110px; border-radius: 999px; object-fit: cover;">
+              <strong style="font-size: 18px;">O potinho ainda está vazio</strong>
+              <span style="color: #4B5A50;">Escolha os produtos e volte aqui pra mandar o pedido.</span>
+              <button class="btn btn-green" data-action="closeCart">Escolher produtos</button>
+            </div>
+          </div>
+
+          <div id="list-lines" style="display:contents"></div>
+
+          <div data-if="hasItems" class="is-hidden" style="display:contents">
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <div style="background: #FFF7D1; border-radius: 14px; padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#14241A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"></path><circle cx="7" cy="17.5" r="1.6"></circle><circle cx="17" cy="17.5" r="1.6"></circle></svg>
+                <span style="font-size: 14px; line-height: 1.45;">Falta pouco! Diga seu bairro e a gente confirma no WhatsApp se entrega aí e qual é a taxa.</span>
+              </div>
+              <label class="field">Seu nome
+                <input type="text" data-change="onName" placeholder="Como podemos te chamar?">
+              </label>
+              <label class="field">Bairro / região
+                <select data-change="onBairro">
+                  <option value="">Selecione</option>
+                  <option>Taguatinga Sul</option>
+                  <option>Taguatinga Norte</option>
+                  <option>Águas Claras</option>
+                  <option>Areal</option>
+                  <option>Arniqueiras</option>
+                  <option>Vereda da Cruz</option>
+                  <option>Park Way</option>
+                  <option>Outra região</option>
+                </select>
+              </label>
+              <label class="field">Endereço
+                <input type="text" data-change="onAddr" placeholder="Quadra, conjunto, casa ou apto">
+              </label>
+              <label class="field">Forma de pagamento
+                <select data-change="onPay">
+                  <option>Pix</option>
+                  <option>Cartão na entrega</option>
+                  <option>Dinheiro</option>
+                </select>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div data-if="hasItems" class="is-hidden" style="display:contents">
+          <div style="padding: 18px 22px 22px; border-top: 1px solid #E7ECE8; display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+              <span style="font-weight: 800; color: #4B5A50;">Total dos produtos</span>
+              <span class="disp" style="font-weight: 800; font-size: 30px; color: #D7191F; line-height: 1;"><span data-bind="totalLabel"></span></span>
+            </div>
+            <span style="font-size: 13px; color: #4B5A50;">Você só paga depois que a gente confirmar entrega e taxa.</span>
+            <a class="btn btn-green shine" style="width: 100%; min-height: 58px; font-size: 17px;" href="#" data-wa="waOrder" target="_blank" rel="noopener">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.2A8.5 8.5 0 1 1 20 11.5z"></path></svg>
+              Enviar meu pedido pelo WhatsApp
+            </a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var PHONE = '5561999022443';
+  var PAW = '<svg width="16" height="16" viewBox="0 0 24 24" fill="#FFD21F" aria-hidden="true"><circle cx="6" cy="9" r="2.4"></circle><circle cx="10.5" cy="5.5" r="2.4"></circle><circle cx="15" cy="6" r="2.4"></circle><circle cx="18.5" cy="10" r="2.4"></circle><path d="M12 11c3 0 6 4 6 6.5 0 2-1.6 2.5-3 2.5-1.2 0-2-.6-3-.6s-1.8.6-3 .6c-1.4 0-3-.5-3-2.5C6 15 9 11 12 11z"></path></svg>';
+  var MINUS = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14"></path></svg>';
+  var PLUS = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>';
+
+  var PRODUCTS = [
+    { id: 1, name: 'Premier Nattu 2,5kg', cat: 'Cachorros', price: 84.99, from: false, tag: 'OFERTA', img: 'img/p-premier-nattu.jpg', photo: false, group: 'premierpet' },
+    { id: 2, name: 'Golden Gatos 10kg', cat: 'Gatos', price: 139.99, from: false, tag: 'MAIS VENDIDO', img: 'img/p-golden-gatos.jpg', photo: false, group: 'premierpet' },
+    { id: 3, name: 'Fórmula Natural Fresh Meat 2,5kg', cat: 'Cachorros', price: 94.99, from: true, tag: '', img: 'img/p-fn-freshmeat.jpg', photo: false, group: '' },
+    { id: 4, name: 'Fórmula Natural 2,5kg', cat: 'Cachorros', price: 64.99, from: true, tag: 'OFERTA', img: 'img/p-fn-25.jpg', photo: false, group: '' },
+    { id: 5, name: 'Special Dog Carne 20kg', cat: 'Cachorros', price: 129.99, from: false, tag: 'ECONOMIA', img: 'img/p-special-carne.jpg', photo: false, group: '' },
+    { id: 6, name: 'Quali Day Pro Sênior raças pequenas', cat: 'Cachorros', price: 0, from: false, tag: 'TERCEIRA IDADE', img: 'img/p-qualiday.jpg', photo: false, group: '' },
+    { id: 7, name: 'Bravecto antipulgas', cat: 'Farmácia', price: 129.99, from: false, tag: '', img: 'img/ai-pharmacy.jpg', photo: true, group: '' },
+    { id: 8, name: 'Colchonete pet', cat: 'Acessórios', price: 35.00, from: true, tag: '', img: 'img/p-colchonete.jpg', photo: true, group: '' },
+    { id: 9, name: 'Calopsitas', cat: 'Pássaros', price: 0, from: false, tag: 'NOVO AMIGO', img: 'img/ig-calopsita.jpg', photo: true, group: '' },
+    { id: 10, name: 'Peixes ornamentais e aquários', cat: 'Peixes', price: 0, from: false, tag: '', img: 'img/ai-fish.jpg', photo: true, group: '' },
+    { id: 11, name: 'Rações e casinhas para hamster', cat: 'Roedores', price: 0, from: false, tag: '', img: 'img/ai-hamster.jpg', photo: true, group: '' }
+  ];
+  var CATS = [
+    { label: 'Todos', img: 'img/ai-puppy.jpg' },
+    { label: 'Cachorros', img: 'img/ai-puppy.jpg' },
+    { label: 'Gatos', img: 'img/ai-cat.jpg' },
+    { label: 'Pássaros', img: 'img/ai-bird.jpg' },
+    { label: 'Peixes', img: 'img/ai-fish.jpg' },
+    { label: 'Roedores', img: 'img/ai-hamster.jpg' },
+    { label: 'Farmácia', img: 'img/ai-pharmacy.jpg' },
+    { label: 'Acessórios', img: 'img/p-colchonete.jpg' }
+  ];
+  var BRANDS = ['PremierPet', 'Golden', 'Fórmula Natural', 'Special Dog', 'Quali Day', 'Fanny', 'Finotrato', 'Bravecto', 'Cinotec'];
+  var TICKER = ['Acabou a ração? A gente leva até você!', 'Peça pelo WhatsApp: (61) 99902-2443', 'Areal, tem novidade: agora entregamos aí!', 'Banho e tosa com hora marcada', 'Pague no Pix ou cartão na entrega'];
+
+  var WA_TEXT = {
+    waHello: 'Olá, Agropet Pets! Vim pelo site e queria tirar uma dúvida.',
+    waBath: 'Olá, Agropet Pets! Quero agendar banho e tosa para o meu pet. Qual o próximo horário?',
+    waBird: 'Olá, Agropet Pets! Vi no site e quero conhecer as calopsitas.',
+    waFlyer: 'Olá, Agropet Pets! Vi o encarte e quero fazer um pedido. Vou mandar a foto dos itens.',
+    waBrand: 'Olá, Agropet Pets! Vocês têm a marca: ',
+    waArea: 'Olá, Agropet Pets! Vocês entregam no meu bairro? Moro em: ',
+    waRemind: 'Olá, Agropet Pets! Quero ser lembrado quando a ração do meu pet estiver acabando. Ele come: '
+  };
+
+  var state = { cat: 'Todos', q: '', group: '', cart: {}, open: false, name: '', bairro: '', addr: '', pay: 'Pix', toast: '', bump: 0 };
+  var toastTimer;
+
+  function brl(n) { return 'R$ ' + n.toFixed(2).replace('.', ','); }
+  function norm(s) { return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function wa(text) { return 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(text); }
+  function $(sel) { return document.querySelector(sel); }
+  function $all(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+  function byId(id) { return PRODUCTS.filter(function (p) { return p.id === id; })[0]; }
+
+  function bind(name, value) { $all('[data-bind="' + name + '"]').forEach(function (el) { el.textContent = value; }); }
+  function showIf(name, on) { $all('[data-if="' + name + '"]').forEach(function (el) { el.classList.toggle('is-hidden', !on); }); }
+
+  function setQty(id, qty) {
+    if (qty <= 0) { delete state.cart[id]; } else { state.cart[id] = qty; }
+    render();
+  }
+  function addOne(id) {
+    var p = byId(id);
+    setQty(id, (state.cart[id] || 0) + 1);
+    state.toast = p.name + ' no seu pedido!';
+    state.bump++;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { state.toast = ''; render(); }, 2600);
+    render();
+  }
+
+  function renderStatic() {
+    var t = TICKER.concat(TICKER).map(function (x) {
+      return '<span style="display:inline-flex;align-items:center;gap:14px;padding:10px 22px;white-space:nowrap;">' + PAW + esc(x) + '</span>';
+    }).join('');
+    $('#list-ticker').innerHTML = t;
+    $('#list-brandsLoop').innerHTML = BRANDS.concat(BRANDS).map(function (b) {
+      return '<span class="disp" style="display:inline-flex;align-items:center;padding:22px 34px;font-size:28px;font-weight:800;color:#0F7A35;white-space:nowrap;">' + esc(b) + '<span style="margin-left:34px;color:#FFD21F;">●</span></span>';
+    }).join('');
+    $all('[data-wa]').forEach(function (a) {
+      var k = a.getAttribute('data-wa');
+      if (WA_TEXT[k]) { a.href = wa(WA_TEXT[k]); a.target = '_blank'; a.rel = 'noopener'; }
+    });
+  }
+
+  function renderClock() {
+    var d = new Date();
+    var mins = d.getHours() * 60 + d.getMinutes();
+    var openNow = mins >= 8 * 60 + 30 && mins < 20 * 60;
+    var label;
+    if (openNow) {
+      var end = new Date(d); end.setHours(20, 0, 0, 0);
+      var left = Math.max(0, Math.floor((end - d) / 1000));
+      label = 'A loja fecha em ' + pad(Math.floor(left / 3600)) + ':' + pad(Math.floor(left % 3600 / 60)) + ':' + pad(left % 60) + ' — peça agora e a gente separa hoje';
+    } else {
+      label = 'Loja fechada agora — deixe seu pedido e a gente responde assim que abrir';
+    }
+    bind('closeLabel', label);
+    bind('openLabel', openNow ? 'Aberto agora · Entrega rápida' : 'Fechado agora · Deixe seu pedido');
+  }
+
+  function render() {
+    var q = norm(state.q);
+
+    var catHtmlNav = '', catHtmlCircle = '';
+    CATS.forEach(function (c) {
+      var on = c.label === state.cat && !state.group;
+      catHtmlNav += '<button class="navbtn' + (on ? ' navbtn-on' : '') + '" data-cat="' + esc(c.label) + '">' + esc(c.label) + '</button>';
+      catHtmlCircle += '<button class="catbtn' + (on ? ' catbtn-on' : '') + '" data-cat="' + esc(c.label) + '"><div class="ring"><img src="' + c.img + '" alt="" loading="lazy"></div><span>' + esc(c.label) + '</span></button>';
+    });
+    $('#list-cats').innerHTML = catHtmlNav;
+    $('#list-catCircles').innerHTML = catHtmlCircle;
+
+    var list = PRODUCTS.filter(function (p) {
+      if (state.group) return p.group === state.group;
+      return (state.cat === 'Todos' || p.cat === state.cat) && (!q || norm(p.name + ' ' + p.cat).indexOf(q) >= 0);
+    });
+    $('#list-products').innerHTML = list.map(function (p) {
+      var inCart = state.cart[p.id] || 0;
+      var imgStyle = p.photo
+        ? 'width:100%;height:196px;object-fit:cover;border-radius:16px;max-width:86%;'
+        : 'max-width:86%;max-height:196px;object-fit:contain;';
+      var bottom = p.price > 0
+        ? '<div style="display:flex;flex-direction:column;gap:2px;"><span style="font-size:12px;color:#4B5A50;font-weight:700;">' + (p.from ? 'a partir de' : 'por apenas') + '</span><span class="disp" style="font-size:30px;font-weight:800;color:#D7191F;line-height:1;">' + brl(p.price) + '</span></div>' +
+          '<button class="btn btn-green" style="width:100%;" data-add="' + p.id + '">' + (inCart ? 'No pedido (' + inCart + ') · Quero mais 1' : 'Quero este') + '</button>'
+        : '<span class="disp" style="font-size:22px;font-weight:800;color:#0F7A35;line-height:1;">Consulte na loja</span>' +
+          '<a class="btn btn-yellow" style="width:100%;" target="_blank" rel="noopener" href="' + wa('Olá, Agropet Pets! Vi no site e quero saber o preço de: ' + p.name + '.') + '">Quero saber o preço</a>';
+      return '<article class="card reveal">' +
+        '<div style="position:relative;height:220px;background:#F6F8F4;display:flex;align-items:center;justify-content:center;overflow:hidden;">' +
+        (p.tag ? '<span class="wiggle" style="position:absolute;top:12px;left:12px;z-index:2;background:#D7191F;color:#ffffff;font-weight:900;font-size:12px;padding:6px 11px;border-radius:999px;">' + esc(p.tag) + '</span>' : '') +
+        '<img class="pimg" src="' + p.img + '" alt="' + esc(p.name) + '" loading="lazy" style="' + imgStyle + '"></div>' +
+        '<div style="padding:18px;display:flex;flex-direction:column;gap:10px;flex-grow:1;">' +
+        '<span style="font-size:12px;font-weight:900;color:#0F7A35;text-transform:uppercase;letter-spacing:.05em;">' + esc(p.cat) + '</span>' +
+        '<h3 style="margin:0;font-size:16px;line-height:1.3;font-weight:800;flex-grow:1;">' + esc(p.name) + '</h3>' + bottom + '</div></article>';
+    }).join('');
+    showIf('noResults', list.length === 0);
+    bind('catTitle', state.group ? '· PremierPet' : (state.cat === 'Todos' ? '' : '· ' + state.cat));
+
+    var lines = [], total = 0, count = 0;
+    PRODUCTS.forEach(function (p) {
+      var n = state.cart[p.id];
+      if (!n) return;
+      total += n * p.price; count += n;
+      lines.push({ p: p, n: n });
+    });
+    $('#list-lines').innerHTML = lines.map(function (l) {
+      return '<div style="display:flex;gap:12px;align-items:center;padding-bottom:14px;border-bottom:1px solid #E7ECE8;">' +
+        '<img src="' + l.p.img + '" alt="" style="width:54px;height:54px;object-fit:contain;background:#F6F8F4;border-radius:12px;flex:none;">' +
+        '<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;"><span style="font-weight:800;font-size:14px;line-height:1.3;">' + esc(l.p.name) + '</span><span style="color:#D7191F;font-weight:900;">' + brl(l.n * l.p.price) + '</span></div>' +
+        '<div style="display:flex;align-items:center;gap:8px;"><button class="qbtn" aria-label="Diminuir" data-dec="' + l.p.id + '">' + MINUS + '</button><span style="min-width:22px;text-align:center;font-weight:900;">' + l.n + '</span><button class="qbtn" aria-label="Aumentar" data-inc="' + l.p.id + '">' + PLUS + '</button></div></div>';
+    }).join('');
+
+    bind('count', count);
+    bind('totalLabel', brl(total));
+    var cc = $('#cartCount');
+    if (cc && state.bump) { cc.classList.remove('bumpA', 'bumpB'); void cc.offsetWidth; cc.classList.add(state.bump % 2 ? 'bumpA' : 'bumpB'); }
+    showIf('empty', count === 0);
+    showIf('hasItems', count > 0);
+    showIf('showFab', count > 0 && !state.open);
+    showIf('open', state.open);
+    showIf('showToast', !!state.toast && !state.open);
+    bind('toast', state.toast);
+    document.body.style.overflow = state.open ? 'hidden' : '';
+
+    var msg = 'Olá, Agropet Pets! Quero fazer um pedido pelo site:\n\n' +
+      lines.map(function (l) { return l.n + 'x ' + l.p.name + ' — ' + brl(l.n * l.p.price); }).join('\n') +
+      '\n\nTotal dos produtos: ' + brl(total) +
+      '\n\nNome: ' + (state.name || '-') +
+      '\nBairro: ' + (state.bairro || '-') +
+      '\nEndereço: ' + (state.addr || '-') +
+      '\nPagamento: ' + state.pay +
+      '\n\nVocês entregam na minha região? Qual a taxa de entrega?';
+    $all('[data-wa="waOrder"]').forEach(function (a) { a.href = wa(msg); a.target = '_blank'; a.rel = 'noopener'; });
+  }
+
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-cat],[data-add],[data-inc],[data-dec],[data-action]');
+    if (!t) return;
+    if (t.hasAttribute('data-cat')) { state.cat = t.getAttribute('data-cat'); state.group = ''; state.q = ''; $('#busca').value = ''; render(); return; }
+    if (t.hasAttribute('data-add')) { addOne(+t.getAttribute('data-add')); return; }
+    if (t.hasAttribute('data-inc')) { var i = +t.getAttribute('data-inc'); setQty(i, (state.cart[i] || 0) + 1); return; }
+    if (t.hasAttribute('data-dec')) { var d = +t.getAttribute('data-dec'); setQty(d, (state.cart[d] || 0) - 1); return; }
+    var a = t.getAttribute('data-action');
+    if (a === 'openCart') { state.open = true; state.toast = ''; render(); }
+    else if (a === 'closeCart') { state.open = false; render(); }
+    else if (a === 'offerAdd') { addOne(1); }
+    else if (a === 'showPremier') { state.group = 'premierpet'; state.cat = 'Todos'; state.q = ''; $('#busca').value = ''; render(); }
+  });
+  document.addEventListener('input', function (e) {
+    var k = e.target.getAttribute && e.target.getAttribute('data-change');
+    if (!k) return;
+    var v = e.target.value;
+    if (k === 'onSearch') { state.q = v; state.group = ''; }
+    else if (k === 'onName') state.name = v;
+    else if (k === 'onBairro') state.bairro = v;
+    else if (k === 'onAddr') state.addr = v;
+    else if (k === 'onPay') state.pay = v;
+    render();
+  });
+  document.addEventListener('change', function (e) {
+    if (e.target.tagName === 'SELECT') e.target.dispatchEvent(new Event('input', { bubbles: true }));
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && state.open) { state.open = false; render(); }
+  });
+
+  renderStatic();
+  render();
+  renderClock();
+  setInterval(renderClock, 1000);
+})();
+
+</script>
+</body>
+</html>
