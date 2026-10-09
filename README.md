@@ -1,5 +1,7 @@
 # Agropet Pets — Loja online
 
+**Site demonstrativo — proposta de Leandro Araújo. Não é o site oficial da loja.**
+
 Site da Agropet Pets (Taguatinga Sul e Vereda da Cruz, Brasília/DF). O cliente monta o pedido no site e finaliza pelo WhatsApp (61) 99902-2443. A loja confirma pelo WhatsApp se entrega no bairro e qual é a taxa.
 
 ## Estrutura
