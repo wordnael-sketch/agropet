@@ -79,6 +79,42 @@ a{color:#0F7A35}a:hover{color:#0A5626}
 @keyframes shine{0%{left:-60%}60%,100%{left:130%}}
 @keyframes reveal{from{opacity:0;transform:translateY(48px) scale(.98)}to{opacity:1;transform:none}}
 
+/* ===== Menu (hambúrguer) ===== */
+html{scroll-behavior:smooth}
+.anchor{scroll-margin-top:150px}
+#ofertas:focus{outline:none}
+.menu-btn{flex:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px 0 12px;border-radius:999px;border:2px solid #0F7A35;background:#ffffff;color:#0F7A35;font-family:'Nunito Sans',sans-serif;font-weight:900;font-size:15px;cursor:pointer;transition:background .2s}
+.menu-btn:hover{background:#F1FFF5}
+.menu-btn[aria-expanded="true"]{background:#0F7A35;color:#ffffff}
+.menu-btn:focus-visible,.menu-close:focus-visible,.menu-links a:focus-visible,.menu-cat:focus-visible,.crumbs a:focus-visible,.crumbs button:focus-visible,.navbtn:focus-visible,.catbtn:focus-visible{outline:3px solid #FFD21F;outline-offset:2px}
+.menu-wrap{position:fixed;inset:0;z-index:50}
+.menu-overlay{position:absolute;inset:0;border:0;background:rgba(20,36,26,.5);cursor:pointer;animation:fadeIn .2s ease both}
+.menu-panel{position:absolute;left:0;top:0;bottom:0;width:min(340px,88vw);background:#ffffff;display:flex;flex-direction:column;box-shadow:12px 0 40px rgba(0,0,0,.25);font-family:'Nunito Sans',sans-serif;color:#14241A;animation:slideIn .28s cubic-bezier(.2,.9,.3,1) both}
+.menu-top{background:#0F7A35;color:#ffffff;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.menu-close{flex:none;width:44px;height:44px;border-radius:999px;border:0;background:rgba(255,255,255,.15);color:#ffffff;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.menu-body{flex:1;overflow-y:auto;padding:18px 18px calc(22px + env(safe-area-inset-bottom, 0px));display:flex;flex-direction:column;gap:22px}
+.menu-h{font-size:14px;font-weight:900;color:#0F7A35}
+.menu-links{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.menu-links a{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;padding:0 6px;border-bottom:1px solid #E7ECE8;color:#14241A;text-decoration:none;font-weight:800;font-size:16px}
+.menu-links a::after{content:"›";color:#0F7A35;font-size:22px;line-height:1}
+.menu-links a:hover{color:#0F7A35;background:#F6F8F4}
+.menu-cats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.menu-cat{display:flex;align-items:center;gap:10px;min-height:48px;padding:6px 10px 6px 6px;border-radius:14px;border:2px solid #E7ECE8;background:#ffffff;cursor:pointer;font-family:inherit;font-weight:800;font-size:14px;color:#14241A;text-align:left}
+.menu-cat img{width:34px;height:34px;border-radius:999px;object-fit:cover;flex:none}
+.menu-cat:hover{border-color:#0F7A35}
+.menu-cat-on{border-color:#0F7A35;background:#F1FFF5;color:#0F7A35}
+@keyframes slideIn{from{transform:translateX(-100%)}to{transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* ===== Migalha de pão (catálogo) ===== */
+.crumbs{font-size:14px;font-weight:700;color:#4B5A50}
+.crumbs ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;row-gap:2px}
+.crumbs li{display:inline-flex;align-items:center;min-width:0}
+.crumbs li + li::before{content:"›";content:"›" / "";margin:0 8px;color:#9AA89F;font-weight:900}
+.crumbs a,.crumbs button{border:0;background:none;padding:6px 2px;min-height:32px;font:inherit;color:#0F7A35;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.crumbs a:hover,.crumbs button:hover{color:#0A5626}
+.crumbs [aria-current]{color:#14241A;font-weight:900;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:70vw}
+
 /* ===== Responsividade (corrigido) ===== */
 .site-header{position:-webkit-sticky;position:sticky;top:0}
 .hero-visual{flex:1 1 420px;min-width:0;position:relative;display:flex;flex-direction:column;align-items:center;gap:0}
@@ -103,6 +139,7 @@ img{max-width:100%}
   .delivery-visual img:first-child{height:240px !important;width:62% !important}
   .delivery-visual img:last-child{width:78% !important}
   #topo > div{padding-top:36px !important;padding-bottom:56px !important;gap:32px !important}
+  .anchor{scroll-margin-top:12px}
 }
 
 @media (max-width: 760px){
@@ -110,12 +147,15 @@ img{max-width:100%}
   .hdr-search{order:3;flex:1 1 100% !important}
   .hdr-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
   .hdr-actions .btn{padding:0 14px;gap:8px}
-  .hdr-actions a[href="#lojas"]{padding:0 8px !important}
+  .hdr-actions a[href="#lojas"]{display:none !important}
+  .site-header > div{column-gap:12px !important}
+  .menu-btn{width:44px;padding:0}
 }
 @media (max-width: 420px){
   .hdr-tag{display:none}
+  .site-header > div{padding-left:16px !important;padding-right:16px !important}
   .site-header a[href="#topo"] > div:first-child{width:52px !important;height:52px !important}
-  .site-header a[href="#topo"] .disp{font-size:22px}
+  .site-header a[href="#topo"] .disp{font-size:20px}
 }
 @media (max-width: 560px){
   .remind-row{flex-direction:column;align-items:flex-start !important;text-align:left}
@@ -125,6 +165,7 @@ img{max-width:100%}
   .reveal{animation:reveal linear both;animation-timeline:view();animation-range:entry 0% cover 22%}
 }
 @media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
   *,*::before,*::after{animation:none !important;transition:none !important}
 }
 </style>
@@ -157,6 +198,10 @@ img{max-width:100%}
   <!-- Cabeçalho -->
   <header class="site-header" style="z-index: 20; background: #ffffff; box-shadow: 0 2px 14px rgba(20,36,26,.08);">
     <div style="max-width: 1240px; margin: 0 auto; padding: 12px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px;">
+      <button type="button" id="menuBtn" class="menu-btn" data-action="openMenu" aria-label="Abrir menu" aria-controls="menuPanel" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+        <span class="hdr-label">Menu</span>
+      </button>
       <a href="#topo" aria-label="Agropet Pets — início" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
         <div class="wiggle" style="width: 62px; height: 62px; border-radius: 999px; background: #0F7A35; border: 4px solid #FFD21F; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1;">
           <span class="disp" style="color: #ffffff; font-weight: 700; font-size: 12px;">Agropet</span>
@@ -192,7 +237,7 @@ img{max-width:100%}
   </header>
 
   <!-- Hero -->
-  <section id="topo" style="background: #0F7A35; color: #ffffff; overflow: hidden; position: relative;">
+  <section id="topo" class="anchor" style="background: #0F7A35; color: #ffffff; overflow: hidden; position: relative;">
     <svg class="paw" style="left: 6%; bottom: 0; animation-delay: 0s;" width="46" height="46" viewBox="0 0 24 24" fill="#FFD21F"><circle cx="6" cy="9" r="2.4"></circle><circle cx="10.5" cy="5.5" r="2.4"></circle><circle cx="15" cy="6" r="2.4"></circle><circle cx="18.5" cy="10" r="2.4"></circle><path d="M12 11c3 0 6 4 6 6.5 0 2-1.6 2.5-3 2.5-1.2 0-2-.6-3-.6s-1.8.6-3 .6c-1.4 0-3-.5-3-2.5C6 15 9 11 12 11z"></path></svg>
     <svg class="paw" style="left: 38%; bottom: 0; animation-delay: 2.3s;" width="34" height="34" viewBox="0 0 24 24" fill="#ffffff"><circle cx="6" cy="9" r="2.4"></circle><circle cx="10.5" cy="5.5" r="2.4"></circle><circle cx="15" cy="6" r="2.4"></circle><circle cx="18.5" cy="10" r="2.4"></circle><path d="M12 11c3 0 6 4 6 6.5 0 2-1.6 2.5-3 2.5-1.2 0-2-.6-3-.6s-1.8.6-3 .6c-1.4 0-3-.5-3-2.5C6 15 9 11 12 11z"></path></svg>
     <svg class="paw" style="left: 62%; bottom: 0; animation-delay: 4.1s;" width="40" height="40" viewBox="0 0 24 24" fill="#FFD21F"><circle cx="6" cy="9" r="2.4"></circle><circle cx="10.5" cy="5.5" r="2.4"></circle><circle cx="15" cy="6" r="2.4"></circle><circle cx="18.5" cy="10" r="2.4"></circle><path d="M12 11c3 0 6 4 6 6.5 0 2-1.6 2.5-3 2.5-1.2 0-2-.6-3-.6s-1.8.6-3 .6c-1.4 0-3-.5-3-2.5C6 15 9 11 12 11z"></path></svg>
@@ -271,7 +316,11 @@ img{max-width:100%}
   </section>
 
   <!-- Ofertas / catálogo -->
-  <section id="ofertas" style="max-width: 1240px; margin: 0 auto; padding: 40px 24px 40px; display: flex; flex-direction: column; gap: 26px;">
+  <section id="ofertas" class="anchor" tabindex="-1" style="max-width: 1240px; margin: 0 auto; padding: 40px 24px 40px; display: flex; flex-direction: column; gap: 26px;">
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+      <nav class="crumbs" aria-label="Você está em">
+        <ol id="list-crumbs"></ol>
+      </nav>
     <div class="reveal" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px;">
       <div style="display: flex; flex-direction: column; gap: 6px;">
         <span style="color: #D7191F; font-weight: 900; font-size: 14px; text-transform: uppercase; letter-spacing: .08em;">Preços do encarte da loja</span>
@@ -281,6 +330,7 @@ img{max-width:100%}
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 1.5M9 2h6"></path></svg>
         <span data-bind="closeLabel"></span>
       </div>
+    </div>
     </div>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(232px, 100%), 1fr)); gap: 22px;">
@@ -298,7 +348,7 @@ img{max-width:100%}
   </section>
 
   <!-- Encarte da semana -->
-  <section style="background: #D7191F; color: #ffffff; overflow: hidden;">
+  <section id="encarte" class="anchor" style="background: #D7191F; color: #ffffff; overflow: hidden;">
     <div style="max-width: 1240px; margin: 0 auto; padding: 64px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 44px;">
       <div class="reveal" style="flex: 1 1 300px; min-width: 0; display: flex; justify-content: center;">
         <img class="wiggle" src="img/ig-flyer.jpg" alt="Encarte de ofertas da Agropet Pets" style="width: min(330px, 100%); border-radius: 18px; border: 6px solid #ffffff; box-shadow: 0 24px 50px rgba(0,0,0,.35);">
@@ -316,7 +366,7 @@ img{max-width:100%}
   </section>
 
   <!-- Marcas parceiras -->
-  <section style="padding: 64px 0 28px; display: flex; flex-direction: column; gap: 26px;">
+  <section id="marcas" class="anchor" style="padding: 64px 0 28px; display: flex; flex-direction: column; gap: 26px;">
     <div class="reveal" style="max-width: 1240px; width: 100%; margin: 0 auto; padding: 0 24px; display: flex; flex-direction: column; gap: 6px; text-align: center;">
       <span style="color: #D7191F; font-weight: 900; font-size: 14px; text-transform: uppercase; letter-spacing: .08em;">Marcas parceiras</span>
       <h2 class="disp" style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1; color: #0F7A35; font-weight: 800;">As marcas que você confia, no preço que você procura</h2>
@@ -345,7 +395,7 @@ img{max-width:100%}
   </section>
 
   <!-- Entrega -->
-  <section style="max-width: 1240px; margin: 0 auto; padding: 56px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 40px;">
+  <section id="entrega" class="anchor" style="max-width: 1240px; margin: 0 auto; padding: 56px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 40px;">
     <div class="reveal" style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 18px;">
       <span style="color: #D7191F; font-weight: 900; font-size: 14px; text-transform: uppercase; letter-spacing: .08em;">Areal, tem novidade!</span>
       <h2 class="disp" style="margin: 0; font-size: clamp(32px, 4vw, 50px); line-height: 1; color: #0F7A35; font-weight: 800;">A entrega mais rápida de Taguatinga Sul, agora na sua casa</h2>
@@ -365,7 +415,7 @@ img{max-width:100%}
 
   <!-- Banho e tosa + calopsitas -->
   <section style="max-width: 1240px; margin: 0 auto; padding: 16px 24px 64px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 22px;">
-    <div class="reveal" style="background: #0F7A35; color: #ffffff; border-radius: 28px; overflow: hidden; display: flex; flex-direction: column;">
+    <div id="banho" class="reveal anchor" style="background: #0F7A35; color: #ffffff; border-radius: 28px; overflow: hidden; display: flex; flex-direction: column;">
       <img src="img/ai-bath.jpg" alt="Cachorro tomando banho com espuma" style="width: 100%; height: 260px; object-fit: cover; display: block;">
       <div style="padding: 30px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1;">
         <span style="font-weight: 900; font-size: 13px; letter-spacing: .08em; color: #FFD21F;">BANHO E TOSA</span>
@@ -374,7 +424,7 @@ img{max-width:100%}
         <a class="btn btn-yellow" style="align-self: flex-start;" href="#" data-wa="waBath" target="_blank" rel="noopener">Agendar o banho agora</a>
       </div>
     </div>
-    <div class="reveal" style="background: #FFF7D1; border-radius: 28px; overflow: hidden; display: flex; flex-direction: column;">
+    <div id="calopsitas" class="reveal anchor" style="background: #FFF7D1; border-radius: 28px; overflow: hidden; display: flex; flex-direction: column;">
       <img src="img/ig-calopsita.jpg" alt="Calopsita no dedo de um cliente na loja" style="width: 100%; height: 260px; object-fit: cover; object-position: center 30%; display: block;">
       <div style="padding: 30px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1;">
         <span style="font-weight: 900; font-size: 13px; letter-spacing: .08em; color: #D7191F;">NOVO AMIGO</span>
@@ -386,7 +436,7 @@ img{max-width:100%}
   </section>
 
   <!-- Lembrete de ração -->
-  <section class="reveal" style="max-width: 1240px; margin: 0 auto; padding: 0 24px 64px;">
+  <section id="lembrete" class="reveal anchor" style="max-width: 1240px; margin: 0 auto; padding: 0 24px 64px;">
     <div class="shine" style="background: #FFD21F; border-radius: 28px; padding: 36px 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px;">
       <div class="remind-row" style="flex: 1 1 520px; min-width: 0; display: flex; gap: 18px; align-items: center;">
         <img src="img/ai-puppy.jpg" alt="Filhote ao lado do pote de ração" style="flex: none; width: 96px; height: 96px; border-radius: 999px; object-fit: cover; border: 4px solid #ffffff;">
@@ -400,7 +450,7 @@ img{max-width:100%}
   </section>
 
   <!-- Avaliações -->
-  <section style="background: #F3F6F4;">
+  <section id="avaliacoes" class="anchor" style="background: #F3F6F4;">
     <div style="max-width: 1240px; margin: 0 auto; padding: 64px 24px; display: flex; flex-direction: column; gap: 28px;">
       <div class="reveal" style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px;">
         <h2 class="disp" style="margin: 0; font-size: clamp(30px, 4vw, 44px); color: #0F7A35; font-weight: 800; line-height: 1;">Quem compra, recomenda</h2>
@@ -431,7 +481,7 @@ img{max-width:100%}
   </section>
 
   <!-- Lojas -->
-  <section id="lojas" style="max-width: 1240px; margin: 0 auto; padding: 64px 24px; display: flex; flex-direction: column; gap: 28px;">
+  <section id="lojas" class="anchor" style="max-width: 1240px; margin: 0 auto; padding: 64px 24px; display: flex; flex-direction: column; gap: 28px;">
     <h2 class="disp reveal" style="margin: 0; font-size: clamp(30px, 4vw, 44px); color: #0F7A35; font-weight: 800; line-height: 1;">Prefere vir pessoalmente? Venha conhecer e surpreenda-se!</h2>
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 22px;">
       <div class="card reveal">
@@ -515,6 +565,47 @@ img{max-width:100%}
       <span style="color: #FFD21F;">✓</span>
       <span><span data-bind="toast"></span></span>
       <button class="btn btn-yellow" style="min-height: 40px; font-size: 14px; padding: 0 16px;" data-action="openCart">Ver pedido</button>
+    </div>
+  </div>
+
+  <!-- Menu (hambúrguer) -->
+  <div data-if="menu" class="is-hidden" style="display:contents">
+    <div class="menu-wrap">
+      <button type="button" class="menu-overlay" data-action="closeMenu" aria-label="Fechar menu" tabindex="-1"></button>
+      <div class="menu-panel" id="menuPanel" role="dialog" aria-modal="true" aria-label="Menu do site">
+        <div class="menu-top">
+          <span class="disp" style="font-weight: 800; font-size: 26px; line-height: 1;">Agropet <span style="color: #FFD21F;">Pets</span></span>
+          <button type="button" id="menuClose" class="menu-close" data-action="closeMenu" aria-label="Fechar menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+          </button>
+        </div>
+        <div class="menu-body">
+          <nav aria-label="Seções do site" style="display: flex; flex-direction: column; gap: 6px;">
+            <span class="menu-h">Navegue pelo site</span>
+            <ul class="menu-links">
+              <li><a href="#topo" data-menu-link>Início</a></li>
+              <li><a href="#ofertas" data-menu-link>Produtos e ofertas</a></li>
+              <li><a href="#encarte" data-menu-link>Encarte da semana</a></li>
+              <li><a href="#marcas" data-menu-link>Marcas parceiras</a></li>
+              <li><a href="#entrega" data-menu-link>Entrega em casa</a></li>
+              <li><a href="#banho" data-menu-link>Banho e tosa</a></li>
+              <li><a href="#calopsitas" data-menu-link>Calopsitas</a></li>
+              <li><a href="#lembrete" data-menu-link>Lembrete de ração</a></li>
+              <li><a href="#avaliacoes" data-menu-link>Avaliações</a></li>
+              <li><a href="#lojas" data-menu-link>Nossas lojas e horários</a></li>
+            </ul>
+          </nav>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <span class="menu-h">Comprar por categoria</span>
+            <div class="menu-cats" id="list-menuCats"></div>
+          </div>
+          <a class="btn btn-green" href="#" data-wa="waHello" data-menu-link target="_blank" rel="noopener" style="width: 100%;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.2A8.5 8.5 0 1 1 20 11.5z"></path></svg>
+            Falar com um atendente
+          </a>
+          <span style="font-size: 12px; line-height: 1.45; color: #4B5A50;"><strong>Site demonstrativo</strong>: proposta de Leandro Araújo para a Agropet Pets. Não é o site oficial da loja.</span>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -640,7 +731,7 @@ img{max-width:100%}
     waRemind: 'Olá, Agropet Pets! Quero ser lembrado quando a ração do meu pet estiver acabando. Ele come: '
   };
 
-  var state = { cat: 'Todos', q: '', group: '', cart: {}, open: false, name: '', bairro: '', addr: '', pay: 'Pix', toast: '', bump: 0 };
+  var state = { cat: 'Todos', q: '', group: '', cart: {}, open: false, menu: false, name: '', bairro: '', addr: '', pay: 'Pix', toast: '', bump: 0 };
   var toastTimer;
 
   function brl(n) { return 'R$ ' + n.toFixed(2).replace('.', ','); }
@@ -654,6 +745,48 @@ img{max-width:100%}
 
   function bind(name, value) { $all('[data-bind="' + name + '"]').forEach(function (el) { el.textContent = value; }); }
   function showIf(name, on) { $all('[data-if="' + name + '"]').forEach(function (el) { el.classList.toggle('is-hidden', !on); }); }
+
+  function reducedMotion() { return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+
+  // Leva o cliente até o catálogo (usado pelas categorias do cabeçalho e do menu)
+  function goToProducts(moveFocus) {
+    var sec = document.getElementById('ofertas');
+    if (!sec) return;
+    sec.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'start' });
+    if (moveFocus) { try { sec.focus({ preventScroll: true }); } catch (err) { sec.focus(); } }
+  }
+
+  function openMenu() {
+    state.open = false; state.toast = ''; state.menu = true;
+    render();
+    var c = $('#menuClose'); if (c) c.focus();
+  }
+  function closeMenu(returnFocus) {
+    if (!state.menu) return;
+    state.menu = false;
+    render();
+    if (returnFocus) { var b = $('#menuBtn'); if (b) b.focus(); }
+  }
+
+  // Migalha de pão do catálogo: Início › Produtos › [categoria | marca] › [busca]
+  function crumbsHtml() {
+    var filtered = !!(state.group || state.cat !== 'Todos' || state.q);
+    var items = ['<li><a href="#topo">Início</a></li>'];
+    items.push(filtered
+      ? '<li><button type="button" data-cat="Todos" aria-label="Produtos: ver todos">Produtos</button></li>'
+      : '<li><span aria-current="location">Produtos</span></li>');
+    if (state.group) {
+      items.push('<li><span aria-current="location">Marca PremierPet</span></li>');
+    } else {
+      if (state.cat !== 'Todos') {
+        items.push(state.q
+          ? '<li><button type="button" data-cat="' + esc(state.cat) + '">' + esc(state.cat) + '</button></li>'
+          : '<li><span aria-current="location">' + esc(state.cat) + '</span></li>');
+      }
+      if (state.q) items.push('<li><span aria-current="location">Busca: “' + esc(state.q) + '”</span></li>');
+    }
+    return items.join('');
+  }
 
   function setQty(id, qty) {
     if (qty <= 0) { delete state.cart[id]; } else { state.cart[id] = qty; }
@@ -702,14 +835,17 @@ img{max-width:100%}
   function render() {
     var q = norm(state.q);
 
-    var catHtmlNav = '', catHtmlCircle = '';
+    var catHtmlNav = '', catHtmlCircle = '', catHtmlMenu = '';
     CATS.forEach(function (c) {
       var on = c.label === state.cat && !state.group;
-      catHtmlNav += '<button class="navbtn' + (on ? ' navbtn-on' : '') + '" data-cat="' + esc(c.label) + '">' + esc(c.label) + '</button>';
-      catHtmlCircle += '<button class="catbtn' + (on ? ' catbtn-on' : '') + '" data-cat="' + esc(c.label) + '"><div class="ring"><img src="' + c.img + '" alt="" loading="lazy"></div><span>' + esc(c.label) + '</span></button>';
+      catHtmlNav += '<button class="navbtn' + (on ? ' navbtn-on' : '') + '" data-cat="' + esc(c.label) + '"' + (on ? ' aria-pressed="true"' : ' aria-pressed="false"') + '>' + esc(c.label) + '</button>';
+      catHtmlCircle += '<button class="catbtn' + (on ? ' catbtn-on' : '') + '" data-cat="' + esc(c.label) + '"' + (on ? ' aria-pressed="true"' : ' aria-pressed="false"') + '><div class="ring"><img src="' + c.img + '" alt="" loading="lazy"></div><span>' + esc(c.label) + '</span></button>';
+      catHtmlMenu += '<button type="button" class="menu-cat' + (on ? ' menu-cat-on' : '') + '" data-cat="' + esc(c.label) + '"' + (on ? ' aria-pressed="true"' : ' aria-pressed="false"') + '><img src="' + c.img + '" alt="" loading="lazy"><span>' + esc(c.label) + '</span></button>';
     });
     $('#list-cats').innerHTML = catHtmlNav;
     $('#list-catCircles').innerHTML = catHtmlCircle;
+    $('#list-menuCats').innerHTML = catHtmlMenu;
+    $('#list-crumbs').innerHTML = crumbsHtml();
 
     var list = PRODUCTS.filter(function (p) {
       if (state.group) return p.group === state.group;
@@ -756,11 +892,14 @@ img{max-width:100%}
     if (cc && state.bump) { cc.classList.remove('bumpA', 'bumpB'); void cc.offsetWidth; cc.classList.add(state.bump % 2 ? 'bumpA' : 'bumpB'); }
     showIf('empty', count === 0);
     showIf('hasItems', count > 0);
-    showIf('showFab', count > 0 && !state.open);
+    showIf('showFab', count > 0 && !state.open && !state.menu);
     showIf('open', state.open);
-    showIf('showToast', !!state.toast && !state.open);
+    showIf('menu', state.menu);
+    showIf('showToast', !!state.toast && !state.open && !state.menu);
     bind('toast', state.toast);
-    document.body.style.overflow = state.open ? 'hidden' : '';
+    var mb = $('#menuBtn');
+    if (mb) { mb.setAttribute('aria-expanded', state.menu ? 'true' : 'false'); mb.setAttribute('aria-label', state.menu ? 'Fechar menu' : 'Abrir menu'); }
+    document.body.style.overflow = (state.open || state.menu) ? 'hidden' : '';
 
     var msg = 'Olá, Agropet Pets! Quero fazer um pedido pelo site:\n\n' +
       lines.map(function (l) { return l.n + 'x ' + l.p.name + ' — ' + brl(l.n * l.p.price); }).join('\n') +
@@ -774,14 +913,28 @@ img{max-width:100%}
   }
 
   document.addEventListener('click', function (e) {
+    // Link do menu: fecha o painel e deixa o navegador rolar até a âncora
+    var ml = e.target.closest('[data-menu-link]');
+    if (ml) { closeMenu(false); return; }
+
     var t = e.target.closest('[data-cat],[data-add],[data-inc],[data-dec],[data-action]');
     if (!t) return;
-    if (t.hasAttribute('data-cat')) { state.cat = t.getAttribute('data-cat'); state.group = ''; state.q = ''; $('#busca').value = ''; render(); return; }
+    if (t.hasAttribute('data-cat')) {
+      var fromMenu = !!t.closest('.menu-panel');
+      var fromHeader = !!t.closest('.site-header');
+      state.cat = t.getAttribute('data-cat'); state.group = ''; state.q = ''; $('#busca').value = '';
+      state.menu = false;
+      render();
+      if (fromMenu || fromHeader) goToProducts(fromMenu);
+      return;
+    }
     if (t.hasAttribute('data-add')) { addOne(+t.getAttribute('data-add')); return; }
     if (t.hasAttribute('data-inc')) { var i = +t.getAttribute('data-inc'); setQty(i, (state.cart[i] || 0) + 1); return; }
     if (t.hasAttribute('data-dec')) { var d = +t.getAttribute('data-dec'); setQty(d, (state.cart[d] || 0) - 1); return; }
     var a = t.getAttribute('data-action');
-    if (a === 'openCart') { state.open = true; state.toast = ''; render(); }
+    if (a === 'openMenu') { if (state.menu) closeMenu(true); else openMenu(); }
+    else if (a === 'closeMenu') { closeMenu(true); }
+    else if (a === 'openCart') { state.menu = false; state.open = true; state.toast = ''; render(); }
     else if (a === 'closeCart') { state.open = false; render(); }
     else if (a === 'offerAdd') { addOne(1); }
     else if (a === 'showPremier') { state.group = 'premierpet'; state.cat = 'Todos'; state.q = ''; $('#busca').value = ''; render(); }
@@ -801,7 +954,21 @@ img{max-width:100%}
     if (e.target.tagName === 'SELECT') e.target.dispatchEvent(new Event('input', { bubbles: true }));
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && state.open) { state.open = false; render(); }
+    if (e.key === 'Escape') {
+      if (state.menu) { closeMenu(true); return; }
+      if (state.open) { state.open = false; render(); }
+      return;
+    }
+    // Mantém o Tab dentro do menu enquanto ele está aberto
+    if (e.key === 'Tab' && state.menu) {
+      var panel = $('#menuPanel');
+      var f = $all('#menuPanel a[href], #menuPanel button:not([disabled])');
+      if (!panel || !f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (!panel.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+      else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
   });
 
   renderStatic();
