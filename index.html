@@ -71,22 +71,38 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
 .count{min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--yellow);color:var(--ink);font-size:13px;font-weight:800;display:inline-flex;align-items:center;justify-content:center}
 .hdr-search-m{display:none;padding:0 0 12px}
 
-/* Topo */
-.hero{background:var(--green);color:#fff}
-.hero-in{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding:48px 20px}
-.status{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border-radius:999px;padding:6px 12px;font-size:14px;font-weight:700}
-.status i{width:8px;height:8px;border-radius:50%;background:var(--yellow)}
-.hero h1{font-size:clamp(36px,5vw,56px);font-weight:800;margin:16px 0 12px}
-.hero h1 span{color:var(--yellow)}
-.hero p{margin:0 0 24px;font-size:18px;color:#DDEFE3;max-width:480px}
+/* Topo: carrossel de 3 banners (texto à esquerda, foto à direita; no celular foto em cima) */
+.hero{background:var(--green);color:#fff;position:relative}
+.hs{position:relative;overflow:hidden}
+.hs-track{display:flex;transition:transform .7s cubic-bezier(.65,0,.35,1)}
+.slide{flex:0 0 100%;display:grid;grid-template-columns:.95fr 1.05fr;min-height:440px}
+.slide-txt{display:flex;flex-direction:column;justify-content:center;padding:40px 40px 64px max(20px,calc((100vw - var(--wrap))/2 + 20px))}
+.kicker{display:inline-flex;align-self:flex-start;align-items:center;gap:8px;background:rgba(255,255,255,.14);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.kicker i{width:8px;height:8px;border-radius:50%;background:var(--yellow)}
+.slide h1,.slide h2{font-size:clamp(34px,4.4vw,54px);font-weight:800;margin:14px 0 12px;line-height:1.02}
+.slide h1 span,.slide h2 span{color:var(--yellow)}
+.slide p{margin:0 0 22px;font-size:18px;color:#DDEFE3;max-width:460px}
 .hero-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
-.hero-ctas .link{color:#fff}
-.hero-img{border-radius:24px;overflow:hidden;aspect-ratio:4/3;background:var(--green-dark)}
-.hero-img img{width:100%;height:100%;object-fit:cover}
+.slide-img{position:relative;overflow:hidden;background:var(--green-dark)}
+.slide-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 6s ease-out}
+.slide.on .slide-img img{transform:scale(1)}
+.slide-img::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,var(--green) 0,rgba(15,122,53,0) 22%);pointer-events:none}
+.ph-tag{position:absolute;right:12px;bottom:12px;z-index:2;font-size:11px;font-weight:700;color:#fff;background:rgba(0,0,0,.45);padding:3px 8px;border-radius:6px}
+.slide .rise{opacity:0;transform:translateY(14px)}
+.slide.on .rise{animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+.slide.on .rise.d1{animation-delay:.1s}.slide.on .rise.d2{animation-delay:.2s}.slide.on .rise.d3{animation-delay:.3s}
+.hs-ui{position:absolute;left:max(20px,calc((100vw - var(--wrap))/2 + 20px));bottom:22px;z-index:3;display:flex;align-items:center;gap:12px}
+.hs-dots{display:flex;gap:8px}
+.hs-dot{position:relative;width:34px;height:6px;border-radius:999px;border:0;padding:0;background:rgba(255,255,255,.3);cursor:pointer;overflow:hidden}
+.hs-dot i{position:absolute;inset:0;width:0;background:var(--yellow)}
+.hs-dot[aria-current="true"] i{width:100%;transition:width var(--hs-time,6s) linear}
+.hs.paused .hs-dot[aria-current="true"] i{transition:none}
+.hs-btn{width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);background:transparent;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.hs-btn:hover{background:rgba(255,255,255,.12)}
 
 /* Vantagens */
 .perks{border-bottom:1px solid var(--line)}
-.perks ul{list-style:none;margin:0;padding:16px 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.perks ul{list-style:none;margin:0 auto;padding:16px 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .perks li{display:flex;align-items:center;gap:10px;font-size:14px;line-height:1.3}
 .perks li b{display:block;font-size:15px}
 .perks li span{color:var(--muted)}
@@ -132,6 +148,24 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
 .steps li{display:flex;gap:12px;align-items:center}
 .steps b{flex:none;width:32px;height:32px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',sans-serif}
 .svc-body .btn{align-self:flex-start;margin-top:auto}
+
+
+/* Serviços com vídeo */
+.svc3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.vcard{border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;background:#fff;transition:box-shadow .2s,transform .2s}
+.vcard:hover{box-shadow:0 10px 28px rgba(20,36,26,.1);transform:translateY(-4px)}
+.vbox{position:relative;aspect-ratio:16/10;background:var(--green-dark);overflow:hidden;cursor:pointer}
+.vbox video{width:100%;height:100%;object-fit:cover;display:block}
+.vbox .vlabel{position:absolute;left:12px;top:12px;z-index:1;background:rgba(20,36,26,.7);color:#fff;font-size:12px;font-weight:800;padding:4px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:6px}
+.vbox .vlabel i{width:7px;height:7px;border-radius:50%;background:var(--red)}
+.vbox .vplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:rgba(255,210,31,.95);color:var(--ink);display:none;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,.3)}
+.vbox.paused .vplay{display:flex}
+.vbox.paused .vlabel i{background:#9AA7A0}
+.vbody{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.vbody h3{font-size:22px}
+.vbody p{margin:0;color:var(--muted)}
+.vbody .btn{align-self:flex-start;margin-top:auto}
+.vnote{margin:10px 0 0;font-size:12px;color:var(--muted)}
 
 /* Lembrete de ração */
 .calc{background:var(--green-soft);padding:24px;display:grid;grid-template-columns:1.1fr 1fr auto;gap:20px;align-items:end}
@@ -233,9 +267,8 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
 .hero .rise{opacity:0;transform:translateY(14px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
 .hero .rise.d1{animation-delay:.08s}.hero .rise.d2{animation-delay:.18s}.hero .rise.d3{animation-delay:.28s}.hero .rise.d4{animation-delay:.38s}
 @keyframes rise{to{opacity:1;transform:none}}
-.hero-img img{animation:float 7s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0) scale(1.02)}50%{transform:translateY(-8px) scale(1.02)}}
-.status i{animation:blink 1.6s ease-in-out infinite}
+.status i,.kicker i{animation:blink 1.6s ease-in-out infinite}
 @keyframes blink{50%{opacity:.35}}
 .card{transition:box-shadow .2s,transform .2s}
 .card:hover{transform:translateY(-4px)}
@@ -254,10 +287,75 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
 .fab-wa{animation:ring 3.2s ease-in-out 2s infinite}
 @keyframes ring{0%,86%,100%{box-shadow:0 8px 20px rgba(15,122,53,.35),0 0 0 0 rgba(15,122,53,.45)}93%{box-shadow:0 8px 20px rgba(15,122,53,.35),0 0 0 14px rgba(15,122,53,0)}}
 
+
+/* Agendar + quiz */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.box{border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:14px;background:#fff}
+.box h2{font-size:26px}
+.box p.sub{margin:0;color:var(--muted)}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{min-height:42px;padding:0 14px;border-radius:12px;border:1.5px solid var(--line);background:#fff;font:700 14px 'Nunito Sans',sans-serif;color:var(--ink);cursor:pointer;transition:background .15s,border-color .15s,transform .15s}
+.opt:hover{border-color:var(--green)}
+.opt[aria-pressed="true"]{background:var(--green-soft);border-color:var(--green);color:var(--green)}
+.flabel{font-size:13px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.frow label,.fone{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:700;color:var(--muted)}
+.frow input,.frow select,.fone input{min-height:46px;border:1.5px solid var(--line);border-radius:12px;padding:0 12px;font:600 15px 'Nunito Sans',sans-serif;color:var(--ink);background:#fff;width:100%}
+.ferr{color:var(--red);font-size:13px;font-weight:700;min-height:1em}
+.quiz-steps{display:flex;gap:6px}
+.quiz-steps i{flex:1;height:5px;border-radius:999px;background:var(--line);transition:background .3s}
+.quiz-steps i.done{background:var(--green)}
+.qstep{display:none;flex-direction:column;gap:12px}
+.qstep.on{display:flex;animation:rise .4s ease}
+.qstep h3{font-family:'Nunito Sans',sans-serif;font-size:18px;font-weight:800}
+.qres{display:flex;flex-direction:column;gap:10px}
+.qitem{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:10px}
+.qitem img{width:56px;height:56px;object-fit:contain;background:var(--soft);border-radius:10px;flex:none}
+.qitem div{flex:1;min-width:0;font-weight:700;font-size:14px;line-height:1.3}
+.qitem .price{font-size:18px}
+.qback{background:none;border:0;padding:0;color:var(--green);font:800 14px 'Nunito Sans',sans-serif;cursor:pointer;align-self:flex-start}
+
+/* Galeria Pet da semana */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.pet{margin:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.pet-img{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--soft)}
+.pet-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.pet:hover .pet-img img{transform:scale(1.05)}
+.crown{position:absolute;left:10px;top:10px;background:var(--yellow);color:var(--ink);font-size:12px;font-weight:800;padding:3px 9px;border-radius:999px}
+.pet figcaption{padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.pet b{display:block;font-size:16px}
+.pet small{color:var(--muted)}
+.vote{display:inline-flex;align-items:center;gap:6px;min-height:38px;padding:0 12px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font:800 14px 'Nunito Sans',sans-serif;color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s}
+.vote svg{transition:transform .2s}
+.vote[aria-pressed="true"]{border-color:var(--red);color:var(--red);background:#FFF1F1}
+.vote[aria-pressed="true"] svg{fill:var(--red);animation:bump .45s ease}
+.gal-cta{margin-top:16px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
+
+/* Cupom de primeira compra */
+.coupon{position:fixed;left:16px;bottom:72px;z-index:32;width:min(340px,calc(100% - 32px));background:#fff;border-radius:20px;box-shadow:0 18px 44px rgba(20,36,26,.28);overflow:hidden;transform:translateY(24px);opacity:0;transition:transform .45s cubic-bezier(.2,.7,.2,1),opacity .45s}
+.coupon.show{transform:none;opacity:1}
+.coupon-h{background:var(--red);color:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.coupon-h b{font-family:'Baloo 2',sans-serif;font-size:20px;line-height:1}
+.coupon-open{flex:1;display:flex;align-items:center;gap:8px;background:none;border:0;color:#fff;cursor:pointer;padding:0;text-align:left;font:inherit}
+.coupon-more{margin-left:auto;font-size:12px;font-weight:800;background:rgba(255,255,255,.2);padding:4px 8px;border-radius:999px;white-space:nowrap}
+.coupon.mini{width:auto;max-width:calc(100% - 100px)}
+.coupon.mini .coupon-b{display:none}
+.coupon.mini .coupon-h{padding:10px 12px}
+.coupon:not(.mini) .coupon-more{display:none}
+.coupon-h .x{background:rgba(255,255,255,.18);color:#fff}
+.coupon-b{padding:14px 16px;display:flex;flex-direction:column;gap:10px;font-size:14px}
+.coupon-b input{min-height:44px;border:1.5px solid var(--line);border-radius:12px;padding:0 12px;font:600 15px 'Nunito Sans',sans-serif;width:100%}
+.code{display:flex;align-items:center;justify-content:space-between;gap:8px;border:2px dashed var(--green);border-radius:12px;padding:10px 12px;font-family:'Baloo 2',sans-serif;font-size:24px;color:var(--green);letter-spacing:.06em}
+.coupon small{color:var(--muted);font-size:11px}
+.coupon-ok{display:inline-flex;align-items:center;gap:6px;background:var(--green-soft);color:var(--green);font-weight:800;font-size:13px;padding:6px 10px;border-radius:10px}
+
 /* Celular */
 @media (max-width:900px){
   .nav{display:none}
   .grid{grid-template-columns:repeat(3,1fr)}
+  .svc3{grid-template-columns:1fr 1fr}
+  .gal{grid-template-columns:repeat(2,1fr)}
+  .duo{grid-template-columns:1fr}
   .perks ul{grid-template-columns:repeat(2,1fr)}
   .calc{grid-template-columns:1fr}
 }
@@ -266,9 +364,13 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
   .hdr-in{justify-content:space-between;min-height:60px}
   .hdr-search-m{display:block}
   .hdr-search-m .search{max-width:none}
-  .hero-in{grid-template-columns:1fr;padding:32px 20px}
-  .hero-img{display:none}
-  .hero p{font-size:16px}
+  .slide{grid-template-columns:1fr;grid-template-rows:auto 1fr;min-height:0}
+  .slide-img{order:-1;aspect-ratio:16/10}
+  .slide-img::before{background:linear-gradient(0deg,var(--green) 0,rgba(15,122,53,0) 30%)}
+  .slide-txt{padding:4px 20px 64px}
+  .slide p{font-size:16px}
+  .hs-ui{left:20px;bottom:20px}
+  .svc3{grid-template-columns:1fr}
   .grid{grid-template-columns:repeat(2,1fr);gap:12px}
   .card-body{padding:12px}
   .price{font-size:21px}
@@ -283,10 +385,14 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
   .ig-arrows{display:none}
   .ig-h{flex-direction:column;align-items:flex-start}
   .near,.lead-f{grid-template-columns:1fr}
+  .duo,.frow{grid-template-columns:1fr}
+  .gal{grid-template-columns:1fr 1fr;gap:10px}
+  .pet figcaption{flex-direction:column;align-items:flex-start}
+  .coupon{left:16px;bottom:84px}
 }
 @media (min-width:721px) and (max-width:1000px){.ig-item{flex-basis:calc((100% - 28px)/3)}.near{grid-template-columns:1fr}}
 /* Movimento reduzido: só esmaecer, sem deslocamentos nem repetições */
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ig-track{scroll-behavior:auto}.rv{transform:none;transition:opacity .4s ease}.hero .rise{transform:none;animation-name:fade}.hero-img img,.status i,.fab-wa{animation:none}.card:hover,.chip:hover,.perks li:hover .perk-ic{transform:none}.card:hover .card-img img,.ig-item:hover .ig-img img{transform:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ig-track{scroll-behavior:auto}.rv{transform:none;transition:opacity .4s ease}.hero .rise{transform:none;animation-name:fade}.status i,.fab-wa,.kicker i{animation:none}.hs-track{transition:none}.slide-img img{transform:none;transition:none}.slide .rise{opacity:1;transform:none}.slide.on .rise{animation:none}.vcard:hover{transform:none}.qstep.on{animation:none}.pet:hover .pet-img img{transform:none}.coupon{transition:opacity .3s}.card:hover,.chip:hover,.perks li:hover .perk-ic{transform:none}.card:hover .card-img img,.ig-item:hover .ig-img img{transform:none}}
 @keyframes fade{to{opacity:1}}
 </style>
 </head>
@@ -308,8 +414,8 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
       </div>
       <nav class="nav" aria-label="Seções">
         <a href="#ofertas">Ofertas</a>
-        <a href="#servicos">Banho e entrega</a>
-        <a href="#instagram">Instagram</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#quiz">Quiz da ração</a>
         <a href="#lojas">Lojas</a>
       </nav>
       <button class="btn btn-primary cart-btn" data-action="openCart" aria-label="Abrir pedido">
@@ -329,18 +435,10 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
 </header>
 
 <main>
-  <section id="topo" class="hero">
-    <div class="wrap hero-in">
-      <div>
-        <span class="status rise"><i></i><span data-bind="openLabel">Aberto agora</span></span>
-        <h1 class="rise d1">Acabou a ração?<br><span>A gente leva até você.</span></h1>
-        <p class="rise d2">Monte o pedido aqui e envie pelo WhatsApp. A loja confirma a entrega no seu bairro antes de você pagar.</p>
-        <div class="hero-ctas rise d3">
-          <a class="btn btn-yellow" href="#ofertas">Ver ofertas</a>
-          <a class="link" href="#" data-wa="waHello">ou fale com um atendente →</a>
-        </div>
-      </div>
-      <div class="hero-img rise d4"><img src="img/ai-hero-dog.jpg" alt="Cachorro feliz pulando" width="550" height="550"></div>
+  <section id="topo" class="hero" aria-label="Destaques">
+    <div class="hs" id="hs" aria-roledescription="carrossel">
+      <div class="hs-track" id="hsTrack" aria-live="off"><article class="slide on" role="group" aria-roledescription="banner" aria-label="1 de 3"><div class="slide-txt"><span class="kicker rise"><i></i><span data-bind="openLabel">Disk ração</span></span><h1 class="rise d1">Acabou a ração?<br><span>A gente leva até você.</span></h1><p class="rise d2">Monte o pedido aqui, envie pelo WhatsApp e a loja confirma a entrega no seu bairro antes de você pagar.</p><div class="hero-ctas rise d3"><a class="btn btn-yellow" href="#ofertas">Ver ofertas</a><a class="link" style="color:#fff" href="#" data-wa="waArea">Entregam no meu bairro? →</a></div></div><div class="slide-img"><img src="https://images.pexels.com/photos/33061399/pexels-photo-33061399.jpeg?auto=compress&cs=tinysrgb&w=1200" srcset="https://images.pexels.com/photos/33061399/pexels-photo-33061399.jpeg?auto=compress&cs=tinysrgb&w=800 800w, https://images.pexels.com/photos/33061399/pexels-photo-33061399.jpeg?auto=compress&cs=tinysrgb&w=1200 1200w, https://images.pexels.com/photos/33061399/pexels-photo-33061399.jpeg?auto=compress&cs=tinysrgb&w=1600 1600w" sizes="(max-width:720px) 100vw, 60vw" alt="Cachorro beagle espiando dentro de um saco de ração" style="object-position:42% 58%" width="1600" height="1067"><span class="ph-tag">Foto ilustrativa</span></div></article><article class="slide" role="group" aria-roledescription="banner" aria-label="2 de 3"><div class="slide-txt"><span class="kicker rise">Banho e tosa</span><h2 class="rise d1">Seu pet cheiroso,<br><span>com hora marcada.</span></h2><p class="rise d2">Banho, tosa completa ou higiênica. Escolha o dia e o período e a gente confirma o horário no WhatsApp.</p><div class="hero-ctas rise d3"><a class="btn btn-yellow" href="#agendar">Agendar horário</a><a class="link" style="color:#fff" href="#servicos">Ver como funciona →</a></div></div><div class="slide-img"><img src="https://images.pexels.com/photos/19145876/pexels-photo-19145876.jpeg?auto=compress&cs=tinysrgb&w=1200" srcset="https://images.pexels.com/photos/19145876/pexels-photo-19145876.jpeg?auto=compress&cs=tinysrgb&w=800 800w, https://images.pexels.com/photos/19145876/pexels-photo-19145876.jpeg?auto=compress&cs=tinysrgb&w=1200 1200w, https://images.pexels.com/photos/19145876/pexels-photo-19145876.jpeg?auto=compress&cs=tinysrgb&w=1600 1600w" sizes="(max-width:720px) 100vw, 60vw" alt="Cachorro shih-tzu sendo tosado em um salão de banho e tosa" style="object-position:50% 38%" loading="lazy" width="1600" height="1067"><span class="ph-tag">Foto ilustrativa</span></div></article><article class="slide" role="group" aria-roledescription="banner" aria-label="3 de 3"><div class="slide-txt"><span class="kicker rise">Farmácia veterinária</span><h2 class="rise d1">Remédios e vacinas<br><span>sem sair do bairro.</span></h2><p class="rise d2">Antipulgas, vermífugos, vacinas e medicamentos. Mande a receita ou o nome do produto e a loja separa para você.</p><div class="hero-ctas rise d3"><a class="btn btn-yellow" href="#" data-wa="waPharma">Perguntar pelo WhatsApp</a><a class="link" style="color:#fff" href="#ofertas" data-cat-go="Farmácia">Ver farmácia →</a></div></div><div class="slide-img"><img src="https://images.pexels.com/photos/6235648/pexels-photo-6235648.jpeg?auto=compress&cs=tinysrgb&w=1200" srcset="https://images.pexels.com/photos/6235648/pexels-photo-6235648.jpeg?auto=compress&cs=tinysrgb&w=800 800w, https://images.pexels.com/photos/6235648/pexels-photo-6235648.jpeg?auto=compress&cs=tinysrgb&w=1200 1200w, https://images.pexels.com/photos/6235648/pexels-photo-6235648.jpeg?auto=compress&cs=tinysrgb&w=1600 1600w" sizes="(max-width:720px) 100vw, 60vw" alt="Profissional examinando um cachorro lulu com estetoscópio" style="object-position:50% 32%" loading="lazy" width="1600" height="1067"><span class="ph-tag">Foto ilustrativa</span></div></article></div>
+      <div class="hs-ui"><div class="hs-dots" id="hsDots"><button type="button" class="hs-dot" aria-label="Banner 1: entrega" aria-current="true"><i></i></button><button type="button" class="hs-dot" aria-label="Banner 2: banho e tosa"><i></i></button><button type="button" class="hs-dot" aria-label="Banner 3: farmácia"><i></i></button></div><button type="button" class="hs-btn" id="hsPause" aria-label="Pausar banners"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></button></div>
     </div>
   </section>
 
@@ -380,30 +478,42 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
   </section>
 
   <section id="servicos" class="sec">
-    <div class="wrap two">
-      <article class="panel svc rv">
-        <div class="svc-img"><img src="img/ai-bath.jpg" alt="Cachorro tomando banho com espuma" loading="lazy" width="550" height="550"></div>
-        <div class="svc-body">
-          <h2 style="font-size:26px">Banho e tosa</h2>
-          <p>Com hora marcada. Seu pet volta cheiroso, macio e feliz.</p>
-          <a class="btn btn-primary" href="#" data-wa="waBath">Agendar horário</a>
-        </div>
-      </article>
-      <article class="panel svc rv">
-        <div class="svc-img"><img src="img/ai-delivery.jpg" alt="Entregador levando um saco de ração até a porta" loading="lazy" width="549" height="410"></div>
-        <div class="svc-body">
-          <h2 style="font-size:26px">Entrega em casa</h2>
-          <p>Ração pesada? Deixa com a gente.</p>
-          <ol class="steps">
-            <li><b>1</b>Escolha os produtos aqui no site</li>
-            <li><b>2</b>Envie o pedido pelo WhatsApp</li>
-            <li><b>3</b>A loja confirma a taxa e entrega</li>
-          </ol>
-          <a class="btn btn-outline" href="#" data-wa="waArea">Vocês entregam no meu bairro?</a>
-        </div>
-      </article>
+    <div class="wrap">
+      <div class="sec-h rv"><div><h2>Nossos serviços</h2><p>Toque no vídeo para pausar.</p></div></div>
+      <div class="svc3"><article class="vcard rv"><div class="vbox paused" data-vbox><span class="vlabel"><i></i>Banho e tosa</span><video muted loop playsinline preload="none" poster="https://images.pexels.com/videos/6816883/pexels-photo-6816883.jpeg?auto=compress&cs=tinysrgb&w=800" data-src="https://videos.pexels.com/video-files/6816883/6816883-sd_960_540_30fps.mp4" aria-label="Yorkshire sendo secado após o banho"></video><span class="vplay" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div><div class="vbody"><h3>Banho e tosa</h3><p>Banho com secagem, tosa completa ou higiênica, com produtos próprios para cada pelagem.</p><a class="btn btn-primary" href="#agendar">Agendar horário</a></div></article><article class="vcard rv"><div class="vbox paused" data-vbox><span class="vlabel"><i></i>Entrega de ração</span><video muted loop playsinline preload="none" poster="https://images.pexels.com/videos/4440916/boxes-delivery-delivery-man-post-4440916.jpeg?auto=compress&cs=tinysrgb&w=800" data-src="https://videos.pexels.com/video-files/4440916/4440916-sd_960_540_25fps.mp4" aria-label="Entregador entregando uma sacola na porta de um cliente"></video><span class="vplay" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div><div class="vbody"><h3>Entrega de ração</h3><p>Ração pesada, petisco, areia: você escolhe no site e a loja leva até a sua porta.</p><a class="btn btn-primary" href="#ofertas">Montar pedido</a></div></article><article class="vcard rv"><div class="vbox paused" data-vbox><span class="vlabel"><i></i>Farmácia e vacinas</span><video muted loop playsinline preload="none" poster="https://images.pexels.com/videos/6235190/pexels-photo-6235190.jpeg?auto=compress&cs=tinysrgb&w=800" data-src="https://videos.pexels.com/video-files/6235190/6235190-sd_960_540_25fps.mp4" aria-label="Profissional examinando um cachorro com estetoscópio"></video><span class="vplay" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div><div class="vbody"><h3>Farmácia e vacinas</h3><p>Antipulgas, vermífugos, vacinas e medicamentos veterinários. Consulte a disponibilidade.</p><a class="btn btn-primary" href="#" data-wa="waPharma">Perguntar</a></div></article></div>
+      <p class="vnote">Vídeos ilustrativos de banco de imagens. Na versão final, entram vídeos da própria loja.</p>
     </div>
   </section>
+
+  <section id="agendar" class="sec" style="padding-top:0" aria-label="Agendar banho e quiz da ração">
+    <div class="wrap duo">
+      <form class="box rv" id="bookForm" novalidate>
+        <div><h2>Agende o banho e tosa</h2><p class="sub">Escolha e mande o pedido de horário. A loja confirma pelo WhatsApp.</p></div>
+        <span class="flabel">Serviço</span>
+        <div class="opts" data-group="svc"><button type="button" class="opt" aria-pressed="true" data-v="Banho">Banho</button><button type="button" class="opt" aria-pressed="false" data-v="Banho e tosa">Banho e tosa</button><button type="button" class="opt" aria-pressed="false" data-v="Tosa higiênica">Tosa higiênica</button></div>
+        <span class="flabel">Porte do pet</span>
+        <div class="opts" data-group="size"><button type="button" class="opt" aria-pressed="false" data-v="Pequeno">Pequeno</button><button type="button" class="opt" aria-pressed="true" data-v="Médio">Médio</button><button type="button" class="opt" aria-pressed="false" data-v="Grande">Grande</button></div>
+        <div class="frow">
+          <label>Dia<input type="date" name="day" required></label>
+          <label>Período<select name="period"><option>Manhã</option><option>Tarde</option></select></label>
+          <label>Nome do pet<input type="text" name="pet" required></label>
+          <label>Loja<select name="store"><option>Taguatinga Sul</option><option>Vereda da Cruz</option></select></label>
+        </div>
+        <span class="ferr" id="bookErr" aria-live="polite"></span>
+        <button class="btn btn-primary" type="submit">Pedir horário no WhatsApp</button>
+      </form>
+
+      <div class="box rv" id="quiz">
+        <div><h2>Qual ração combina com seu pet?</h2><p class="sub">3 perguntas rápidas e a gente mostra as opções da loja.</p></div>
+        <div class="quiz-steps" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="qstep on" data-step="0"><h3>Seu pet é…</h3><div class="opts"><button type="button" class="opt" data-q="sp" data-v="dog">🐶 Cachorro</button><button type="button" class="opt" data-q="sp" data-v="cat">🐱 Gato</button></div></div>
+        <div class="qstep" data-step="1"><h3>Qual a fase da vida?</h3><div class="opts"><button type="button" class="opt" data-q="age" data-v="pup">Filhote</button><button type="button" class="opt" data-q="age" data-v="adult">Adulto</button><button type="button" class="opt" data-q="age" data-v="senior">Idoso (7+ anos)</button></div><button type="button" class="qback" data-qback>← voltar</button></div>
+        <div class="qstep" data-step="2"><h3>E o porte?</h3><div class="opts"><button type="button" class="opt" data-q="size" data-v="s">Pequeno</button><button type="button" class="opt" data-q="size" data-v="m">Médio</button><button type="button" class="opt" data-q="size" data-v="l">Grande</button></div><button type="button" class="qback" data-qback>← voltar</button></div>
+        <div class="qstep" data-step="3"><h3 id="qTitle">Sugestões da loja</h3><div class="qres" id="qRes"></div><p class="sub" style="font-size:12px">Sugestão a partir do que a loja tem em oferta. Para dietas especiais, siga o veterinário.</p><button type="button" class="qback" data-qreset>↺ refazer o quiz</button></div>
+      </div>
+    </div>
+  </section>
+
 
   <section id="instagram" class="sec" style="padding-top:8px" aria-label="Instagram da Agropet">
     <div class="wrap">
@@ -415,6 +525,16 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
       <div class="ig-dots" id="igDots" aria-label="Posição no carrossel"></div>
     </div>
   </section>
+
+  <section id="galeria" class="sec" style="padding-top:0" aria-label="Pet da semana">
+    <div class="wrap">
+      <div class="sec-h rv"><div><h2>Pet da semana</h2><p>Vote no seu favorito. O mais votado ganha destaque aqui e no Instagram da loja.</p></div></div>
+      <div class="gal"><figure class="pet rv"><div class="pet-img"><span class="crown">👑 Pet da semana</span><img src="img/ig-carnaval.jpg" alt="Pipoca, pet de exemplo" loading="lazy" style="object-position:50% 40%"></div><figcaption><span><b>Pipoca</b><small>Taguatinga Sul</small></span><button type="button" class="vote" data-vote="Pipoca" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><span data-votes="Pipoca">0</span></button></figcaption></figure><figure class="pet rv"><div class="pet-img"><img src="https://images.pexels.com/photos/12661459/pexels-photo-12661459.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Thor, pet de exemplo" loading="lazy" style="object-position:50% 30%"></div><figcaption><span><b>Thor</b><small>Águas Claras</small></span><button type="button" class="vote" data-vote="Thor" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><span data-votes="Thor">0</span></button></figcaption></figure><figure class="pet rv"><div class="pet-img"><img src="https://images.pexels.com/photos/13923477/pexels-photo-13923477.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Mel, pet de exemplo" loading="lazy" style="object-position:50% 30%"></div><figcaption><span><b>Mel</b><small>Areal</small></span><button type="button" class="vote" data-vote="Mel" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><span data-votes="Mel">0</span></button></figcaption></figure><figure class="pet rv"><div class="pet-img"><img src="img/ai-cat.jpg" alt="Nina, pet de exemplo" loading="lazy" style="object-position:50% 50%"></div><figcaption><span><b>Nina</b><small>Vereda da Cruz</small></span><button type="button" class="vote" data-vote="Nina" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg><span data-votes="Nina">0</span></button></figcaption></figure></div>
+      <div class="gal-cta rv"><a class="btn btn-primary" href="#" data-wa="waPetPhoto">Enviar a foto do meu pet</a><span style="color:var(--muted);font-size:14px">ou poste e marque <a class="link" href="https://www.instagram.com/agropet.pets/" target="_blank" rel="noopener">@agropet.pets</a></span></div>
+      <p class="vnote">Exemplo para a proposta: nomes e fotos ilustrativos, e a votação conta só neste aparelho. Na versão final, as fotos vêm dos clientes.</p>
+    </div>
+  </section>
+
 
   <section id="perto" class="wrap" aria-label="Fique por perto">
     <div class="near">
@@ -513,6 +633,23 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
   </a>
 </div>
 
+<aside class="coupon mini is-hidden" id="coupon" aria-label="Cupom de primeira compra">
+  <div class="coupon-h"><button type="button" class="coupon-open" id="couponOpen" aria-expanded="false" aria-controls="couponForm">🎁 <b>5% OFF na 1ª compra*</b><span class="coupon-more">pegar cupom</span></button><button class="x" type="button" id="couponClose" aria-label="Fechar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <form class="coupon-b" id="couponForm" novalidate>
+    <span>Deixe seu WhatsApp e ganhe o cupom para o primeiro pedido pelo site.</span>
+    <input name="nome" type="text" placeholder="Seu nome" autocomplete="given-name" aria-label="Seu nome">
+    <input name="tel" type="tel" inputmode="tel" placeholder="WhatsApp com DDD" autocomplete="tel" aria-label="WhatsApp com DDD">
+    <span class="ferr" id="couponErr" aria-live="polite"></span>
+    <button class="btn btn-primary" type="submit">Quero meu cupom</button>
+    <small>*Proposta: percentual e regras a definir com a loja.</small>
+  </form>
+  <div class="coupon-b is-hidden" id="couponDone">
+    <span>Pronto! Seu cupom já está aplicado no pedido:</span>
+    <div class="code">BEMVINDO5<span class="coupon-ok">✓ aplicado</span></div>
+    <a class="btn btn-primary" href="#ofertas" data-coupon-go>Escolher produtos</a>
+  </div>
+</aside>
+
 <div data-if="showToast" class="is-hidden">
   <div class="toast" role="status"><span data-bind="toast"></span><button class="btn btn-yellow btn-sm" data-action="openCart">Ver pedido</button></div>
 </div>
@@ -542,6 +679,7 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
       <div data-if="hasItems" class="is-hidden">
         <div class="drawer-f">
           <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-weight:700;color:var(--muted)">Total dos produtos</span><span class="price" data-bind="totalLabel"></span></div>
+          <span class="coupon-ok is-hidden" data-if="hasCoupon">Cupom BEMVINDO5 aplicado: a loja confirma o desconto</span>
           <span style="font-size:12px;color:var(--red);font-weight:700">Site demonstrativo: o envio abre o WhatsApp real da loja.</span>
           <a class="btn btn-primary" style="min-height:54px" href="#" data-wa-order target="_blank" rel="noopener">Enviar pedido pelo WhatsApp</a>
         </div>
@@ -582,11 +720,15 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
     waPhoto: 'Olá, Agropet Pets! Não achei no site o que meu pet usa. Vou mandar a foto do produto.',
     waBath: 'Olá, Agropet Pets! Quero agendar banho e tosa para o meu pet. Qual o próximo horário?',
     waFlyer: 'Olá, Agropet Pets! Vi o encarte e quero fazer um pedido. Vou mandar a foto dos itens.',
-    waArea: 'Olá, Agropet Pets! Vocês entregam no meu bairro? Moro em: '
+    waArea: 'Olá, Agropet Pets! Vocês entregam no meu bairro? Moro em: ',
+    waPetPhoto: 'Olá, Agropet Pets! Quero participar do Pet da semana. Vou mandar a foto do meu pet. O nome dele é: ',
+    waPharma: 'Olá, Agropet Pets! Queria saber se vocês têm este remédio/vacina: '
   };
 
   var state = { cat: 'Todos', q: '', cart: {}, open: false, name: '', bairro: '', addr: '', pay: 'Pix', toast: '' };
-  var toastTimer, opener = null, cardsShown = false;
+  var toastTimer, opener = null, cardsShown = false, coupon = false;
+  function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+  coupon = store('agro-coupon') === '1';
 
   function brl(n) { return 'R$ ' + n.toFixed(2).replace('.', ','); }
   function norm(s) { return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
@@ -656,6 +798,7 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
     bind('totalLabel', brl(total));
     showIf('empty', count === 0);
     showIf('hasItems', count > 0);
+    showIf('hasCoupon', !!coupon);
     showIf('open', state.open);
     showIf('showToast', !!state.toast && !state.open);
     bind('toast', state.toast);
@@ -664,7 +807,7 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
     var msg = 'Olá, Agropet Pets! Quero fazer um pedido pelo site:\n\n' +
       lines.map(function (l) { return l.n + 'x ' + l.p.name + ' — ' + brl(l.n * l.p.price); }).join('\n') +
       '\n\nTotal dos produtos: ' + brl(total) +
-      '\n\nNome: ' + (state.name || '-') + '\nBairro: ' + (state.bairro || '-') + '\nEndereço: ' + (state.addr || '-') + '\nPagamento: ' + state.pay +
+      '\n\nNome: ' + (state.name || '-') + '\nBairro: ' + (state.bairro || '-') + '\nEndereço: ' + (state.addr || '-') + '\nPagamento: ' + state.pay + (coupon ? '\nCupom: BEMVINDO5 (primeira compra)' : '') +
       '\n\nVocês entregam na minha região? Qual a taxa de entrega?';
     $all('[data-wa-order]').forEach(function (a) { a.href = wa(msg); });
     if (typeof watch === 'function') watch();
@@ -771,6 +914,174 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
     window.open(wa('Olá, Agropet Pets! Quero entrar na lista de ofertas da semana.\n\nNome: ' + nome + '\nWhatsApp: ' + f.tel.value.trim() + '\nPet: ' + f.pet.value + '\nBairro: ' + f.bairro.value), '_blank', 'noopener');
     lf.querySelector('[type=submit]').textContent = 'Pronto! Confirme no WhatsApp';
   });
+
+  // Carrossel do topo
+  (function () {
+    var hs = $('#hs'), track = $('#hsTrack'); if (!hs) return;
+    var slides = $all('#hsTrack .slide'), dots = $all('.hs-dot'), btn = $('#hsPause');
+    var cur = 0, timer = null, T = 6000, reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var paused = reduce, hover = false;
+    hs.style.setProperty('--hs-time', T / 1000 + 's');
+    function go(n) {
+      cur = (n + slides.length) % slides.length;
+      track.style.transform = 'translateX(' + (-100 * cur) + '%)';
+      slides.forEach(function (sl, k) { sl.classList.toggle('on', k === cur); sl.setAttribute('aria-hidden', k === cur ? 'false' : 'true'); $all.call(null, '#hsTrack .slide:nth-child(' + (k + 1) + ') a').forEach(function (a) { a.tabIndex = k === cur ? 0 : -1; }); });
+      dots.forEach(function (d, k) { d.setAttribute('aria-current', k === cur ? 'true' : 'false'); var i = d.querySelector('i'); i.style.transition = 'none'; i.style.width = '0'; void i.offsetWidth; i.style.transition = ''; i.style.width = ''; });
+      schedule();
+    }
+    function schedule() { clearTimeout(timer); hs.classList.toggle('paused', paused || hover); if (!paused && !hover) timer = setTimeout(function () { go(cur + 1); }, T); }
+    function setPaused(v) {
+      paused = v;
+      btn.setAttribute('aria-label', v ? 'Continuar banners' : 'Pausar banners');
+      btn.innerHTML = v ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>' : '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>';
+      schedule();
+    }
+    dots.forEach(function (d, k) { d.addEventListener('click', function () { go(k); }); });
+    btn.addEventListener('click', function () { setPaused(!paused); });
+    hs.addEventListener('mouseenter', function () { hover = true; schedule(); });
+    hs.addEventListener('mouseleave', function () { hover = false; schedule(); });
+    hs.addEventListener('focusin', function () { hover = true; schedule(); });
+    hs.addEventListener('focusout', function () { hover = false; schedule(); });
+    var x0 = null;
+    hs.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    hs.addEventListener('touchend', function (e) { if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) go(cur + (dx < 0 ? 1 : -1)); x0 = null; });
+    document.addEventListener('visibilitychange', function () { hover = document.hidden; schedule(); });
+    setPaused(reduce);
+    go(0);
+  })();
+
+  // Vídeos dos serviços: tocam quando aparecem, pausam fora da tela; toque pausa/retoma
+  (function () {
+    var boxes = $all('[data-vbox]'), reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var save = navigator.connection && navigator.connection.saveData;
+    function play(b) { var v = b.querySelector('video'); if (!v.getAttribute('src')) v.src = v.dataset.src; var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); b.classList.remove('paused'); }
+    function pause(b) { b.querySelector('video').pause(); b.classList.add('paused'); }
+    boxes.forEach(function (b) {
+      b.setAttribute('role', 'button'); b.tabIndex = 0; b.setAttribute('aria-label', 'Tocar ou pausar o vídeo');
+      function toggle() { b.dataset.user = '1'; if (b.classList.contains('paused')) play(b); else { pause(b); b.dataset.user = 'stop'; } }
+      b.addEventListener('click', toggle);
+      b.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+    });
+    if (!('IntersectionObserver' in window)) return;
+    var vio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        var b = e.target;
+        if (e.isIntersecting && e.intersectionRatio > 0.5) { if (!reduce && !save && b.dataset.user !== 'stop') play(b); }
+        else if (!b.classList.contains('paused')) pause(b);
+      });
+    }, { threshold: [0, 0.5, 0.9] });
+    boxes.forEach(function (b) { vio.observe(b); });
+  })();
+
+  // Agendar banho e tosa
+  (function () {
+    var f = $('#bookForm'); if (!f) return;
+    var d = new Date(); d.setDate(d.getDate() + 1);
+    f.elements.day.min = new Date().toISOString().slice(0, 10);
+    f.elements.day.value = d.toISOString().slice(0, 10);
+    $all('#bookForm [data-group] .opt').forEach(function (o) {
+      o.addEventListener('click', function () { $all('#bookForm [data-group="' + o.parentNode.dataset.group + '"] .opt').forEach(function (x) { x.setAttribute('aria-pressed', x === o ? 'true' : 'false'); }); });
+    });
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var pick = function (g) { var o = $('#bookForm [data-group="' + g + '"] [aria-pressed="true"]'); return o ? o.dataset.v : ''; };
+      var el = f.elements, err = $('#bookErr');
+      if (!el.pet.value.trim()) { err.textContent = 'Diga o nome do pet.'; el.pet.focus(); return; }
+      if (!el.day.value) { err.textContent = 'Escolha o dia.'; el.day.focus(); return; }
+      err.textContent = '';
+      var day = new Date(el.day.value + 'T12:00:00').toLocaleDateString('pt-BR', { weekday: 'long', day: '2-digit', month: '2-digit' });
+      window.open(wa('Olá, Agropet Pets! Quero agendar um horário:\n\nServiço: ' + pick('svc') + '\nPet: ' + el.pet.value.trim() + ' (porte ' + pick('size').toLowerCase() + ')\nDia: ' + day + ', ' + el.period.value.toLowerCase() + '\nLoja: ' + el.store.value + '\n\nTem horário disponível?'), '_blank', 'noopener');
+      f.querySelector('[type=submit]').textContent = 'Pedido aberto no WhatsApp ✓';
+    });
+  })();
+
+  // Quiz da ração ideal
+  (function () {
+    var q = $('#quiz'); if (!q) return;
+    var ans = {}, steps = $all('#quiz .qstep'), bars = $all('#quiz .quiz-steps i');
+    function show(n) { steps.forEach(function (s, k) { s.classList.toggle('on', k === n); }); bars.forEach(function (b, k) { b.classList.toggle('done', k < n || n === 3); }); }
+    function result() {
+      var ids = [], title = '', ask = '';
+      if (ans.sp === 'cat') { ids = [2]; title = 'Para o seu gato'; ask = ans.age === 'pup' ? 'linha filhote para gatos' : (ans.age === 'senior' ? 'linha sênior para gatos' : ''); }
+      else if (ans.age === 'pup') { ask = 'ração para filhote de porte ' + { s: 'pequeno', m: 'médio', l: 'grande' }[ans.size]; title = 'Para o seu filhote'; }
+      else if (ans.age === 'senior') { ids = ans.size === 's' ? [6] : []; title = 'Para o seu cão idoso'; ask = ans.size === 's' ? '' : 'linha sênior para porte ' + { m: 'médio', l: 'grande' }[ans.size]; }
+      else { ids = ans.size === 'l' ? [5, 3] : [1, 3, 4]; title = 'Para o seu cão adulto'; }
+      $('#qTitle').textContent = title;
+      var html = ids.map(function (id) {
+        var p = byId(id);
+        return '<div class="qitem"><img src="' + p.img + '" alt=""><div>' + esc(p.name) + (p.price ? '<div class="price">' + (p.from ? '<small>a partir de</small>' : '') + brl(p.price) + '</div>' : '<div class="ask">Consulte o preço</div>') + '</div>' +
+          (p.price ? '<button class="btn btn-primary btn-sm" data-add="' + p.id + '">Adicionar</button>' : '<a class="btn btn-outline btn-sm" target="_blank" rel="noopener" href="' + wa('Olá, Agropet Pets! Quero saber o preço de: ' + p.name + '.') + '">Perguntar</a>') + '</div>';
+      }).join('');
+      if (ask) html += '<div class="qitem" style="background:var(--yellow-soft);border-color:transparent"><div>A loja separa a ' + esc(ask) + ' ideal para você.</div><a class="btn btn-primary btn-sm" target="_blank" rel="noopener" href="' + wa('Olá, Agropet Pets! Fiz o quiz no site. Procuro ' + ask + '. Quais vocês têm?') + '">Perguntar</a></div>';
+      $('#qRes').innerHTML = html;
+      show(3);
+    }
+    q.addEventListener('click', function (e) {
+      var o = e.target.closest('[data-q]');
+      if (o) {
+        ans[o.dataset.q] = o.dataset.v;
+        $all('#quiz [data-q="' + o.dataset.q + '"]').forEach(function (x) { x.setAttribute('aria-pressed', x === o ? 'true' : 'false'); });
+        var n = steps.indexOf(o.closest('.qstep'));
+        if (o.dataset.q === 'sp') show(1);
+        else if (o.dataset.q === 'age') { if (ans.sp === 'cat') { result(); } else show(2); }
+        else result();
+        return;
+      }
+      if (e.target.closest('[data-qback]')) { var cur = steps.indexOf(e.target.closest('.qstep')); show(Math.max(0, cur - 1)); }
+      if (e.target.closest('[data-qreset]')) { ans = {}; $all('#quiz [data-q]').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); }); show(0); }
+    });
+  })();
+
+  // Pet da semana: voto (fica salvo neste aparelho)
+  (function () {
+    var base = { Pipoca: 42, Thor: 31, Mel: 27, Nina: 19 };
+    var mine = store('agro-vote') || '';
+    function paint() {
+      $all('[data-vote]').forEach(function (b) {
+        var n = b.dataset.vote, on = mine === n;
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        b.setAttribute('aria-label', (on ? 'Remover voto em ' : 'Votar em ') + n);
+        b.querySelector('[data-votes]').textContent = base[n] + (on ? 1 : 0);
+      });
+    }
+    document.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-vote]'); if (!b) return;
+      mine = mine === b.dataset.vote ? '' : b.dataset.vote; store('agro-vote', mine); paint();
+    });
+    paint();
+  })();
+
+  // Cupom de primeira compra: aparece uma vez, depois de rolar metade da página ou 25 s
+  (function () {
+    var c = $('#coupon'); if (!c) return;
+    if (coupon || store('agro-coupon-seen') === '1') return;
+    var shown = false;
+    function open() {
+      if (shown || state.open) return; shown = true;
+      c.classList.remove('is-hidden'); requestAnimationFrame(function () { c.classList.add('show'); });
+      store('agro-coupon-seen', '1');
+      window.removeEventListener('scroll', onScroll);
+    }
+    function onScroll() { var h = document.documentElement; if (h.scrollTop > (h.scrollHeight - h.clientHeight) * 0.45) open(); }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    setTimeout(open, 25000);
+    function close() { c.classList.remove('show'); setTimeout(function () { c.classList.add('is-hidden'); }, 400); }
+    $('#couponClose').addEventListener('click', close);
+    $('#couponOpen').addEventListener('click', function () { var m = c.classList.toggle('mini'); this.setAttribute('aria-expanded', m ? 'false' : 'true'); if (!m) { var i = c.querySelector('#couponForm input'); if (i && !$('#couponForm').classList.contains('is-hidden')) i.focus(); } });
+    $('#couponForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var el = e.target.elements, tel = el.tel.value.replace(/\D/g, ''), err = $('#couponErr');
+      if (!el.nome.value.trim()) { err.textContent = 'Diga seu nome.'; el.nome.focus(); return; }
+      if (tel.length < 10 || tel.length > 13) { err.textContent = 'Confira o WhatsApp, com DDD.'; el.tel.focus(); return; }
+      coupon = true; store('agro-coupon', '1'); render();
+      $('#couponForm').classList.add('is-hidden'); $('#couponDone').classList.remove('is-hidden');
+      window.open(wa('Olá, Agropet Pets! Quero o cupom BEMVINDO5 de primeira compra pelo site.\n\nNome: ' + el.nome.value.trim() + '\nWhatsApp: ' + el.tel.value.trim()), '_blank', 'noopener');
+    });
+    c.addEventListener('click', function (e) { if (e.target.closest('[data-coupon-go]')) close(); });
+  })();
+
+  // Link "Ver farmácia" do banner filtra a categoria
+  document.addEventListener('click', function (e) { var a = e.target.closest('[data-cat-go]'); if (a) { state.cat = a.dataset.catGo; state.q = ''; cardsShown = true; render(); } });
 
   renderStatic();
   render();
