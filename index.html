@@ -188,6 +188,36 @@ img{max-width:100%}
   *,*::before,*::after{animation:none !important;transition:none !important}
 }
 </style>
+
+<style id="agro-motion-css">/* AGRO-MOTION */
+.am-video{width:100%;height:100%;object-fit:cover;display:block;background:#0A5626}
+.am-reels{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px max(24px,calc((100vw - 1240px)/2 + 24px)) 22px;scroll-padding-left:max(24px,calc((100vw - 1240px)/2 + 24px));scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.am-reel{position:relative;flex:0 0 auto;width:min(230px,62vw);aspect-ratio:9/16;border-radius:22px;overflow:hidden;scroll-snap-align:start;background:#0A5626;box-shadow:0 14px 30px rgba(20,36,26,.18);cursor:pointer;transition:transform .25s}
+.am-reel:hover{transform:translateY(-6px) rotate(-.6deg)}
+.am-reel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(10,30,18,.88) 100%);pointer-events:none}
+.am-reel .am-cap{position:absolute;left:14px;right:14px;bottom:14px;z-index:2;color:#fff;display:flex;flex-direction:column;gap:6px}
+.am-reel .am-cap b{font-family:'Baloo 2',system-ui,sans-serif;font-size:24px;line-height:1}
+.am-reel .am-cap span{font-size:13px;line-height:1.35;color:#E6F3EA}
+.am-reel .am-cap a{align-self:flex-start;margin-top:4px;background:#FFD21F;color:#14241A;font-weight:900;font-size:13px;padding:8px 14px;border-radius:999px;text-decoration:none}
+.am-reel .am-live{position:absolute;top:12px;left:12px;z-index:2;display:inline-flex;align-items:center;gap:6px;background:rgba(20,36,26,.72);color:#fff;font-size:11px;font-weight:900;letter-spacing:.06em;padding:5px 10px;border-radius:999px}
+.am-reel .am-live i{width:7px;height:7px;border-radius:999px;background:#D7191F;animation:amBlink 1.2s infinite}
+.am-reel.is-paused .am-live i{animation:none;background:#9AA7A0}
+.am-reel .am-bar{position:absolute;top:0;left:0;height:4px;width:0;background:#FFD21F;z-index:3}
+.am-ugc{flex:0 0 auto;width:min(230px,62vw);aspect-ratio:9/16;border-radius:22px;scroll-snap-align:start;background:#FFD21F;color:#14241A;display:flex;flex-direction:column;justify-content:center;gap:12px;padding:22px;border:3px dashed #0F7A35}
+.am-ugc b{font-family:'Baloo 2',system-ui,sans-serif;font-size:28px;line-height:1}
+.am-note{font-size:12px;color:#5B6B61;padding:0 24px;max-width:1240px;width:100%;margin:0 auto}
+@keyframes amBlink{50%{opacity:.25}}
+.am-calc{background:#FFD21F;border-radius:28px;padding:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:26px;align-items:center}
+.am-seg{display:inline-flex;align-self:flex-start;background:#fff;border-radius:999px;padding:4px;gap:4px}
+.am-seg button{min-height:44px;padding:0 20px;border:0;border-radius:999px;background:transparent;font:800 15px 'Nunito Sans',sans-serif;color:#14241A;cursor:pointer}
+.am-seg button[aria-pressed="true"]{background:#0F7A35;color:#fff}
+.am-calc label{display:flex;flex-direction:column;gap:6px;font-weight:800;font-size:14px}
+.am-calc input,.am-calc select{min-height:48px;border:2px solid #14241A22;border-radius:14px;padding:0 14px;font:700 16px 'Nunito Sans',sans-serif;color:#14241A;background:#fff;width:100%}
+.am-out{background:#fff;border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:10px;box-shadow:0 14px 30px rgba(20,36,26,.12)}
+.am-days{font-family:'Baloo 2',system-ui,sans-serif;font-size:clamp(48px,7vw,72px);line-height:.9;color:#0F7A35;font-weight:800}
+.am-hero-badge{position:absolute;left:50%;bottom:8%;transform:translateX(-50%);z-index:2;background:rgba(20,36,26,.75);color:#fff;font-size:11px;font-weight:900;letter-spacing:.06em;padding:5px 10px;border-radius:999px;white-space:nowrap}
+@media (prefers-reduced-motion: reduce){.am-reel:hover{transform:none}.am-reel .am-live i{animation:none}}
+</style>
 </head>
 <body>
 <div role="note" style="position:relative;z-index:60;background:#14241A;color:#ffffff;font-family:'Nunito Sans',system-ui,sans-serif;font-size:14px;line-height:1.4;padding:10px 16px;text-align:center;">
@@ -299,7 +329,7 @@ img{max-width:100%}
 
       <div class="hero-visual">
         <div class="floaty hero-ring">
-          <img src="img/ai-hero-dog.jpg" alt="Cachorro feliz pulando" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          <video class="am-video" data-am-src="https://videos.pexels.com/video-files/5469096/5469096-sd_640_360_24fps.mp4" poster="img/ai-hero-dog.jpg" muted loop playsinline preload="none" aria-label="Cachorros correndo e brincando"></video>
         </div>
         <div class="floaty-2 hero-cat">
           <img src="img/ai-cat.jpg" alt="Gato curioso" style="width: 100%; height: 100%; object-fit: cover; display: block;">
@@ -378,6 +408,9 @@ img{max-width:100%}
     </div>
     <span style="font-size: 13px; color: #4B5A50; text-align: center;">Preços tirados do encarte e da fachada da loja. Podem mudar sem aviso — a confirmação vem no WhatsApp.</span>
   </section>
+  <!-- AGRO-MOTION: vitrine de vídeos -->
+  <section id="movimento" style="padding:56px 0 24px;display:flex;flex-direction:column;gap:18px;background:linear-gradient(180deg,#ffffff 0%,#F1FFF5 100%)"><div style="max-width:1240px;width:100%;margin:0 auto;padding:0 24px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px"><div style="display:flex;flex-direction:column;gap:6px"><span style="font-weight:900;font-size:14px;letter-spacing:.06em;color:#D7191F">AGROPET EM MOVIMENTO</span><h2 class="disp" style="margin:0;font-size:clamp(30px,4vw,44px);color:#0F7A35;font-weight:800;line-height:1">Bicho feliz é bicho bem cuidado</h2><span style="font-size:16px;color:#3B4A41;max-width:560px">Toque num vídeo para pausar. Gostou? Peça direto pelo botão.</span></div><a class="btn btn-red" href="#ofertas" style="min-height:48px">Montar meu pedido</a></div><div class="am-reels" role="list"><figure class="am-reel is-paused" style="margin:0"><span class="am-bar"></span><span class="am-live"><i></i>CÃES</span><video class="am-video" data-am-src="https://videos.pexels.com/video-files/8434087/8434087-sd_338_640_25fps.mp4" poster="https://images.pexels.com/videos/8434087/animal-animals-baby-blur-8434087.jpeg?auto=compress&cs=tinysrgb&w=400" muted loop playsinline preload="none" aria-label="Hora da ração"></video><figcaption class="am-cap"><b>Hora da ração</b><span>Premier, Golden, Fórmula Natural e Special Dog</span><a href="#ofertas">Ver rações</a></figcaption></figure><figure class="am-reel is-paused" style="margin:0"><span class="am-bar"></span><span class="am-live"><i></i>BANHO E TOSA</span><video class="am-video" data-am-src="https://videos.pexels.com/video-files/10914654/10914654-sd_360_640_30fps.mp4" poster="https://images.pexels.com/videos/10914654/pexels-photo-10914654.jpeg?auto=compress&cs=tinysrgb&w=400" muted loop playsinline preload="none" aria-label="Banho e tosa"></video><figcaption class="am-cap"><b>Banho e tosa</b><span>Volta cheiroso, macio e feliz</span><a href="https://wa.me/5561999022443?text=Ol%C3%A1%2C%20Agropet%20Pets%21%20Vi%20o%20v%C3%ADdeo%20no%20site%20e%20quero%20agendar%20banho%20e%20tosa." target="_blank" rel="noopener">Agendar banho</a></figcaption></figure><figure class="am-reel is-paused" style="margin:0"><span class="am-bar"></span><span class="am-live"><i></i>GATOS</span><video class="am-video" data-am-src="https://videos.pexels.com/video-files/13668983/13668983-sd_360_640_30fps.mp4" poster="https://images.pexels.com/videos/13668983/pexels-photo-13668983.jpeg?auto=compress&cs=tinysrgb&w=400" muted loop playsinline preload="none" aria-label="Gatos felizes"></video><figcaption class="am-cap"><b>Gatos felizes</b><span>Areia, petiscos, arranhadores e brinquedos</span><a href="#ofertas">Ver para gatos</a></figcaption></figure><figure class="am-reel is-paused" style="margin:0"><span class="am-bar"></span><span class="am-live"><i></i>PÁSSAROS</span><video class="am-video" data-am-src="https://videos.pexels.com/video-files/15220045/15220045-sd_360_640_30fps.mp4" poster="https://images.pexels.com/videos/15220045/animal-bird-cockatiel-pet-15220045.jpeg?auto=compress&cs=tinysrgb&w=400" muted loop playsinline preload="none" aria-label="Calopsitas"></video><figcaption class="am-cap"><b>Calopsitas</b><span>Aves dóceis esperando por você</span><a href="https://wa.me/5561999022443?text=Ol%C3%A1%2C%20Agropet%20Pets%21%20Vi%20o%20v%C3%ADdeo%20no%20site%20e%20quero%20conhecer%20as%20calopsitas." target="_blank" rel="noopener">Quero conhecer</a></figcaption></figure><figure class="am-reel is-paused" style="margin:0"><span class="am-bar"></span><span class="am-live"><i></i>PEIXES</span><video class="am-video" data-am-src="https://videos.pexels.com/video-files/6172443/6172443-sd_360_640_30fps.mp4" poster="https://images.pexels.com/videos/6172443/pexels-photo-6172443.jpeg?auto=compress&cs=tinysrgb&w=400" muted loop playsinline preload="none" aria-label="Aquarismo"></video><figcaption class="am-cap"><b>Aquarismo</b><span>Peixes ornamentais, aquários e ração</span><a href="https://wa.me/5561999022443?text=Ol%C3%A1%2C%20Agropet%20Pets%21%20Vi%20o%20v%C3%ADdeo%20no%20site%20e%20quero%20saber%20sobre%20peixes%20e%20aqu%C3%A1rios." target="_blank" rel="noopener">Perguntar</a></figcaption></figure><figure class="am-reel is-paused" style="margin:0"><span class="am-bar"></span><span class="am-live"><i></i>ROEDORES</span><video class="am-video" data-am-src="https://videos.pexels.com/video-files/6962176/6962176-sd_360_640_30fps.mp4" poster="https://images.pexels.com/videos/6962176/girl-hamster-rodent-6962176.jpeg?auto=compress&cs=tinysrgb&w=400" muted loop playsinline preload="none" aria-label="Roedores"></video><figcaption class="am-cap"><b>Roedores</b><span>Ração, casinhas e serragem</span><a href="https://wa.me/5561999022443?text=Ol%C3%A1%2C%20Agropet%20Pets%21%20Vi%20o%20v%C3%ADdeo%20no%20site%20e%20quero%20saber%20sobre%20produtos%20para%20hamster." target="_blank" rel="noopener">Perguntar</a></figcaption></figure><div class="am-ugc"><b>Seu pet pode aparecer aqui!</b><span style="font-size:14px;line-height:1.4">Mande um vídeo curtinho do seu pet com a ração ou o brinquedo da Agropet. Toda semana o escolhido ganha um mimo na próxima compra.</span><a class="btn btn-green" style="min-height:44px;font-size:14px" target="_blank" rel="noopener" href="https://wa.me/5561999022443?text=Ol%C3%A1%2C%20Agropet%20Pets%21%20Quero%20mandar%20um%20v%C3%ADdeo%20do%20meu%20pet%20para%20o%20site.%20Ele%20se%20chama%3A%20">Mandar vídeo</a></div></div><p class="am-note">Vídeos ilustrativos de banco de imagens gratuito (Pexels). Na versão final, entram vídeos da própria loja e dos clientes.</p></section>
+
 
   <!-- Encarte da semana -->
   <section id="encarte" class="anchor" style="background: #D7191F; color: #ffffff; overflow: hidden;">
@@ -448,7 +481,7 @@ img{max-width:100%}
   <!-- Banho e tosa + calopsitas -->
   <section style="max-width: 1240px; margin: 0 auto; padding: 16px 24px 64px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 22px;">
     <div id="banho" class="reveal anchor" style="background: #0F7A35; color: #ffffff; border-radius: 28px; overflow: hidden; display: flex; flex-direction: column;">
-      <img src="img/ai-bath.jpg" alt="Cachorro tomando banho com espuma" style="width: 100%; height: 260px; object-fit: cover; display: block;">
+      <video class="am-video" data-am-src="https://videos.pexels.com/video-files/10914653/10914653-sd_360_640_30fps.mp4" poster="img/ai-bath.jpg" muted loop playsinline preload="none" aria-label="Cachorro secando depois do banho" style="height:260px"></video>
       <div style="padding: 30px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1;">
         <span style="font-weight: 900; font-size: 13px; letter-spacing: .08em; color: #FFD21F;">BANHO E TOSA</span>
         <h3 class="disp" style="margin: 0; font-size: 34px; line-height: 1.02; font-weight: 800;">Vamos que está na hora do banho!</h3>
@@ -467,19 +500,9 @@ img{max-width:100%}
     </div>
   </section>
 
-  <!-- Lembrete de ração -->
-  <section id="lembrete" class="reveal anchor" style="max-width: 1240px; margin: 0 auto; padding: 0 24px 64px;">
-    <div class="shine" style="background: #FFD21F; border-radius: 28px; padding: 36px 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px;">
-      <div class="remind-row" style="flex: 1 1 520px; min-width: 0; display: flex; gap: 18px; align-items: center;">
-        <img src="img/ai-puppy.jpg" alt="Filhote ao lado do pote de ração" style="flex: none; width: 96px; height: 96px; border-radius: 999px; object-fit: cover; border: 4px solid #ffffff;">
-        <div style="display: flex; flex-direction: column; gap: 6px;">
-          <h3 class="disp" style="margin: 0; font-size: clamp(26px, 3vw, 36px); line-height: 1.02; font-weight: 800;">Nunca mais fique sem ração</h3>
-          <span style="font-size: 16px; line-height: 1.45;">Diga qual ração seu pet come e a gente te chama no WhatsApp quando estiver na hora de repor.</span>
-        </div>
-      </div>
-      <a class="btn btn-red" href="#" data-wa="waRemind" target="_blank" rel="noopener" style="min-height: 56px;">Quero ser lembrado</a>
-    </div>
-  </section>
+    <!-- AGRO-MOTION: calculadora de ração -->
+  <section id="calculadora" class="reveal" style="max-width:1240px;margin:0 auto;padding:0 24px 64px"><div class="am-calc"><div style="display:flex;flex-direction:column;gap:16px"><span style="font-weight:900;font-size:14px;letter-spacing:.06em;color:#D7191F">NUNCA MAIS FIQUE SEM RAÇÃO</span><h2 class="disp" style="margin:0;font-size:clamp(30px,4vw,44px);line-height:1;font-weight:800">Quanto tempo dura o pacote do seu pet?</h2><div class="am-seg" role="group" aria-label="Tipo de pet"><button type="button" data-am-pet="dog" aria-pressed="true">Cachorro</button><button type="button" data-am-pet="cat" aria-pressed="false">Gato</button></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><label>Peso do pet (kg)<input id="amKg" type="number" inputmode="decimal" min="1" max="80" step="0.5" value="10"></label><label>Tamanho do pacote<select id="amBag"><option value="1">1 kg</option><option value="2.5">2,5 kg</option><option value="3">3 kg</option><option value="10">10 kg</option><option value="15" selected>15 kg</option><option value="20">20 kg</option></select></label></div><label>Data da última compra<input id="amDate" type="date"></label></div><div class="am-out" aria-live="polite"><span style="font-weight:800;color:#3B4A41">Esse pacote dura cerca de</span><span class="am-days"><span id="amDays">--</span> dias</span><span id="amEnd" style="font-size:17px;font-weight:800"></span><span style="font-size:13px;color:#5B6B61">Estimativa para pet adulto com atividade normal. Siga sempre a tabela da embalagem e a orientação do veterinário.</span><a id="amRemind" class="btn btn-red" target="_blank" rel="noopener" href="#" style="min-height:54px">Me avise 3 dias antes no WhatsApp</a></div></div></section>
+
 
   <!-- Avaliações -->
   <section id="avaliacoes" class="anchor" style="background: #F3F6F4;">
@@ -1032,5 +1055,73 @@ img{max-width:100%}
 
 </script>
   <script src="https://assinatura-leandro.vercel.app/assinatura.js" data-cliente="Agropet Pets" defer></script>
+
+<script id="agro-motion-js">/* AGRO-MOTION */
+(function(){
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var save = navigator.connection && navigator.connection.saveData;
+  var vids = [].slice.call(document.querySelectorAll('video[data-am-src]'));
+  function load(v){ if(!v.getAttribute('src')){ v.src = v.getAttribute('data-am-src'); } }
+  function card(v){ return v.closest('.am-reel'); }
+  function play(v){
+    if(reduce || save || v._amUserPaused) return;
+    load(v);
+    var p = v.play(); if(p && p.catch){ p.catch(function(){}); }
+    var c = card(v); if(c) c.classList.remove('is-paused');
+  }
+  function pause(v){ v.pause(); var c = card(v); if(c) c.classList.add('is-paused'); }
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting && e.intersectionRatio > .45){ play(e.target); } else { pause(e.target); } });
+    }, {threshold:[0,.45,.8]});
+    vids.forEach(function(v){ io.observe(v); });
+  } else { vids.forEach(play); }
+  vids.forEach(function(v){
+    v.addEventListener('timeupdate', function(){
+      var c = card(v); if(!c || !v.duration) return;
+      var b = c.querySelector('.am-bar'); if(b) b.style.width = (v.currentTime / v.duration * 100) + '%';
+    });
+    v.addEventListener('error', function(){ v.removeAttribute('src'); });
+  });
+  document.addEventListener('click', function(e){
+    var c = e.target.closest && e.target.closest('.am-reel');
+    if(!c || e.target.closest('a')) return;
+    var v = c.querySelector('video'); if(!v) return;
+    if(v.paused){ v._amUserPaused = false; reduce = false; save = false; play(v); } else { v._amUserPaused = true; pause(v); }
+  });
+
+  // Calculadora de ração
+  var pet = 'dog';
+  var kg = document.getElementById('amKg'), bag = document.getElementById('amBag'), dt = document.getElementById('amDate');
+  if(!kg) return;
+  var today = new Date(); dt.value = today.toISOString().slice(0,10);
+  function grams(w){
+    w = Math.max(1, Math.min(80, parseFloat(String(w).replace(',', '.')) || 0));
+    // energia de manutenção: 70*kg^0,75 x fator / densidade média da ração seca
+    var f = pet === 'dog' ? 1.6 : 1.2, kcal = pet === 'dog' ? 3.6 : 3.8;
+    return 70 * Math.pow(w, .75) * f / kcal;
+  }
+  function fmt(d){ return d.toLocaleDateString('pt-BR', {day:'2-digit', month:'long'}); }
+  function calc(){
+    var g = grams(kg.value), days = Math.max(1, Math.floor(parseFloat(bag.value) * 1000 / g));
+    var start = dt.value ? new Date(dt.value + 'T12:00:00') : new Date();
+    var end = new Date(start.getTime() + days * 864e5), warn = new Date(end.getTime() - 3 * 864e5);
+    document.getElementById('amDays').textContent = days;
+    document.getElementById('amEnd').textContent = 'Acaba por volta de ' + fmt(end) + ' (cerca de ' + Math.round(g) + ' g por dia)';
+    var msg = 'Olá, Agropet Pets! Quero ser lembrado da ração. Meu ' + (pet === 'dog' ? 'cachorro' : 'gato') + ' pesa ' + kg.value + ' kg, comprei um pacote de ' + bag.options[bag.selectedIndex].text + ' em ' + fmt(start) + '. Pode me chamar por volta de ' + fmt(warn) + '? A ração dele é: ';
+    document.getElementById('amRemind').href = 'https://wa.me/5561999022443?text=' + encodeURIComponent(msg);
+  }
+  [].forEach.call(document.querySelectorAll('[data-am-pet]'), function(b){
+    b.addEventListener('click', function(){
+      pet = b.getAttribute('data-am-pet');
+      [].forEach.call(document.querySelectorAll('[data-am-pet]'), function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      if(pet === 'cat' && parseFloat(kg.value) > 9){ kg.value = 4; bag.value = '3'; }
+      calc();
+    });
+  });
+  [kg, bag, dt].forEach(function(el){ el.addEventListener('input', calc); el.addEventListener('change', calc); });
+  calc();
+})();
+</script>
 </body>
 </html>
