@@ -186,6 +186,74 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
 .note{background:var(--yellow-soft);border-radius:12px;padding:12px 14px;font-size:14px}
 .drawer-f{padding:16px 20px 20px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:10px}
 
+
+/* Instagram */
+.ig-h{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:20px}
+.ig-arrows{display:flex;gap:8px}
+.ig-arrow{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s,border-color .15s}
+.ig-arrow:hover{border-color:var(--green);color:var(--green)}
+.ig-arrow:disabled{opacity:.35;cursor:default}
+.ig-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 10px;scrollbar-width:none}
+.ig-track::-webkit-scrollbar{display:none}
+.ig-item{display:block;flex:0 0 calc((100% - 14px*4)/5);min-width:200px;scroll-snap-align:start;text-decoration:none;color:var(--ink)}
+.ig-img{display:block;position:relative;aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;background:var(--soft)}
+.ig-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.ig-item:hover .ig-img img{transform:scale(1.05)}
+.ig-img::after{content:"";position:absolute;inset:auto 0 0 0;height:40%;background:linear-gradient(transparent,rgba(10,30,18,.55));pointer-events:none}
+.ig-ic{position:absolute;right:10px;top:10px;z-index:1;width:30px;height:30px;border-radius:9px;background:rgba(255,255,255,.92);color:var(--ink);display:flex;align-items:center;justify-content:center}
+.ig-cap{display:block;margin-top:8px;font-size:14px;font-weight:700;line-height:1.3}
+.ig-actions{display:flex;align-items:center;gap:12px}
+.ig-ugc .ig-img{background:var(--green)}
+.ig-ugc .ig-img::after{display:none}
+.ugc-in{position:absolute;inset:0;padding:18px;display:flex;flex-direction:column;justify-content:center;gap:10px;color:#fff;font-size:14px;line-height:1.4}
+.ugc-in b{font-family:'Baloo 2',sans-serif;font-size:26px;line-height:1;color:var(--yellow)}
+.ugc-in strong{color:var(--yellow)}
+.ugc-in .btn{align-self:flex-start}
+.ig-dots{display:flex;justify-content:center;gap:6px;margin-top:8px}
+.ig-dots button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:var(--line);cursor:pointer;transition:width .2s,background .2s}
+.ig-dots button[aria-current="true"]{width:22px;border-radius:999px;background:var(--green)}
+
+/* Fique por perto: leads */
+.near{display:grid;grid-template-columns:1.15fr 1fr;gap:16px}
+.lead{background:var(--green);color:#fff;padding:24px;display:flex;flex-direction:column;gap:14px}
+.lead h2{font-size:26px}
+.lead h2 span{color:var(--yellow)}
+.lead p{margin:0;color:#DDEFE3;font-size:15px}
+.lead-f{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.lead-f label{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:700;color:#DDEFE3}
+.lead-f input,.lead-f select{min-height:46px;border:0;border-radius:12px;padding:0 12px;font:600 15px 'Nunito Sans',sans-serif;color:var(--ink);background:#fff;width:100%}
+.lead-f .full{grid-column:1/-1}
+.lead small{font-size:12px;color:#BFE0CA}
+.lead .err{color:var(--yellow);font-size:13px;font-weight:700;min-height:1em}
+.near .calc{display:flex;flex-direction:column;gap:14px;align-items:stretch}
+
+/* Animações (sutis, com propósito) */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.hero .rise{opacity:0;transform:translateY(14px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+.hero .rise.d1{animation-delay:.08s}.hero .rise.d2{animation-delay:.18s}.hero .rise.d3{animation-delay:.28s}.hero .rise.d4{animation-delay:.38s}
+@keyframes rise{to{opacity:1;transform:none}}
+.hero-img img{animation:float 7s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) scale(1.02)}50%{transform:translateY(-8px) scale(1.02)}}
+.status i{animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{50%{opacity:.35}}
+.card{transition:box-shadow .2s,transform .2s}
+.card:hover{transform:translateY(-4px)}
+.card-img img{transition:transform .35s ease}
+.card:hover .card-img img{transform:scale(1.05)}
+.perk-ic{transition:transform .2s}
+.perks li:hover .perk-ic{transform:translateY(-3px) rotate(-6deg)}
+.btn{transition:background .15s,color .15s,border-color .15s,transform .15s}
+.btn:active{transform:scale(.97)}
+.added{animation:added .5s ease}
+@keyframes added{30%{transform:scale(1.06)}}
+.bump{animation:bump .45s ease}
+@keyframes bump{40%{transform:scale(1.35)}}
+.chip{transition:background .15s,border-color .15s,color .15s,transform .15s}
+.chip:hover{transform:translateY(-2px)}
+.fab-wa{animation:ring 3.2s ease-in-out 2s infinite}
+@keyframes ring{0%,86%,100%{box-shadow:0 8px 20px rgba(15,122,53,.35),0 0 0 0 rgba(15,122,53,.45)}93%{box-shadow:0 8px 20px rgba(15,122,53,.35),0 0 0 14px rgba(15,122,53,0)}}
+
 /* Celular */
 @media (max-width:900px){
   .nav{display:none}
@@ -211,8 +279,15 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
   .calc-f{grid-template-columns:1fr 1fr}
   .calc-f .seg{grid-column:1/-1;justify-self:start}
   .cart-label{display:none}
+  .ig-item{flex-basis:62%;min-width:0}
+  .ig-arrows{display:none}
+  .ig-h{flex-direction:column;align-items:flex-start}
+  .near,.lead-f{grid-template-columns:1fr}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none !important}}
+@media (min-width:721px) and (max-width:1000px){.ig-item{flex-basis:calc((100% - 28px)/3)}.near{grid-template-columns:1fr}}
+/* Movimento reduzido: só esmaecer, sem deslocamentos nem repetições */
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ig-track{scroll-behavior:auto}.rv{transform:none;transition:opacity .4s ease}.hero .rise{transform:none;animation-name:fade}.hero-img img,.status i,.fab-wa{animation:none}.card:hover,.chip:hover,.perks li:hover .perk-ic{transform:none}.card:hover .card-img img,.ig-item:hover .ig-img img{transform:none}}
+@keyframes fade{to{opacity:1}}
 </style>
 </head>
 <body>
@@ -234,6 +309,7 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
       <nav class="nav" aria-label="Seções">
         <a href="#ofertas">Ofertas</a>
         <a href="#servicos">Banho e entrega</a>
+        <a href="#instagram">Instagram</a>
         <a href="#lojas">Lojas</a>
       </nav>
       <button class="btn btn-primary cart-btn" data-action="openCart" aria-label="Abrir pedido">
@@ -256,20 +332,20 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
   <section id="topo" class="hero">
     <div class="wrap hero-in">
       <div>
-        <span class="status"><i></i><span data-bind="openLabel">Aberto agora</span></span>
-        <h1>Acabou a ração?<br><span>A gente leva até você.</span></h1>
-        <p>Monte o pedido aqui e envie pelo WhatsApp. A loja confirma a entrega no seu bairro antes de você pagar.</p>
-        <div class="hero-ctas">
+        <span class="status rise"><i></i><span data-bind="openLabel">Aberto agora</span></span>
+        <h1 class="rise d1">Acabou a ração?<br><span>A gente leva até você.</span></h1>
+        <p class="rise d2">Monte o pedido aqui e envie pelo WhatsApp. A loja confirma a entrega no seu bairro antes de você pagar.</p>
+        <div class="hero-ctas rise d3">
           <a class="btn btn-yellow" href="#ofertas">Ver ofertas</a>
           <a class="link" href="#" data-wa="waHello">ou fale com um atendente →</a>
         </div>
       </div>
-      <div class="hero-img"><img src="img/ai-hero-dog.jpg" alt="Cachorro feliz pulando" width="550" height="550"></div>
+      <div class="hero-img rise d4"><img src="img/ai-hero-dog.jpg" alt="Cachorro feliz pulando" width="550" height="550"></div>
     </div>
   </section>
 
   <section class="perks" aria-label="Vantagens">
-    <ul class="wrap">
+    <ul class="wrap rv">
       <li><span class="perk-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg></span><span><b>Entrega rápida</b><span>Taguatinga Sul, Areal e região</span></span></li>
       <li><span class="perk-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg></span><span><b>Paga na entrega</b><span>Pix, cartão ou dinheiro</span></span></li>
       <li><span class="perk-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg></span><span><b>Nota 5,0</b><span>22 avaliações no Google</span></span></li>
@@ -279,7 +355,7 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
 
   <section id="ofertas" class="sec" tabindex="-1">
     <div class="wrap">
-      <div class="sec-h">
+      <div class="sec-h rv">
         <div>
           <h2>Ofertas da semana <span data-bind="catTitle" style="color:var(--green)"></span></h2>
           <p>Preços do encarte da loja. A confirmação vem no WhatsApp.</p>
@@ -293,7 +369,7 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
   </section>
 
   <section id="encarte" class="wrap" aria-label="Encarte da semana">
-    <div class="panel flyer">
+    <div class="panel flyer rv">
       <img src="img/ig-flyer.jpg" alt="Encarte de ofertas da Agropet Pets" width="88" height="120" loading="lazy">
       <div>
         <h2 style="font-size:24px">Viu algo no encarte?</h2>
@@ -305,7 +381,7 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
 
   <section id="servicos" class="sec">
     <div class="wrap two">
-      <article class="panel svc">
+      <article class="panel svc rv">
         <div class="svc-img"><img src="img/ai-bath.jpg" alt="Cachorro tomando banho com espuma" loading="lazy" width="550" height="550"></div>
         <div class="svc-body">
           <h2 style="font-size:26px">Banho e tosa</h2>
@@ -313,7 +389,7 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
           <a class="btn btn-primary" href="#" data-wa="waBath">Agendar horário</a>
         </div>
       </article>
-      <article class="panel svc">
+      <article class="panel svc rv">
         <div class="svc-img"><img src="img/ai-delivery.jpg" alt="Entregador levando um saco de ração até a porta" loading="lazy" width="549" height="410"></div>
         <div class="svc-body">
           <h2 style="font-size:26px">Entrega em casa</h2>
@@ -329,41 +405,67 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
     </div>
   </section>
 
-  <section id="lembrete" class="wrap" aria-label="Lembrete de ração">
-    <div class="panel calc">
-      <div>
-        <h2>Nunca fique sem ração</h2>
-        <p>Veja quanto dura o pacote e receba um lembrete antes de acabar.</p>
+  <section id="instagram" class="sec" style="padding-top:8px" aria-label="Instagram da Agropet">
+    <div class="wrap">
+      <div class="ig-h rv">
+        <div><h2>No nosso Instagram</h2><p style="margin:4px 0 0;color:var(--muted)"><a class="link" href="https://www.instagram.com/agropet.pets/" target="_blank" rel="noopener">@agropet.pets</a> · novidades, ofertas e clientes</p></div>
+        <div class="ig-actions"><a class="btn btn-primary btn-sm" href="https://www.instagram.com/agropet.pets/" target="_blank" rel="noopener">Seguir @agropet.pets</a><div class="ig-arrows"><button type="button" class="ig-arrow" data-ig="-1" aria-label="Fotos anteriores"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><button type="button" class="ig-arrow" data-ig="1" aria-label="Próximas fotos"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button></div></div>
       </div>
-      <div class="calc-f">
-        <div class="seg" role="group" aria-label="Tipo de pet"><button type="button" data-pet="dog" aria-pressed="true">Cão</button><button type="button" data-pet="cat" aria-pressed="false">Gato</button></div>
-        <label>Peso (kg)<input id="cKg" type="number" inputmode="decimal" min="1" max="80" step="0.5" value="10"></label>
-        <label>Pacote<select id="cBag"><option value="1">1 kg</option><option value="2.5">2,5 kg</option><option value="3">3 kg</option><option value="10">10 kg</option><option value="15" selected>15 kg</option><option value="20">20 kg</option></select></label>
-      </div>
-      <div class="calc-out" aria-live="polite">
-        <strong>Dura cerca de <span id="cDays">--</span> dias</strong>
-        <a id="cRemind" class="btn btn-primary btn-sm" href="#" target="_blank" rel="noopener">Me avise no WhatsApp</a>
+      <div class="ig-track rv" id="igTrack" role="list" tabindex="0" aria-label="Fotos do Instagram, role para o lado"><a class="ig-item" role="listitem" href="https://www.instagram.com/agropet.pets/" target="_blank" rel="noopener" aria-label="Nossa segunda loja, na Vereda da Cruz, ver no Instagram"><span class="ig-img"><span class="ig-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span><img src="img/ig-facade.jpg" alt="Fachada da Agropet Pets na Vereda da Cruz" loading="lazy" width="720" height="1280" style="object-position:50% 55%"></span><span class="ig-cap">Nossa segunda loja, na Vereda da Cruz</span></a><a class="ig-item" role="listitem" href="https://www.instagram.com/agropet.pets/" target="_blank" rel="noopener" aria-label="Carnaval na Agropet, ver no Instagram"><span class="ig-img"><span class="ig-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span><img src="img/ig-carnaval.jpg" alt="Cachorro com colar de flores no Carnaval da Agropet" loading="lazy" width="720" height="1280" style="object-position:50% 50%"></span><span class="ig-cap">Carnaval na Agropet</span></a><a class="ig-item" role="listitem" href="https://www.instagram.com/agropet.pets/" target="_blank" rel="noopener" aria-label="Calopsitas na loja, ver no Instagram"><span class="ig-img"><span class="ig-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span><img src="img/ig-calopsita.jpg" alt="Calopsita no dedo de um cliente na loja" loading="lazy" width="720" height="1280" style="object-position:30% 34%"></span><span class="ig-cap">Calopsitas na loja</span></a><a class="ig-item" role="listitem" href="https://www.instagram.com/agropet.pets/" target="_blank" rel="noopener" aria-label="Quali Day Pro na versão sênior, ver no Instagram"><span class="ig-img"><span class="ig-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span><img src="img/ig-senior.jpg" alt="Ração Quali Day Pro Sênior" loading="lazy" width="720" height="1280" style="object-position:50% 40%"></span><span class="ig-cap">Quali Day Pro na versão sênior</span></a><a class="ig-item" role="listitem" href="https://www.instagram.com/agropet.pets/" target="_blank" rel="noopener" aria-label="Chegamos no Areal, ver no Instagram"><span class="ig-img"><span class="ig-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span><img src="img/ig-drone.jpg" alt="Vista aérea da avenida com a localização da loja" loading="lazy" width="720" height="1280" style="object-position:50% 68%"></span><span class="ig-cap">Chegamos no Areal</span></a><a class="ig-item" role="listitem" href="https://www.instagram.com/agropet.pets/" target="_blank" rel="noopener" aria-label="Encarte da semana, ver no Instagram"><span class="ig-img"><span class="ig-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span><img src="img/ig-flyer.jpg" alt="Encarte de ofertas da Agropet Pets" loading="lazy" width="720" height="1280" style="object-position:50% 12%"></span><span class="ig-cap">Encarte da semana</span></a><a class="ig-item ig-ugc" role="listitem" href="https://www.instagram.com/agropet.pets/" target="_blank" rel="noopener"><span class="ig-img"><span class="ugc-in"><b>Seu pet aqui</b><span>Poste a foto dele com a ração ou o brinquedo da Agropet e marque <strong>@agropet.pets</strong>. As fotos marcadas podem aparecer neste carrossel.</span><span class="btn btn-yellow btn-sm">Abrir o Instagram</span></span></span><span class="ig-cap">Marque a gente</span></a></div>
+      <div class="ig-dots" id="igDots" aria-label="Posição no carrossel"></div>
+    </div>
+  </section>
+
+  <section id="perto" class="wrap" aria-label="Fique por perto">
+    <div class="near">
+      <form class="panel lead rv" id="leadForm" novalidate>
+        <h2>Receba as ofertas da semana <span>no seu WhatsApp</span></h2>
+        <p>O encarte novo chega primeiro para quem está na lista. Sem spam: só ofertas e avisos da loja.</p>
+        <div class="lead-f">
+          <label>Seu nome<input name="nome" type="text" autocomplete="given-name" required></label>
+          <label>WhatsApp<input name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="(61) 9 9999-9999" required></label>
+          <label>Seu pet<select name="pet"><option>Cachorro</option><option>Gato</option><option>Cachorro e gato</option><option>Pássaro</option><option>Peixe</option><option>Roedor</option></select></label>
+          <label>Bairro<select name="bairro"><option>Taguatinga Sul</option><option>Taguatinga Norte</option><option>Águas Claras</option><option>Areal</option><option>Arniqueiras</option><option>Vereda da Cruz</option><option>Outra região</option></select></label>
+        </div>
+        <span class="err" id="leadErr" aria-live="polite"></span>
+        <button class="btn btn-yellow" type="submit">Quero receber as ofertas</button>
+        <small>Ao enviar, abre o WhatsApp da loja com seus dados para confirmar. Você pode sair da lista quando quiser.</small>
+      </form>
+      <div class="panel calc rv" id="lembrete">
+        <div>
+          <h2>Nunca fique sem ração</h2>
+          <p>Veja quanto dura o pacote e receba um lembrete antes de acabar.</p>
+        </div>
+        <div class="calc-f">
+          <div class="seg" role="group" aria-label="Tipo de pet"><button type="button" data-pet="dog" aria-pressed="true">Cão</button><button type="button" data-pet="cat" aria-pressed="false">Gato</button></div>
+          <label>Peso (kg)<input id="cKg" type="number" inputmode="decimal" min="1" max="80" step="0.5" value="10"></label>
+          <label>Pacote<select id="cBag"><option value="1">1 kg</option><option value="2.5">2,5 kg</option><option value="3">3 kg</option><option value="10">10 kg</option><option value="15" selected>15 kg</option><option value="20">20 kg</option></select></label>
+        </div>
+        <div class="calc-out" aria-live="polite">
+          <strong>Dura cerca de <span id="cDays">--</span> dias</strong>
+          <a id="cRemind" class="btn btn-primary btn-sm" href="#" target="_blank" rel="noopener">Me avise no WhatsApp</a>
+          <span style="font-size:12px;color:var(--muted)">Estimativa para pet adulto. Siga a tabela da embalagem e o veterinário.</span>
+        </div>
       </div>
     </div>
-    <p style="margin:8px 0 0;font-size:12px;color:var(--muted)">Estimativa para pet adulto. Siga a tabela da embalagem e a orientação do veterinário.</p>
   </section>
 
   <section id="avaliacoes" class="sec">
     <div class="wrap">
-      <div class="sec-h"><div><h2>Quem compra, recomenda</h2><p><span class="stars" aria-hidden="true">★★★★★</span> 5,0 no Google · 22 avaliações</p></div></div>
+      <div class="sec-h rv"><div><h2>Quem compra, recomenda</h2><p><span class="stars" aria-hidden="true">★★★★★</span> 5,0 no Google · 22 avaliações</p></div></div>
       <div class="reviews">
-        <figure class="rev"><blockquote>“A melhor loja de Brasília em ração, produtos e medicamentos pet.”</blockquote><figcaption>Cliente no Google</figcaption></figure>
-        <figure class="rev"><blockquote>“Ótimo atendimento, todos super prestativos e entregas pontuais.”</blockquote><figcaption>Cliente no Google</figcaption></figure>
-        <figure class="rev"><blockquote>“Compro tudo lá: vacinas, ração, petiscos.”</blockquote><figcaption>Cliente no Google</figcaption></figure>
+        <figure class="rev rv"><blockquote>“A melhor loja de Brasília em ração, produtos e medicamentos pet.”</blockquote><figcaption>Cliente no Google</figcaption></figure>
+        <figure class="rev rv"><blockquote>“Ótimo atendimento, todos super prestativos e entregas pontuais.”</blockquote><figcaption>Cliente no Google</figcaption></figure>
+        <figure class="rev rv"><blockquote>“Compro tudo lá: vacinas, ração, petiscos.”</blockquote><figcaption>Cliente no Google</figcaption></figure>
       </div>
     </div>
   </section>
 
   <section id="lojas" class="sec" style="padding-top:0">
     <div class="wrap">
-      <div class="sec-h"><h2>Nossas lojas</h2></div>
+      <div class="sec-h rv"><h2>Nossas lojas</h2></div>
       <div class="two">
-        <div class="store">
+        <div class="store rv">
           <span class="store-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
           <div>
             <h3>Taguatinga Sul</h3>
@@ -371,7 +473,7 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
             <a class="btn btn-outline btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=Agropet+Pets+QSE+2+Taguatinga+Sul" target="_blank" rel="noopener">Como chegar</a>
           </div>
         </div>
-        <div class="store">
+        <div class="store rv">
           <span class="store-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
           <div>
             <h3>Vereda da Cruz <span class="badge-new">NOVA</span></h3>
@@ -484,7 +586,7 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
   };
 
   var state = { cat: 'Todos', q: '', cart: {}, open: false, name: '', bairro: '', addr: '', pay: 'Pix', toast: '' };
-  var toastTimer, opener = null;
+  var toastTimer, opener = null, cardsShown = false;
 
   function brl(n) { return 'R$ ' + n.toFixed(2).replace('.', ','); }
   function norm(s) { return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
@@ -499,6 +601,8 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
   function setQty(id, q) { if (q <= 0) delete state.cart[id]; else state.cart[id] = q; render(); }
   function addOne(id) {
     setQty(id, (state.cart[id] || 0) + 1);
+    var nb = document.querySelector('[data-add="' + id + '"]'); if (nb) { nb.classList.add('added'); }
+    $all('.count').forEach(function (c) { c.classList.remove('bump'); void c.offsetWidth; c.classList.add('bump'); });
     state.toast = byId(id).name + ' no pedido';
     clearTimeout(toastTimer);
     toastTimer = setTimeout(function () { state.toast = ''; render(); }, 2400);
@@ -532,7 +636,7 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
           '<button class="btn btn-primary btn-sm" data-add="' + p.id + '">' + (n ? 'No pedido (' + n + ') · +1' : 'Adicionar') + '</button>'
         : '<div class="ask">Consulte o preço</div>' +
           '<a class="btn btn-outline btn-sm" target="_blank" rel="noopener" href="' + wa('Olá, Agropet Pets! Vi no site e quero saber o preço de: ' + p.name + '.') + '">Perguntar</a>';
-      return '<article class="card">' +
+      return '<article class="card' + (cardsShown ? '' : ' rv') + '">' +
         '<div class="card-img' + (p.photo ? ' photo' : '') + '">' + (p.tag ? '<span class="tag">' + esc(p.tag) + '</span>' : '') +
         '<img src="' + p.img + '" alt="' + esc(p.name) + '" loading="lazy"' + (p.pos ? ' style="object-position:' + p.pos + '"' : '') + '></div>' +
         '<div class="card-body"><span class="card-cat">' + esc(p.cat) + '</span><h3>' + esc(p.name) + '</h3>' + bottom + '</div></article>';
@@ -563,6 +667,8 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
       '\n\nNome: ' + (state.name || '-') + '\nBairro: ' + (state.bairro || '-') + '\nEndereço: ' + (state.addr || '-') + '\nPagamento: ' + state.pay +
       '\n\nVocês entregam na minha região? Qual a taxa de entrega?';
     $all('[data-wa-order]').forEach(function (a) { a.href = wa(msg); });
+    if (typeof watch === 'function') watch();
+    if (!cardsShown && $all('#list-products .card.in').length) cardsShown = true;
   }
 
   function openCart(btn) { opener = btn || null; state.open = true; state.toast = ''; render(); var c = $('#cartClose'); if (c) c.focus(); }
@@ -571,7 +677,7 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
   document.addEventListener('click', function (e) {
     var t = e.target.closest('[data-cat],[data-add],[data-inc],[data-dec],[data-action]');
     if (!t) return;
-    if (t.hasAttribute('data-cat')) { state.cat = t.getAttribute('data-cat'); state.q = ''; $all('[data-search]').forEach(function (i) { i.value = ''; }); render(); return; }
+    if (t.hasAttribute('data-cat')) { cardsShown = true; state.cat = t.getAttribute('data-cat'); state.q = ''; $all('[data-search]').forEach(function (i) { i.value = ''; }); render(); return; }
     if (t.hasAttribute('data-add')) { addOne(+t.getAttribute('data-add')); return; }
     if (t.hasAttribute('data-inc')) { var i = +t.getAttribute('data-inc'); setQty(i, (state.cart[i] || 0) + 1); return; }
     if (t.hasAttribute('data-dec')) { var d = +t.getAttribute('data-dec'); setQty(d, (state.cart[d] || 0) - 1); return; }
@@ -581,7 +687,7 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
   document.addEventListener('input', function (e) {
     var el = e.target;
     if (el.hasAttribute && el.hasAttribute('data-search')) {
-      state.q = el.value; state.cat = 'Todos';
+      state.q = el.value; state.cat = 'Todos'; cardsShown = true;
       $all('[data-search]').forEach(function (i) { if (i !== el) i.value = el.value; });
       render();
       if (state.q.length === 1) { var s = $('#ofertas'); if (s && s.getBoundingClientRect().top > window.innerHeight * 0.6) s.scrollIntoView({ block: 'start' }); }
@@ -615,9 +721,61 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
   });
   [kg, bag].forEach(function (el) { el.addEventListener('input', calc); el.addEventListener('change', calc); });
 
+
+  // Animação de entrada ao rolar (uma vez por elemento)
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); if (e.target.classList.contains('card')) cardsShown = true; } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 }) : null;
+  function watch() {
+    var i = 0;
+    $all('.rv:not(.in)').forEach(function (el) {
+      if (!io) { el.classList.add('in'); return; }
+      if (el.classList.contains('card')) el.style.transitionDelay = (i++ % 4) * 70 + 'ms';
+      io.observe(el);
+    });
+  }
+
+  // Carrossel do Instagram
+  var track = $('#igTrack'), dots = $('#igDots');
+  if (track) {
+    var items = $all('#igTrack .ig-item');
+    function step() { return items[0] ? items[0].getBoundingClientRect().width + 14 : 240; }
+    function pages() { return Math.max(1, Math.ceil((track.scrollWidth - track.clientWidth) / step()) + 1); }
+    function syncIg() {
+      var n = pages(), cur = Math.min(n - 1, Math.round(track.scrollLeft / step()));
+      if (dots.children.length !== n) {
+        dots.innerHTML = '';
+        for (var k = 0; k < n; k++) { var b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', 'Ir para a foto ' + (k + 1)); b.dataset.go = k; dots.appendChild(b); }
+      }
+      Array.prototype.forEach.call(dots.children, function (b, k) { b.setAttribute('aria-current', k === cur ? 'true' : 'false'); });
+      var prev = $('[data-ig="-1"]'), next = $('[data-ig="1"]');
+      if (prev) prev.disabled = track.scrollLeft < 4;
+      if (next) next.disabled = track.scrollLeft + track.clientWidth > track.scrollWidth - 4;
+    }
+    $all('[data-ig]').forEach(function (b) { b.addEventListener('click', function () { track.scrollBy({ left: +b.getAttribute('data-ig') * step() * 2, behavior: 'smooth' }); }); });
+    dots.addEventListener('click', function (e) { var b = e.target.closest('[data-go]'); if (b) track.scrollTo({ left: +b.dataset.go * step(), behavior: 'smooth' }); });
+    track.addEventListener('scroll', function () { window.requestAnimationFrame(syncIg); }, { passive: true });
+    window.addEventListener('resize', syncIg);
+    syncIg();
+  }
+
+  // Captação de leads: lista de ofertas no WhatsApp
+  var lf = $('#leadForm');
+  if (lf) lf.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = lf.elements, nome = f.nome.value.trim(), tel = f.tel.value.replace(/\D/g, '');
+    var err = $('#leadErr');
+    if (!nome) { err.textContent = 'Diga seu nome.'; f.nome.focus(); return; }
+    if (tel.length < 10 || tel.length > 13) { err.textContent = 'Confira o número de WhatsApp, com DDD.'; f.tel.focus(); return; }
+    err.textContent = '';
+    window.open(wa('Olá, Agropet Pets! Quero entrar na lista de ofertas da semana.\n\nNome: ' + nome + '\nWhatsApp: ' + f.tel.value.trim() + '\nPet: ' + f.pet.value + '\nBairro: ' + f.bairro.value), '_blank', 'noopener');
+    lf.querySelector('[type=submit]').textContent = 'Pronto! Confirme no WhatsApp';
+  });
+
   renderStatic();
   render();
   calc();
+  watch();
 })();
 </script>
 <script src="https://assinatura-leandro.vercel.app/assinatura.js" data-cliente="Agropet Pets" defer></script>
