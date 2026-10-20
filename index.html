@@ -9,744 +9,442 @@
 <meta property="og:title" content="Agropet Pets — Tudo que o seu pet precisa">
 <meta property="og:description" content="Acabou a ração? A gente leva até você. Peça pelo WhatsApp (61) 99902-2443.">
 <meta property="og:image" content="img/ai-hero-dog.jpg">
-
+<meta name="theme-color" content="#0F7A35">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&amp;family=Nunito+Sans:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&amp;family=Nunito+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
 <style>
-body{margin:0;background:#ffffff}
-.is-hidden{display:none !important}
-a{color:#0F7A35}a:hover{color:#0A5626}
+/* Sistema visual único: cores da logo + 2 fontes + espaçamento em múltiplos de 8 */
+:root{
+  --green:#0F7A35; --green-dark:#0A5626; --green-soft:#EAF5EE;
+  --red:#D7191F; --yellow:#FFD21F; --yellow-soft:#FFF6CC;
+  --ink:#14241A; --muted:#5B6B61; --line:#E3EAE5; --soft:#F6F8F6;
+  --r:16px; --wrap:1160px;
+}
 *{box-sizing:border-box}
-.disp{font-family:'Baloo 2',system-ui,sans-serif;letter-spacing:-0.01em}
-.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border-radius:999px;border:0;font-family:'Nunito Sans',sans-serif;font-weight:900;font-size:16px;text-decoration:none;cursor:pointer;transition:transform .18s ease, box-shadow .18s ease, background .18s ease}
-.btn:hover{transform:translateY(-2px) scale(1.03)}
-.btn:active{transform:scale(.97)}
-.btn-red{background:#D7191F;color:#ffffff;box-shadow:0 8px 20px rgba(215,25,31,.28)}.btn-red:hover{background:#B5121A;color:#ffffff}
-.btn-yellow{background:#FFD21F;color:#14241A;box-shadow:0 8px 20px rgba(0,0,0,.18)}.btn-yellow:hover{background:#F2C200;color:#14241A}
-.btn-green{background:#0F7A35;color:#ffffff}.btn-green:hover{background:#0A5626;color:#ffffff}
-.btn-white{background:#ffffff;color:#0F7A35}.btn-white:hover{background:#F1FFF5;color:#0A5626}
-.btn-ghost{background:transparent;color:#ffffff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.75)}.btn-ghost:hover{background:rgba(255,255,255,.14);color:#ffffff}
-.pulse{animation:pulseRing 2s ease-out infinite}
-.pulse-red{animation:pulseRed 2s ease-out infinite}
-.navbtn{min-height:44px;padding:0 16px;border:0;background:transparent;color:#ffffff;font-family:'Nunito Sans',sans-serif;font-weight:800;font-size:15px;cursor:pointer;border-radius:999px;transition:background .2s}
-.navbtn:hover{background:rgba(255,255,255,.14)}
-.navbtn-on{background:#FFD21F;color:#14241A}.navbtn-on:hover{background:#FFD21F}
-.catbtn{border:0;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:10px;font-family:'Nunito Sans',sans-serif;font-weight:800;font-size:15px;color:#14241A;padding:4px}
-.catbtn .ring{width:118px;height:118px;border-radius:999px;padding:5px;background:conic-gradient(#0F7A35,#FFD21F,#D7191F,#0F7A35);transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
-.catbtn:hover .ring{transform:scale(1.08) rotate(-4deg)}
-.catbtn .ring img{width:100%;height:100%;border-radius:999px;object-fit:cover;border:4px solid #ffffff;display:block}
-.catbtn-on .ring{animation:spinPop .6s ease}
-.catbtn-on span{color:#D7191F}
-.card{background:#ffffff;border-radius:22px;box-shadow:0 1px 0 rgba(20,36,26,.06),0 10px 26px rgba(20,36,26,.08);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s ease, box-shadow .25s ease}
-.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(20,36,26,.16)}
-.card .pimg{transition:transform .35s ease}
-.card:hover .pimg{transform:scale(1.07) rotate(-1.5deg)}
-.qbtn{width:36px;height:36px;border-radius:999px;border:2px solid #0F7A35;background:#ffffff;color:#0F7A35;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
-.field{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:14px;color:#14241A}
-.field input,.field select{min-height:46px;border:2px solid #D6DED8;border-radius:12px;padding:0 14px;font-family:'Nunito Sans',sans-serif;font-size:15px;color:#14241A;background:#ffffff}
-.field input:focus,.field select:focus{outline:3px solid #FFD21F;border-color:#0F7A35}
-.search{min-height:48px;width:100%;border:2px solid #D6DED8;border-radius:999px;padding:0 20px 0 46px;font-family:'Nunito Sans',sans-serif;font-size:15px;color:#14241A}
-.search:focus{outline:3px solid #FFD21F;border-color:#0F7A35}
-.marquee{display:flex;width:max-content;animation:marquee 28s linear infinite}
-.marquee-slow{display:flex;width:max-content;animation:marquee 40s linear infinite}
-.marquee-wrap:hover .marquee,.marquee-wrap:hover .marquee-slow{animation-play-state:paused}
-.floaty{animation:floaty 5s ease-in-out infinite}
-.floaty-2{animation:floaty 6.5s ease-in-out infinite reverse}
-.wiggle{animation:wiggle 3s ease-in-out infinite}
-.pop{animation:pop .7s cubic-bezier(.3,1.6,.5,1) both}
-.pop-2{animation:pop .7s .15s cubic-bezier(.3,1.6,.5,1) both}
-.pop-3{animation:pop .7s .3s cubic-bezier(.3,1.6,.5,1) both}
-.pop-4{animation:pop .7s .45s cubic-bezier(.3,1.6,.5,1) both}
-.paw{position:absolute;opacity:0;animation:paw 7s linear infinite}
-.bumpA{animation:bumpA .5s cubic-bezier(.3,1.8,.5,1)}
-.bumpB{animation:bumpB .5s cubic-bezier(.3,1.8,.5,1)}
-.toast{animation:toastIn .35s cubic-bezier(.3,1.5,.5,1) both}
-.blink{animation:blink 1s steps(2) infinite}
-.shine{position:relative;overflow:hidden}
-.shine::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);animation:shine 3.2s ease-in-out infinite}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes floaty{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
-@keyframes wiggle{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
-@keyframes pop{0%{opacity:0;transform:translateY(24px) scale(.85)}100%{opacity:1;transform:none}}
-@keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(255,210,31,.75)}70%{box-shadow:0 0 0 20px rgba(255,210,31,0)}100%{box-shadow:0 0 0 0 rgba(255,210,31,0)}}
-@keyframes pulseRed{0%{box-shadow:0 0 0 0 rgba(215,25,31,.6)}70%{box-shadow:0 0 0 22px rgba(215,25,31,0)}100%{box-shadow:0 0 0 0 rgba(215,25,31,0)}}
-@keyframes paw{0%{opacity:0;transform:translateY(40px) rotate(-10deg)}15%{opacity:.35}85%{opacity:.2}100%{opacity:0;transform:translateY(-260px) rotate(15deg)}}
-@keyframes spinPop{0%{transform:scale(1) rotate(0)}50%{transform:scale(1.15) rotate(-12deg)}100%{transform:scale(1) rotate(0)}}
-@keyframes bumpA{0%{transform:scale(1)}50%{transform:scale(1.5)}100%{transform:scale(1)}}
-@keyframes bumpB{0%{transform:scale(1)}50%{transform:scale(1.5)}100%{transform:scale(1)}}
-@keyframes toastIn{0%{opacity:0;transform:translate(-50%,30px) scale(.9)}100%{opacity:1;transform:translate(-50%,0) scale(1)}}
-@keyframes blink{50%{opacity:.35}}
-@keyframes shine{0%{left:-60%}60%,100%{left:130%}}
-@keyframes reveal{from{opacity:0;transform:translateY(48px) scale(.98)}to{opacity:1;transform:none}}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:#fff;color:var(--ink);font:400 16px/1.55 'Nunito Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--green)}
+h1,h2,h3{font-family:'Baloo 2',system-ui,sans-serif;line-height:1.05;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+.sec{padding:56px 0}
+.sec-h{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 16px;margin-bottom:24px}
+.sec-h p{margin:4px 0 0;color:var(--muted)}
+.is-hidden{display:none !important}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
-/* ===== Menu (hambúrguer) ===== */
-html{scroll-behavior:smooth}
-.anchor{scroll-margin-top:84px}
-#ofertas:focus{outline:none}
-.menu-btn{flex:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px 0 12px;border-radius:999px;border:2px solid #0F7A35;background:#ffffff;color:#0F7A35;font-family:'Nunito Sans',sans-serif;font-weight:900;font-size:15px;cursor:pointer;transition:background .2s}
-.menu-btn:hover{background:#F1FFF5}
-.menu-btn[aria-expanded="true"]{background:#0F7A35;color:#ffffff}
-.menu-btn:focus-visible,.menu-close:focus-visible,.menu-links a:focus-visible,.menu-cat:focus-visible,.crumbs a:focus-visible,.crumbs button:focus-visible,.navbtn:focus-visible,.catbtn:focus-visible{outline:3px solid #FFD21F;outline-offset:2px}
-.menu-wrap{position:fixed;inset:0;z-index:70}
-.menu-overlay{position:absolute;inset:0;border:0;background:rgba(20,36,26,.5);cursor:pointer;animation:fadeIn .2s ease both}
-.menu-panel{position:absolute;left:0;top:0;bottom:0;width:min(340px,88vw);background:#ffffff;display:flex;flex-direction:column;box-shadow:12px 0 40px rgba(0,0,0,.25);font-family:'Nunito Sans',sans-serif;color:#14241A;animation:slideIn .28s cubic-bezier(.2,.9,.3,1) both}
-.menu-top{background:#0F7A35;color:#ffffff;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.menu-close{flex:none;width:44px;height:44px;border-radius:999px;border:0;background:rgba(255,255,255,.15);color:#ffffff;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
-.menu-body{flex:1;overflow-y:auto;padding:18px 18px calc(22px + env(safe-area-inset-bottom, 0px));display:flex;flex-direction:column;gap:22px}
-.menu-h{font-size:14px;font-weight:900;color:#0F7A35}
-.menu-links{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
-.menu-links a{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;padding:0 6px;border-bottom:1px solid #E7ECE8;color:#14241A;text-decoration:none;font-weight:800;font-size:16px}
-.menu-links a::after{content:"›";color:#0F7A35;font-size:22px;line-height:1}
-.menu-links a:hover{color:#0F7A35;background:#F6F8F4}
-.menu-cats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-.menu-cat{display:flex;align-items:center;gap:10px;min-height:48px;padding:6px 10px 6px 6px;border-radius:14px;border:2px solid #E7ECE8;background:#ffffff;cursor:pointer;font-family:inherit;font-weight:800;font-size:14px;color:#14241A;text-align:left}
-.menu-cat img{width:34px;height:34px;border-radius:999px;object-fit:cover;flex:none}
-.menu-cat:hover{border-color:#0F7A35}
-.menu-cat-on{border-color:#0F7A35;background:#F1FFF5;color:#0F7A35}
-@keyframes slideIn{from{transform:translateX(-100%)}to{transform:none}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+/* Botões: um primário (verde), um secundário (contorno). Amarelo só sobre fundo verde. */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;border:2px solid transparent;font:800 15px 'Nunito Sans',sans-serif;text-decoration:none;cursor:pointer;transition:background .15s,color .15s,border-color .15s}
+.btn-primary{background:var(--green);color:#fff}
+.btn-primary:hover{background:var(--green-dark);color:#fff}
+.btn-outline{background:#fff;color:var(--green);border-color:var(--green)}
+.btn-outline:hover{background:var(--green-soft)}
+.btn-yellow{background:var(--yellow);color:var(--ink)}
+.btn-yellow:hover{background:#F2C200;color:var(--ink)}
+.btn-sm{min-height:40px;padding:0 16px;font-size:14px}
+.btn:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.link{font-weight:800;text-decoration:none}
+.link:hover{text-decoration:underline}
 
-/* ===== Migalha de pão (catálogo) ===== */
-.crumbs{font-size:14px;font-weight:700;color:#4B5A50}
-.crumbs ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;row-gap:2px}
-.crumbs li{display:inline-flex;align-items:center;min-width:0}
-.crumbs li + li::before{content:"›";content:"›" / "";margin:0 8px;color:#9AA89F;font-weight:900}
-.crumbs a,.crumbs button{border:0;background:none;padding:6px 2px;min-height:32px;font:inherit;color:#0F7A35;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
-.crumbs a:hover,.crumbs button:hover{color:#0A5626}
-.crumbs [aria-current]{color:#14241A;font-weight:900;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:70vw}
+/* Aviso de proposta */
+.demo{background:var(--ink);color:#fff;font-size:13px;text-align:center;padding:8px 16px}
+.demo b{background:var(--yellow);color:var(--ink);padding:1px 6px;border-radius:4px;margin-right:6px}
 
-/* ===== Barra flutuante (acompanha a rolagem) ===== */
-.float-bar{position:fixed;top:0;left:0;right:0;z-index:25;background:#ffffff;border-bottom:3px solid #FFD21F;box-shadow:0 6px 20px rgba(20,36,26,.14);transform:translateY(-110%);transition:transform .25s ease;font-family:'Nunito Sans',sans-serif;color:#14241A}
-.float-bar.is-on{transform:none}
-.float-inner{max-width:1240px;margin:0 auto;padding:8px 24px;display:flex;align-items:center;gap:14px}
-.fb-brand{text-decoration:none;font-weight:800;font-size:24px;line-height:1;color:#0F7A35;white-space:nowrap}
-.fb-brand span{color:#D7191F}
-.fb-links{display:flex;gap:2px;margin-left:auto}
-.fb-link{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:999px;color:#14241A;text-decoration:none;font-weight:800;font-size:15px}
-.fb-link:hover{background:#F1FFF5;color:#0F7A35}
-.fb-link:focus-visible,.fb-brand:focus-visible,.fb-cart:focus-visible{outline:3px solid #FFD21F;outline-offset:2px}
-.fb-count{min-width:26px;height:26px;padding:0 6px;border-radius:999px;background:#FFD21F;color:#14241A;font-size:14px;display:inline-flex;align-items:center;justify-content:center}
-@media (max-width: 760px){
-  .float-inner{padding:8px 16px;gap:10px}
-  .fb-links{display:none}
-  .fb-cart{margin-left:auto;padding:0 14px;gap:8px}
-  .fb-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-  .fb-brand{font-size:21px}
-}
+/* Cabeçalho */
+.hdr{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line)}
+.hdr-in{display:flex;align-items:center;gap:16px;min-height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none}
+.logo-badge{width:46px;height:46px;border-radius:50%;background:var(--green);border:3px solid var(--yellow);display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:.9;font-family:'Baloo 2',sans-serif}
+.logo-badge span:first-child{color:#fff;font-size:9px;font-weight:700}
+.logo-badge span:last-child{color:var(--red);font-size:14px;font-weight:800;-webkit-text-stroke:.6px #fff}
+.logo-name{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:22px;color:var(--green);line-height:1}
+.logo-name span{color:var(--red)}
+.search{position:relative;flex:1;max-width:440px}
+.search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%)}
+.search input{width:100%;min-height:44px;border:1.5px solid var(--line);border-radius:999px;padding:0 16px 0 42px;font:600 15px 'Nunito Sans',sans-serif;color:var(--ink);background:var(--soft)}
+.search input:focus{background:#fff;border-color:var(--green);outline:none}
+.nav{display:flex;gap:4px;margin-left:auto}
+.nav a{padding:8px 12px;border-radius:999px;color:var(--ink);font-weight:700;font-size:15px;text-decoration:none}
+.nav a:hover{background:var(--soft)}
+.cart-btn{position:relative;flex:none}
+.count{min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--yellow);color:var(--ink);font-size:13px;font-weight:800;display:inline-flex;align-items:center;justify-content:center}
+.hdr-search-m{display:none;padding:0 0 12px}
 
-/* ===== Responsividade (corrigido) ===== */
-.site-header{position:relative}
-.hero-visual{flex:1 1 420px;min-width:0;position:relative;display:flex;flex-direction:column;align-items:center;gap:0}
-.hero-ring{flex:none;width:min(400px,76vw);height:min(400px,76vw);border-radius:50%;border:10px solid #FFD21F;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.3);-webkit-mask-image:-webkit-radial-gradient(white,black)}
-.hero-ring img{width:100%;height:100%;object-fit:cover;display:block}
-.hero-cat{position:absolute;left:max(0px,calc(50% - min(200px,38vw) - 30px));top:0;width:clamp(92px,24vw,140px);height:clamp(92px,24vw,140px);border-radius:50%;border:6px solid #ffffff;overflow:hidden;box-shadow:0 14px 30px rgba(0,0,0,.25);z-index:2}
-.hero-cat img{width:100%;height:100%;object-fit:cover;display:block}
-.hero-offer{position:relative;z-index:3;margin-top:-34px;background:#D7191F;color:#ffffff;border-radius:22px;padding:14px 18px;box-shadow:0 16px 34px rgba(0,0,0,.3);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;column-gap:16px;row-gap:4px;max-width:min(380px,92%);text-align:center;animation:wiggle 3s ease-in-out infinite}
-.hero-offer > span{flex:1 1 100%}
-.hero-offer .disp{flex:0 0 auto !important}
-.hero-offer .btn{margin-top:0 !important}
-.delivery-visual{flex:1 1 420px;min-width:0;position:relative;min-height:420px}
-.field input,.field select,.search{font-size:16px !important}
-html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
-img{max-width:100%}
-@media (max-width: 760px){
-  .site-header{position:relative}
-  .site-header nav > div{flex-wrap:nowrap !important;overflow-x:auto;justify-content:flex-start !important;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-  .site-header nav > div::-webkit-scrollbar{display:none}
-  .site-header nav .navbtn{flex:none;white-space:nowrap}
-  .delivery-visual{min-height:330px}
-  .delivery-visual img:first-child{height:240px !important;width:62% !important}
-  .delivery-visual img:last-child{width:78% !important}
-  #topo > div{padding-top:36px !important;padding-bottom:56px !important;gap:32px !important}
-  .anchor{scroll-margin-top:76px}
-}
+/* Topo */
+.hero{background:var(--green);color:#fff}
+.hero-in{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;padding:48px 20px}
+.status{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border-radius:999px;padding:6px 12px;font-size:14px;font-weight:700}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--yellow)}
+.hero h1{font-size:clamp(36px,5vw,56px);font-weight:800;margin:16px 0 12px}
+.hero h1 span{color:var(--yellow)}
+.hero p{margin:0 0 24px;font-size:18px;color:#DDEFE3;max-width:480px}
+.hero-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px}
+.hero-ctas .link{color:#fff}
+.hero-img{border-radius:24px;overflow:hidden;aspect-ratio:4/3;background:var(--green-dark)}
+.hero-img img{width:100%;height:100%;object-fit:cover}
 
-@media (max-width: 760px){
-  .hdr-actions{margin-left:auto}
-  .hdr-search{order:3;flex:1 1 100% !important}
-  .hdr-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-  .hdr-actions .btn{padding:0 14px;gap:8px}
-  .hdr-actions a[href="#lojas"]{display:none !important}
-  .site-header > div{column-gap:12px !important}
-  .menu-btn{width:44px;padding:0}
-}
-@media (max-width: 420px){
-  .hdr-tag{display:none}
-  .site-header > div{padding-left:16px !important;padding-right:16px !important}
-  .site-header a[href="#topo"] > div:first-child{width:52px !important;height:52px !important}
-  .site-header a[href="#topo"] .disp{font-size:20px}
-}
-@media (max-width: 560px){
-  .remind-row{flex-direction:column;align-items:flex-start !important;text-align:left}
-  .shine[style*="padding: 36px 40px"]{padding:28px 22px !important}
-}
-@supports (animation-timeline: view()){
-  .reveal{animation:reveal linear both;animation-timeline:view();animation-range:entry 0% cover 22%}
-}
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation:none !important;transition:none !important}
-}
-</style>
+/* Vantagens */
+.perks{border-bottom:1px solid var(--line)}
+.perks ul{list-style:none;margin:0;padding:16px 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.perks li{display:flex;align-items:center;gap:10px;font-size:14px;line-height:1.3}
+.perks li b{display:block;font-size:15px}
+.perks li span{color:var(--muted)}
+.perk-ic{flex:none;width:40px;height:40px;border-radius:12px;background:var(--green-soft);color:var(--green);display:flex;align-items:center;justify-content:center}
 
-<style id="agro-motion-css">/* AGRO-MOTION */
-.am-video{width:100%;height:100%;object-fit:cover;display:block;background:#0A5626}
-.am-reels{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px max(24px,calc((100vw - 1240px)/2 + 24px)) 22px;scroll-padding-left:max(24px,calc((100vw - 1240px)/2 + 24px));scrollbar-width:thin;-webkit-overflow-scrolling:touch}
-.am-reel{position:relative;flex:0 0 auto;width:min(230px,62vw);aspect-ratio:9/16;border-radius:22px;overflow:hidden;scroll-snap-align:start;background:#0A5626;box-shadow:0 14px 30px rgba(20,36,26,.18);cursor:pointer;transition:transform .25s}
-.am-reel:hover{transform:translateY(-6px) rotate(-.6deg)}
-.am-reel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(10,30,18,.88) 100%);pointer-events:none}
-.am-reel .am-cap{position:absolute;left:14px;right:14px;bottom:14px;z-index:2;color:#fff;display:flex;flex-direction:column;gap:6px}
-.am-reel .am-cap b{font-family:'Baloo 2',system-ui,sans-serif;font-size:24px;line-height:1}
-.am-reel .am-cap span{font-size:13px;line-height:1.35;color:#E6F3EA}
-.am-reel .am-cap a{align-self:flex-start;margin-top:4px;background:#FFD21F;color:#14241A;font-weight:900;font-size:13px;padding:8px 14px;border-radius:999px;text-decoration:none}
-.am-reel .am-live{position:absolute;top:12px;left:12px;z-index:2;display:inline-flex;align-items:center;gap:6px;background:rgba(20,36,26,.72);color:#fff;font-size:11px;font-weight:900;letter-spacing:.06em;padding:5px 10px;border-radius:999px}
-.am-reel .am-live i{width:7px;height:7px;border-radius:999px;background:#D7191F;animation:amBlink 1.2s infinite}
-.am-reel.is-paused .am-live i{animation:none;background:#9AA7A0}
-.am-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;width:64px;height:64px;border-radius:999px;border:0;background:rgba(255,210,31,.95);color:#14241A;display:none;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(0,0,0,.3);cursor:pointer;pointer-events:none}
-.am-reel.is-paused .am-play,.am-wrap.is-paused .am-play{display:flex}
-.am-wrap{position:relative;display:block;width:100%;height:100%}
-.am-feat{flex:0 0 auto;width:min(260px,70vw);scroll-snap-align:start;border-radius:22px;overflow:hidden;background:#14241A;box-shadow:0 14px 30px rgba(20,36,26,.22);display:flex;flex-direction:column}
-.am-feat iframe{display:block;width:100%;aspect-ratio:9/16;border:0;background:#000}
-.am-feat .am-feat-cap{background:#FFD21F;color:#14241A;padding:10px 14px;display:flex;flex-direction:column;gap:2px}
-.am-feat .am-feat-cap b{font-family:"Baloo 2",system-ui,sans-serif;font-size:20px;line-height:1}
-.am-feat .am-feat-cap span{font-size:12px;line-height:1.3}
-.am-reel .am-bar{position:absolute;top:0;left:0;height:4px;width:0;background:#FFD21F;z-index:3}
-.am-ugc{flex:0 0 auto;width:min(230px,62vw);aspect-ratio:9/16;border-radius:22px;scroll-snap-align:start;background:#FFD21F;color:#14241A;display:flex;flex-direction:column;justify-content:center;gap:12px;padding:22px;border:3px dashed #0F7A35}
-.am-ugc b{font-family:'Baloo 2',system-ui,sans-serif;font-size:28px;line-height:1}
-.am-note{font-size:12px;color:#5B6B61;padding:0 24px;max-width:1240px;width:100%;margin:0 auto}
-@keyframes amBlink{50%{opacity:.25}}
-.am-calc{background:#FFD21F;border-radius:28px;padding:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:26px;align-items:center}
-.am-seg{display:inline-flex;align-self:flex-start;background:#fff;border-radius:999px;padding:4px;gap:4px}
-.am-seg button{min-height:44px;padding:0 20px;border:0;border-radius:999px;background:transparent;font:800 15px 'Nunito Sans',sans-serif;color:#14241A;cursor:pointer}
-.am-seg button[aria-pressed="true"]{background:#0F7A35;color:#fff}
-.am-calc label{display:flex;flex-direction:column;gap:6px;font-weight:800;font-size:14px}
-.am-calc input,.am-calc select{min-height:48px;border:2px solid #14241A22;border-radius:14px;padding:0 14px;font:700 16px 'Nunito Sans',sans-serif;color:#14241A;background:#fff;width:100%}
-.am-out{background:#fff;border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:10px;box-shadow:0 14px 30px rgba(20,36,26,.12)}
-.am-days{font-family:'Baloo 2',system-ui,sans-serif;font-size:clamp(48px,7vw,72px);line-height:.9;color:#0F7A35;font-weight:800}
-.am-hero-badge{position:absolute;left:50%;bottom:8%;transform:translateX(-50%);z-index:2;background:rgba(20,36,26,.75);color:#fff;font-size:11px;font-weight:900;letter-spacing:.06em;padding:5px 10px;border-radius:999px;white-space:nowrap}
-@media (prefers-reduced-motion: reduce){.am-reel:hover{transform:none}.am-reel .am-live i{animation:none}}
+/* Categorias + produtos */
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 8px;margin-bottom:20px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px 0 6px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font:700 15px 'Nunito Sans',sans-serif;color:var(--ink);cursor:pointer}
+.chip img{width:32px;height:32px;border-radius:50%;object-fit:cover}
+.chip.chip-all{padding:0 16px}
+.chip[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{border:1px solid var(--line);border-radius:var(--r);background:#fff;display:flex;flex-direction:column;overflow:hidden;transition:box-shadow .15s}
+.card:hover{box-shadow:0 8px 24px rgba(20,36,26,.08)}
+.card-img{position:relative;aspect-ratio:1/1;background:var(--soft);display:flex;align-items:center;justify-content:center;padding:14px;overflow:hidden}
+.card-img img{max-height:100%;max-width:100%;object-fit:contain}
+.card-img.photo{padding:0}
+.card-img.photo img{position:absolute;inset:0;width:100%;height:100%;max-height:none;object-fit:cover}
+.tag{z-index:1;position:absolute;top:10px;left:10px;background:var(--red);color:#fff;font-size:11px;font-weight:800;letter-spacing:.04em;padding:3px 8px;border-radius:6px}
+.card-body{padding:14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card-cat{font-size:12px;font-weight:800;color:var(--green);text-transform:uppercase;letter-spacing:.05em}
+.card h3{font-family:'Nunito Sans',sans-serif;font-size:15px;font-weight:700;line-height:1.35;flex:1}
+.price{font-family:'Baloo 2',sans-serif;font-size:24px;font-weight:800;color:var(--red);line-height:1}
+.price small{display:block;font-family:'Nunito Sans',sans-serif;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:2px}
+.ask{font-weight:800;color:var(--green);font-size:15px}
+.card .btn{width:100%}
+.grid-foot{margin:20px 0 0;color:var(--muted);font-size:14px;text-align:center}
+.empty{padding:32px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:var(--r)}
+
+/* Blocos */
+.panel{border-radius:20px;overflow:hidden}
+.flyer{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;background:var(--yellow-soft);padding:20px 24px}
+.flyer img{width:88px;height:120px;object-fit:cover;border-radius:10px;border:3px solid #fff}
+.flyer p{margin:4px 0 0;color:var(--muted)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.svc{border:1px solid var(--line);display:flex;flex-direction:column}
+.svc-img{aspect-ratio:16/9;background:var(--soft)}
+.svc-img img{width:100%;height:100%;object-fit:cover}
+.svc-body{padding:20px;display:flex;flex-direction:column;gap:12px;flex:1}
+.svc-body p{margin:0;color:var(--muted)}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.steps li{display:flex;gap:12px;align-items:center}
+.steps b{flex:none;width:32px;height:32px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',sans-serif}
+.svc-body .btn{align-self:flex-start;margin-top:auto}
+
+/* Lembrete de ração */
+.calc{background:var(--green-soft);padding:24px;display:grid;grid-template-columns:1.1fr 1fr auto;gap:20px;align-items:end}
+.calc h2{font-size:26px}
+.calc p{margin:6px 0 0;color:var(--muted);font-size:14px}
+.calc-f{display:grid;grid-template-columns:auto 1fr 1fr;gap:10px}
+.seg{display:inline-flex;background:#fff;border-radius:12px;padding:3px;border:1.5px solid var(--line)}
+.seg button{min-height:40px;padding:0 12px;border:0;border-radius:9px;background:transparent;font:700 14px 'Nunito Sans',sans-serif;color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--green);color:#fff}
+.calc label{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:700;color:var(--muted)}
+.calc input,.calc select{min-height:46px;border:1.5px solid var(--line);border-radius:12px;padding:0 12px;font:700 15px 'Nunito Sans',sans-serif;color:var(--ink);background:#fff;width:100%}
+.calc-out{display:flex;flex-direction:column;gap:8px}
+.calc-out strong{font-family:'Baloo 2',sans-serif;font-size:22px;color:var(--green);line-height:1}
+
+/* Avaliações e lojas */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rev{margin:0;padding:20px;border:1px solid var(--line);border-radius:var(--r)}
+.rev blockquote{margin:0 0 8px;font-weight:600}
+.rev figcaption{font-size:13px;color:var(--muted)}
+.stars{color:#F2B400;letter-spacing:2px}
+.store{border:1px solid var(--line);border-radius:var(--r);padding:20px;display:flex;gap:16px;align-items:flex-start}
+.store-ic{flex:none;width:44px;height:44px;border-radius:12px;background:var(--green-soft);color:var(--green);display:flex;align-items:center;justify-content:center}
+.store h3{font-size:20px}
+.store p{margin:4px 0 12px;color:var(--muted)}
+.badge-new{display:inline-block;background:var(--yellow);color:var(--ink);font:800 11px 'Nunito Sans',sans-serif;padding:2px 8px;border-radius:6px;margin-left:6px;vertical-align:middle}
+
+/* Rodapé */
+.ftr{background:var(--green-dark);color:#D6EBDD;font-size:14px}
+.ftr-in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;padding:40px 20px 112px}
+.ftr a{color:#fff}
+.ftr .logo-name{color:#fff}
+.ftr .logo-name span{color:var(--yellow)}
+
+/* Flutuantes, carrinho, aviso */
+.fab{position:fixed;right:16px;bottom:16px;z-index:30;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.fab-wa{width:56px;height:56px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(15,122,53,.35)}
+.cartbar{box-shadow:0 8px 20px rgba(20,36,26,.25)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:20px;z-index:35;background:var(--ink);color:#fff;border-radius:999px;padding:10px 12px 10px 18px;display:flex;align-items:center;gap:12px;font-weight:700;max-width:calc(100% - 32px)}
+.drawer{position:fixed;inset:0;z-index:40;display:flex;justify-content:flex-end}
+.drawer-bg{position:absolute;inset:0;border:0;background:rgba(20,36,26,.45);cursor:pointer}
+.drawer aside{position:relative;width:min(420px,100%);height:100%;background:#fff;display:flex;flex-direction:column}
+.drawer-h{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--line)}
+.drawer-h h2{font-size:24px}
+.x{width:40px;height:40px;border-radius:50%;border:0;background:var(--soft);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.drawer-b{flex:1;overflow-y:auto;padding:16px 20px;display:flex;flex-direction:column;gap:14px}
+.line{display:flex;gap:12px;align-items:center;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.line img{width:52px;height:52px;object-fit:contain;background:var(--soft);border-radius:10px;flex:none}
+.qty{display:flex;align-items:center;gap:6px}
+.qbtn{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--green);background:#fff;color:var(--green);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.field{display:flex;flex-direction:column;gap:4px;font-weight:700;font-size:14px}
+.field input,.field select{min-height:46px;border:1.5px solid var(--line);border-radius:12px;padding:0 12px;font:600 15px 'Nunito Sans',sans-serif;color:var(--ink);background:#fff}
+.note{background:var(--yellow-soft);border-radius:12px;padding:12px 14px;font-size:14px}
+.drawer-f{padding:16px 20px 20px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:10px}
+
+/* Celular */
+@media (max-width:900px){
+  .nav{display:none}
+  .grid{grid-template-columns:repeat(3,1fr)}
+  .perks ul{grid-template-columns:repeat(2,1fr)}
+  .calc{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  .hdr-in .search{display:none}
+  .hdr-in{justify-content:space-between;min-height:60px}
+  .hdr-search-m{display:block}
+  .hdr-search-m .search{max-width:none}
+  .hero-in{grid-template-columns:1fr;padding:32px 20px}
+  .hero-img{display:none}
+  .hero p{font-size:16px}
+  .grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .card-body{padding:12px}
+  .price{font-size:21px}
+  .two,.reviews{grid-template-columns:1fr}
+  .flyer{grid-template-columns:auto 1fr}
+  .flyer .btn{grid-column:1/-1}
+  .sec{padding:40px 0}
+  .calc-f{grid-template-columns:1fr 1fr}
+  .calc-f .seg{grid-column:1/-1;justify-self:start}
+  .cart-label{display:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none !important}}
 </style>
 </head>
 <body>
-<div role="note" style="position:relative;z-index:60;background:#14241A;color:#ffffff;font-family:'Nunito Sans',system-ui,sans-serif;font-size:14px;line-height:1.4;padding:10px 16px;text-align:center;">
-  <strong style="background:#FFD21F;color:#14241A;padding:2px 8px;border-radius:6px;margin-right:8px;">SITE DEMONSTRATIVO</strong>
-  Esta é uma <strong>proposta de site</strong> criada por Leandro Araújo para a Agropet Pets. Não é o site oficial da loja: preços, produtos e imagens são ilustrativos.
+
+<div class="demo" role="note"><b>SITE DEMONSTRATIVO</b>Proposta de Leandro Araújo para a Agropet Pets. Não é o site oficial: preços e imagens são ilustrativos.</div>
+
+<header class="hdr">
+  <div class="wrap">
+    <div class="hdr-in">
+      <a class="logo" href="#topo" aria-label="Agropet Pets, início">
+        <span class="logo-badge" aria-hidden="true"><span>Agropet</span><span>PETS</span></span>
+        <span class="logo-name">Agropet <span>Pets</span></span>
+      </a>
+      <div class="search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5B6B61" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <label class="sr" for="busca">Buscar produtos</label>
+        <input id="busca" type="search" placeholder="Buscar ração, petisco, remédio…" data-search>
+      </div>
+      <nav class="nav" aria-label="Seções">
+        <a href="#ofertas">Ofertas</a>
+        <a href="#servicos">Banho e entrega</a>
+        <a href="#lojas">Lojas</a>
+      </nav>
+      <button class="btn btn-primary cart-btn" data-action="openCart" aria-label="Abrir pedido">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"/><circle cx="10" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/></svg>
+        <span class="cart-label">Meu pedido</span>
+        <span class="count" data-bind="count">0</span>
+      </button>
+    </div>
+    <div class="hdr-search-m">
+      <div class="search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5B6B61" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+        <label class="sr" for="busca-m">Buscar produtos</label>
+        <input id="busca-m" type="search" placeholder="Buscar ração, petisco, remédio…" data-search>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="topo" class="hero">
+    <div class="wrap hero-in">
+      <div>
+        <span class="status"><i></i><span data-bind="openLabel">Aberto agora</span></span>
+        <h1>Acabou a ração?<br><span>A gente leva até você.</span></h1>
+        <p>Monte o pedido aqui e envie pelo WhatsApp. A loja confirma a entrega no seu bairro antes de você pagar.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-yellow" href="#ofertas">Ver ofertas</a>
+          <a class="link" href="#" data-wa="waHello">ou fale com um atendente →</a>
+        </div>
+      </div>
+      <div class="hero-img"><img src="img/ai-hero-dog.jpg" alt="Cachorro feliz pulando" width="550" height="550"></div>
+    </div>
+  </section>
+
+  <section class="perks" aria-label="Vantagens">
+    <ul class="wrap">
+      <li><span class="perk-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg></span><span><b>Entrega rápida</b><span>Taguatinga Sul, Areal e região</span></span></li>
+      <li><span class="perk-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg></span><span><b>Paga na entrega</b><span>Pix, cartão ou dinheiro</span></span></li>
+      <li><span class="perk-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg></span><span><b>Nota 5,0</b><span>22 avaliações no Google</span></span></li>
+      <li><span class="perk-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><span><b>Duas lojas</b><span>Taguatinga Sul e Vereda da Cruz</span></span></li>
+    </ul>
+  </section>
+
+  <section id="ofertas" class="sec" tabindex="-1">
+    <div class="wrap">
+      <div class="sec-h">
+        <div>
+          <h2>Ofertas da semana <span data-bind="catTitle" style="color:var(--green)"></span></h2>
+          <p>Preços do encarte da loja. A confirmação vem no WhatsApp.</p>
+        </div>
+      </div>
+      <div class="chips" id="list-cats" role="group" aria-label="Filtrar por categoria"></div>
+      <div class="grid" id="list-products"></div>
+      <div class="empty is-hidden" data-if="noResults">Nada encontrado. <a class="link" href="#" data-wa="waHello">Pergunte no WhatsApp</a> que a loja verifica.</div>
+      <p class="grid-foot">Não achou o que procura? <a class="link" href="#" data-wa="waPhoto">Mande a foto do produto no WhatsApp</a></p>
+    </div>
+  </section>
+
+  <section id="encarte" class="wrap" aria-label="Encarte da semana">
+    <div class="panel flyer">
+      <img src="img/ig-flyer.jpg" alt="Encarte de ofertas da Agropet Pets" width="88" height="120" loading="lazy">
+      <div>
+        <h2 style="font-size:24px">Viu algo no encarte?</h2>
+        <p>Mande a foto do encarte no WhatsApp e diga o que quer. A gente monta o pedido.</p>
+      </div>
+      <a class="btn btn-primary" href="#" data-wa="waFlyer">Pedir pelo encarte</a>
+    </div>
+  </section>
+
+  <section id="servicos" class="sec">
+    <div class="wrap two">
+      <article class="panel svc">
+        <div class="svc-img"><img src="img/ai-bath.jpg" alt="Cachorro tomando banho com espuma" loading="lazy" width="550" height="550"></div>
+        <div class="svc-body">
+          <h2 style="font-size:26px">Banho e tosa</h2>
+          <p>Com hora marcada. Seu pet volta cheiroso, macio e feliz.</p>
+          <a class="btn btn-primary" href="#" data-wa="waBath">Agendar horário</a>
+        </div>
+      </article>
+      <article class="panel svc">
+        <div class="svc-img"><img src="img/ai-delivery.jpg" alt="Entregador levando um saco de ração até a porta" loading="lazy" width="549" height="410"></div>
+        <div class="svc-body">
+          <h2 style="font-size:26px">Entrega em casa</h2>
+          <p>Ração pesada? Deixa com a gente.</p>
+          <ol class="steps">
+            <li><b>1</b>Escolha os produtos aqui no site</li>
+            <li><b>2</b>Envie o pedido pelo WhatsApp</li>
+            <li><b>3</b>A loja confirma a taxa e entrega</li>
+          </ol>
+          <a class="btn btn-outline" href="#" data-wa="waArea">Vocês entregam no meu bairro?</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="lembrete" class="wrap" aria-label="Lembrete de ração">
+    <div class="panel calc">
+      <div>
+        <h2>Nunca fique sem ração</h2>
+        <p>Veja quanto dura o pacote e receba um lembrete antes de acabar.</p>
+      </div>
+      <div class="calc-f">
+        <div class="seg" role="group" aria-label="Tipo de pet"><button type="button" data-pet="dog" aria-pressed="true">Cão</button><button type="button" data-pet="cat" aria-pressed="false">Gato</button></div>
+        <label>Peso (kg)<input id="cKg" type="number" inputmode="decimal" min="1" max="80" step="0.5" value="10"></label>
+        <label>Pacote<select id="cBag"><option value="1">1 kg</option><option value="2.5">2,5 kg</option><option value="3">3 kg</option><option value="10">10 kg</option><option value="15" selected>15 kg</option><option value="20">20 kg</option></select></label>
+      </div>
+      <div class="calc-out" aria-live="polite">
+        <strong>Dura cerca de <span id="cDays">--</span> dias</strong>
+        <a id="cRemind" class="btn btn-primary btn-sm" href="#" target="_blank" rel="noopener">Me avise no WhatsApp</a>
+      </div>
+    </div>
+    <p style="margin:8px 0 0;font-size:12px;color:var(--muted)">Estimativa para pet adulto. Siga a tabela da embalagem e a orientação do veterinário.</p>
+  </section>
+
+  <section id="avaliacoes" class="sec">
+    <div class="wrap">
+      <div class="sec-h"><div><h2>Quem compra, recomenda</h2><p><span class="stars" aria-hidden="true">★★★★★</span> 5,0 no Google · 22 avaliações</p></div></div>
+      <div class="reviews">
+        <figure class="rev"><blockquote>“A melhor loja de Brasília em ração, produtos e medicamentos pet.”</blockquote><figcaption>Cliente no Google</figcaption></figure>
+        <figure class="rev"><blockquote>“Ótimo atendimento, todos super prestativos e entregas pontuais.”</blockquote><figcaption>Cliente no Google</figcaption></figure>
+        <figure class="rev"><blockquote>“Compro tudo lá: vacinas, ração, petiscos.”</blockquote><figcaption>Cliente no Google</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="lojas" class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-h"><h2>Nossas lojas</h2></div>
+      <div class="two">
+        <div class="store">
+          <span class="store-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+          <div>
+            <h3>Taguatinga Sul</h3>
+            <p>QSE 2, Lote 1, Loja 5 · Av. Boca da Mata, perto do Santa Lúcia<br>Das 9h às 20h</p>
+            <a class="btn btn-outline btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=Agropet+Pets+QSE+2+Taguatinga+Sul" target="_blank" rel="noopener">Como chegar</a>
+          </div>
+        </div>
+        <div class="store">
+          <span class="store-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+          <div>
+            <h3>Vereda da Cruz <span class="badge-new">NOVA</span></h3>
+            <p>CHC 491, Lote 1B · Av. Vereda da Cruz, Águas Claras<br>Das 8h30 às 19h</p>
+            <a class="btn btn-outline btn-sm" href="https://www.google.com/maps/search/?api=1&amp;query=Agropet+Pets+Vereda+da+Cruz" target="_blank" rel="noopener">Como chegar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap ftr-in">
+    <div style="max-width:360px">
+      <span class="logo-name">Agropet <span>Pets</span></span>
+      <p style="margin:8px 0 0">Rações, farmácia veterinária, banho e tosa, aves, aquarismo e acessórios.</p>
+    </div>
+    <div>
+      <strong style="color:#fff">Fale com a gente</strong><br>
+      <a href="#" data-wa="waHello">WhatsApp (61) 99902-2443</a><br>
+      <a href="https://www.instagram.com/agropet.pets/" target="_blank" rel="noopener">Instagram @agropet.pets</a>
+    </div>
+    <div style="font-size:13px">
+      Agropet Pets LTDA · CNPJ 39.422.801/0001-80<br>
+      <strong style="color:var(--yellow)">Site demonstrativo</strong>: proposta de Leandro Araújo.<br>Não é o site oficial da loja.
+    </div>
+  </div>
+</footer>
+
+<div class="fab">
+  <div data-if="hasItems" class="is-hidden">
+    <button class="btn btn-primary cartbar" data-action="openCart">Ver pedido · <span data-bind="totalLabel"></span></button>
+  </div>
+  <a class="fab-wa" href="#" data-wa="waHello" aria-label="Chamar no WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.2A8.5 8.5 0 1 1 20 11.5z"/><path d="M9 9.5c.3 1.8 1.7 3.6 3.6 4.6l1.2-1 1.7.8-.4 1.6c-3.2.2-6.4-2.8-6.6-6l1.6-.4.7 1.7z"/></svg>
+  </a>
 </div>
 
+<div data-if="showToast" class="is-hidden">
+  <div class="toast" role="status"><span data-bind="toast"></span><button class="btn btn-yellow btn-sm" data-action="openCart">Ver pedido</button></div>
+</div>
 
-<div style="font-family: 'Nunito Sans', system-ui, sans-serif; color: #14241A; background: #ffffff; min-height: 100vh; position: relative; overflow-x: hidden;">
-
-  <!-- Faixa animada -->
-  <div class="marquee-wrap" style="background: #D7191F; color: #ffffff; overflow: hidden; font-weight: 800; font-size: 14px;">
-    <div class="marquee">
-      <div id="list-ticker" style="display:contents"></div>
-    </div>
-  </div>
-
-  <!-- Cabeçalho -->
-  <header class="site-header" style="z-index: 20; background: #ffffff; box-shadow: 0 2px 14px rgba(20,36,26,.08);">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 12px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px;">
-      <button type="button" id="menuBtn" class="menu-btn" data-action="openMenu" aria-label="Abrir menu" aria-controls="menuPanel" aria-expanded="false">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
-        <span class="hdr-label">Menu</span>
-      </button>
-      <a href="#topo" aria-label="Agropet Pets — início" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
-        <div class="wiggle" style="width: 62px; height: 62px; border-radius: 999px; background: #0F7A35; border: 4px solid #FFD21F; display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1;">
-          <span class="disp" style="color: #ffffff; font-weight: 700; font-size: 12px;">Agropet</span>
-          <span class="disp" style="color: #D7191F; font-weight: 800; font-size: 19px; -webkit-text-stroke: 1px #ffffff;">PETS</span>
-        </div>
-        <div style="display: flex; flex-direction: column; line-height: 1.05;">
-          <span class="disp" style="font-weight: 800; font-size: 25px; color: #0F7A35;">Agropet <span style="color: #D7191F;">Pets</span></span>
-          <span class="hdr-tag" style="font-size: 13px; font-weight: 700; color: #4B5A50;">Tudo que o seu pet precisa está aqui</span>
-        </div>
-      </a>
-      <div class="hdr-search" style="flex: 1 1 300px; position: relative;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4B5A50" stroke-width="2.2" stroke-linecap="round" style="position: absolute; left: 16px; top: 14px;"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
-        <label for="busca" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Buscar produtos</label>
-        <input id="busca" class="search" type="search" placeholder="O que seu pet está precisando hoje?" data-change="onSearch">
+<div data-if="open" class="is-hidden">
+  <div class="drawer">
+    <button class="drawer-bg" data-action="closeCart" aria-label="Fechar pedido" tabindex="-1"></button>
+    <aside aria-label="Seu pedido" role="dialog" aria-modal="true">
+      <div class="drawer-h">
+        <h2>Seu pedido</h2>
+        <button class="x" id="cartClose" data-action="closeCart" aria-label="Fechar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
       </div>
-      <div class="hdr-actions" style="display: flex; align-items: center; gap: 10px;">
-        <a href="#lojas" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 12px; color: #14241A; text-decoration: none; font-weight: 800; font-size: 14px;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0F7A35" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg>
-          <span class="hdr-label">Nossas lojas</span>
-        </a>
-        <button class="btn btn-green" data-action="openCart" aria-label="Abrir carrinho">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"></path><circle cx="10" cy="20" r="1.4"></circle><circle cx="17" cy="20" r="1.4"></circle></svg>
-          <span class="hdr-label">Meu pedido</span>
-          <span id="cartCount" style="min-width: 26px; height: 26px; padding: 0 6px; border-radius: 999px; background: #FFD21F; color: #14241A; font-size: 14px; display: inline-flex; align-items: center; justify-content: center;"><span data-bind="count"></span></span>
-        </button>
-      </div>
-    </div>
-    <nav aria-label="Categorias" style="background: #0F7A35;">
-      <div style="max-width: 1240px; margin: 0 auto; padding: 6px 24px; display: flex; flex-wrap: wrap; gap: 4px; justify-content: space-between;">
-        <div id="list-cats" style="display:contents"></div>
-      </div>
-    </nav>
-  </header>
-
-  <!-- Barra flutuante: aparece quando o cabeçalho sai da tela -->
-  <div id="floatBar" class="float-bar" aria-hidden="true" inert>
-    <div class="float-inner">
-      <button type="button" class="menu-btn" data-action="openMenu" aria-label="Abrir menu" aria-controls="menuPanel" aria-expanded="false">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
-        <span class="fb-label">Menu</span>
-      </button>
-      <a href="#topo" class="fb-brand disp" aria-label="Agropet Pets — voltar ao início">Agropet <span>Pets</span></a>
-      <nav class="fb-links" aria-label="Atalhos">
-        <a class="fb-link" href="#ofertas">Produtos</a>
-        <a class="fb-link" href="#entrega">Entrega</a>
-        <a class="fb-link" href="#banho">Banho e tosa</a>
-        <a class="fb-link" href="#lojas">Lojas</a>
-      </nav>
-      <button class="btn btn-green fb-cart" data-action="openCart" aria-label="Abrir carrinho">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"></path><circle cx="10" cy="20" r="1.4"></circle><circle cx="17" cy="20" r="1.4"></circle></svg>
-        <span class="fb-label">Meu pedido</span>
-        <span class="fb-count"><span data-bind="count"></span></span>
-      </button>
-    </div>
-  </div>
-
-  <!-- Hero -->
-  <section id="topo" class="anchor" style="background: #0F7A35; color: #ffffff; overflow: hidden; position: relative;">
-    <svg class="paw" style="left: 6%; bottom: 0; animation-delay: 0s;" width="46" height="46" viewBox="0 0 24 24" fill="#FFD21F"><circle cx="6" cy="9" r="2.4"></circle><circle cx="10.5" cy="5.5" r="2.4"></circle><circle cx="15" cy="6" r="2.4"></circle><circle cx="18.5" cy="10" r="2.4"></circle><path d="M12 11c3 0 6 4 6 6.5 0 2-1.6 2.5-3 2.5-1.2 0-2-.6-3-.6s-1.8.6-3 .6c-1.4 0-3-.5-3-2.5C6 15 9 11 12 11z"></path></svg>
-    <svg class="paw" style="left: 38%; bottom: 0; animation-delay: 2.3s;" width="34" height="34" viewBox="0 0 24 24" fill="#ffffff"><circle cx="6" cy="9" r="2.4"></circle><circle cx="10.5" cy="5.5" r="2.4"></circle><circle cx="15" cy="6" r="2.4"></circle><circle cx="18.5" cy="10" r="2.4"></circle><path d="M12 11c3 0 6 4 6 6.5 0 2-1.6 2.5-3 2.5-1.2 0-2-.6-3-.6s-1.8.6-3 .6c-1.4 0-3-.5-3-2.5C6 15 9 11 12 11z"></path></svg>
-    <svg class="paw" style="left: 62%; bottom: 0; animation-delay: 4.1s;" width="40" height="40" viewBox="0 0 24 24" fill="#FFD21F"><circle cx="6" cy="9" r="2.4"></circle><circle cx="10.5" cy="5.5" r="2.4"></circle><circle cx="15" cy="6" r="2.4"></circle><circle cx="18.5" cy="10" r="2.4"></circle><path d="M12 11c3 0 6 4 6 6.5 0 2-1.6 2.5-3 2.5-1.2 0-2-.6-3-.6s-1.8.6-3 .6c-1.4 0-3-.5-3-2.5C6 15 9 11 12 11z"></path></svg>
-    <svg class="paw" style="left: 88%; bottom: 0; animation-delay: 5.6s;" width="30" height="30" viewBox="0 0 24 24" fill="#ffffff"><circle cx="6" cy="9" r="2.4"></circle><circle cx="10.5" cy="5.5" r="2.4"></circle><circle cx="15" cy="6" r="2.4"></circle><circle cx="18.5" cy="10" r="2.4"></circle><path d="M12 11c3 0 6 4 6 6.5 0 2-1.6 2.5-3 2.5-1.2 0-2-.6-3-.6s-1.8.6-3 .6c-1.4 0-3-.5-3-2.5C6 15 9 11 12 11z"></path></svg>
-
-    <div style="max-width: 1240px; margin: 0 auto; padding: 56px 24px 76px; display: flex; flex-wrap: wrap; align-items: center; gap: 40px; position: relative;">
-      <div style="flex: 1 1 500px; min-width: 0; display: flex; flex-direction: column; gap: 22px;">
-        <span class="pop" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; background: #FFD21F; color: #14241A; font-weight: 900; font-size: 14px; padding: 8px 16px; border-radius: 999px;">
-          <span class="blink" style="width: 9px; height: 9px; border-radius: 999px; background: #D7191F;"></span>
-          <span data-bind="openLabel"></span>
-        </span>
-        <h1 class="disp pop-2" style="margin: 0; font-size: clamp(44px, 6.4vw, 80px); line-height: 0.95; font-weight: 800;">Acabou a ração?<br><span style="color: #FFD21F;">Não deixe seu melhor amigo esperando.</span></h1>
-        <p class="pop-3" style="margin: 0; font-size: 19px; line-height: 1.5; max-width: 560px; color: #E6F3EA;">Monte seu pedido em 1 minuto, mande pelo WhatsApp e a gente leva até a sua porta. Rações, petiscos, remédios e acessórios com cuidado, qualidade e amor.</p>
-        <div class="pop-4" style="display: flex; flex-wrap: wrap; gap: 14px;">
-          <a class="btn btn-yellow pulse" href="#ofertas" style="min-height: 56px; font-size: 17px;">Quero fazer meu pedido</a>
-          <a class="btn btn-ghost" href="#" data-wa="waHello" target="_blank" rel="noopener" style="min-height: 56px;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.2A8.5 8.5 0 1 1 20 11.5z"></path></svg>
-            Falar com um atendente
-          </a>
+      <div class="drawer-b">
+        <div data-if="empty" class="is-hidden" style="text-align:center;padding:32px 8px;color:var(--muted)">
+          <p style="margin:0 0 16px">Seu pedido está vazio.</p>
+          <button class="btn btn-primary" data-action="closeCart">Escolher produtos</button>
         </div>
-        <div class="pop-4" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; font-size: 14px; font-weight: 700; color: #E6F3EA;">
-          <span style="display: inline-flex; align-items: center; gap: 6px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="#FFD21F"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"></path></svg>Nota 5,0 no Google</span>
-          <span>Entrega rápida em Taguatinga Sul e região</span>
-          <span>Pix ou cartão na entrega</span>
+        <div id="list-lines" style="display:flex;flex-direction:column;gap:12px"></div>
+        <div data-if="hasItems" class="is-hidden" style="display:flex;flex-direction:column;gap:12px">
+          <div class="note">Diga seu bairro: a loja confirma no WhatsApp se entrega aí e qual é a taxa.</div>
+          <label class="field">Seu nome<input type="text" data-field="name" autocomplete="name"></label>
+          <label class="field">Bairro<select data-field="bairro"><option value="">Selecione</option><option>Taguatinga Sul</option><option>Taguatinga Norte</option><option>Águas Claras</option><option>Areal</option><option>Arniqueiras</option><option>Vereda da Cruz</option><option>Park Way</option><option>Outra região</option></select></label>
+          <label class="field">Endereço<input type="text" data-field="addr" placeholder="Quadra, conjunto, casa ou apto" autocomplete="street-address"></label>
+          <label class="field">Pagamento<select data-field="pay"><option>Pix</option><option>Cartão na entrega</option><option>Dinheiro</option></select></label>
         </div>
       </div>
-
-      <div class="hero-visual">
-        <div class="floaty hero-ring">
-          <span class="am-wrap is-paused"><video class="am-video" data-am-src="https://videos.pexels.com/video-files/5469096/5469096-sd_960_540_24fps.mp4" poster="img/ai-hero-dog.jpg" muted loop playsinline preload="none" aria-label="Cachorros correndo e brincando"></video><span class="am-play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
-        </div>
-        <div class="floaty-2 hero-cat">
-          <img src="img/ai-cat.jpg" alt="Gato curioso" style="width: 100%; height: 100%; object-fit: cover; display: block;">
-        </div>
-        <div class="hero-offer shine">
-          <span style="font-size: 12px; font-weight: 900; letter-spacing: .06em; color: #FFE88A;">OFERTA DO ENCARTE</span>
-          <span style="font-weight: 800; font-size: 15px; line-height: 1.2;">Premier Nattu 2,5kg</span>
-          <span class="disp" style="font-weight: 800; font-size: 36px; line-height: 1;">R$ 84,99</span>
-          <button class="btn btn-yellow" style="min-height: 44px; font-size: 14px; margin-top: 6px;" data-action="offerAdd">Quero essa oferta</button>
+      <div data-if="hasItems" class="is-hidden">
+        <div class="drawer-f">
+          <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-weight:700;color:var(--muted)">Total dos produtos</span><span class="price" data-bind="totalLabel"></span></div>
+          <span style="font-size:12px;color:var(--red);font-weight:700">Site demonstrativo: o envio abre o WhatsApp real da loja.</span>
+          <a class="btn btn-primary" style="min-height:54px" href="#" data-wa-order target="_blank" rel="noopener">Enviar pedido pelo WhatsApp</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Benefícios -->
-  <section style="background: #FFD21F;">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 22px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 16px;">
-      <div style="display: flex; gap: 12px; align-items: center;">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#14241A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"></path><circle cx="7" cy="17.5" r="1.6"></circle><circle cx="17" cy="17.5" r="1.6"></circle></svg>
-        <div style="display: flex; flex-direction: column;"><strong>Entrega rápida</strong><span style="font-size: 13px;">Taguatinga Sul, Águas Claras, Areal e região</span></div>
-      </div>
-      <div style="display: flex; gap: 12px; align-items: center;">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#14241A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.2A8.5 8.5 0 1 1 20 11.5z"></path></svg>
-        <div style="display: flex; flex-direction: column;"><strong>Pedido em 1 minuto</strong><span style="font-size: 13px;">Monte aqui, finalize no WhatsApp</span></div>
-      </div>
-      <div style="display: flex; gap: 12px; align-items: center;">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#14241A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><rect x="3" y="6" width="18" height="12" rx="2"></rect><path d="M3 10h18"></path></svg>
-        <div style="display: flex; flex-direction: column;"><strong>Pague como preferir</strong><span style="font-size: 13px;">Pix, cartão ou dinheiro na entrega</span></div>
-      </div>
-      <div style="display: flex; gap: 12px; align-items: center;">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#14241A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><path d="M12 21s-7-4.4-9-9.2C1.6 8.4 3.6 5 7 5c2 0 3.4 1.2 5 3 1.6-1.8 3-3 5-3 3.4 0 5.4 3.4 4 6.8-2 4.8-9 9.2-9 9.2z"></path></svg>
-        <div style="display: flex; flex-direction: column;"><strong>Duas lojas físicas</strong><span style="font-size: 13px;">Taguatinga Sul e Vereda da Cruz</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Categorias -->
-  <section class="reveal" style="max-width: 1240px; margin: 0 auto; padding: 64px 24px 16px; display: flex; flex-direction: column; gap: 28px; align-items: center;">
-    <div style="text-align: center; display: flex; flex-direction: column; gap: 6px;">
-      <span style="color: #D7191F; font-weight: 900; font-size: 14px; text-transform: uppercase; letter-spacing: .08em;">Escolha por quem você cuida</span>
-      <h2 class="disp" style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1; color: #0F7A35; font-weight: 800;">Pra qual amigo vai ser hoje?</h2>
-    </div>
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 22px 28px;">
-      <div id="list-catCircles" style="display:contents"></div>
-    </div>
-  </section>
-
-  <!-- Ofertas / catálogo -->
-  <section id="ofertas" class="anchor" tabindex="-1" style="max-width: 1240px; margin: 0 auto; padding: 40px 24px 40px; display: flex; flex-direction: column; gap: 26px;">
-    <div style="display: flex; flex-direction: column; gap: 10px;">
-      <nav class="crumbs" aria-label="Você está em">
-        <ol id="list-crumbs"></ol>
-      </nav>
-    <div class="reveal" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px;">
-      <div style="display: flex; flex-direction: column; gap: 6px;">
-        <span style="color: #D7191F; font-weight: 900; font-size: 14px; text-transform: uppercase; letter-spacing: .08em;">Preços do encarte da loja</span>
-        <h2 class="disp" style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1; color: #0F7A35; font-weight: 800;">Vamos aproveitar! <span data-bind="catTitle"></span></h2>
-      </div>
-      <div style="display: flex; align-items: center; gap: 10px; background: #FFF4F4; color: #B5121A; border-radius: 999px; padding: 10px 16px; font-weight: 800; font-size: 14px;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 1.5M9 2h6"></path></svg>
-        <span data-bind="closeLabel"></span>
-      </div>
-    </div>
-    </div>
-
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(232px, 100%), 1fr)); gap: 22px;">
-      <div id="list-products" style="display:contents"></div>
-    </div>
-
-    <div data-if="noResults" class="is-hidden" style="display:contents">
-      <div style="padding: 32px; border-radius: 22px; background: #F3F6F4; text-align: center; display: flex; flex-direction: column; gap: 12px; align-items: center;">
-        <strong style="font-size: 19px;">Não achou? A loja tem muito mais.</strong>
-        <span style="color: #4B5A50;">Manda uma foto do que seu pet usa e a gente separa pra você.</span>
-        <a class="btn btn-green" href="#" data-wa="waHello" target="_blank" rel="noopener">Mandar foto no WhatsApp</a>
-      </div>
-    </div>
-    <span style="font-size: 13px; color: #4B5A50; text-align: center;">Preços tirados do encarte e da fachada da loja. Podem mudar sem aviso — a confirmação vem no WhatsApp.</span>
-  </section>
-  <!-- AGRO-MOTION: vitrine de vídeos -->
-  <section id="movimento" style="padding:56px 0 24px;display:flex;flex-direction:column;gap:18px;background:linear-gradient(180deg,#ffffff 0%,#F1FFF5 100%)"><div style="max-width:1240px;width:100%;margin:0 auto;padding:0 24px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px"><div style="display:flex;flex-direction:column;gap:6px"><span style="font-weight:900;font-size:14px;letter-spacing:.06em;color:#D7191F">AGROPET EM MOVIMENTO</span><h2 class="disp" style="margin:0;font-size:clamp(30px,4vw,44px);color:#0F7A35;font-weight:800;line-height:1">Bicho feliz é bicho bem cuidado</h2><span style="font-size:16px;color:#3B4A41;max-width:560px">Toque num vídeo para tocar ou pausar. Gostou? Peça direto pelo botão.</span></div><a class="btn btn-red" href="#ofertas" style="min-height:48px">Montar meu pedido</a></div><div class="am-reels" role="list"><figure class="am-feat" style="margin:0"><iframe src="https://share.descript.com/embed/gtGLspU5y1n" title="Reel Agropet: Acabou a ração?" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe><figcaption class="am-feat-cap"><b>Reel pronto para o Instagram</b><span>16 segundos, editado no Descript. Toque no play (com som).</span></figcaption></figure><figure class="am-reel is-paused" style="margin:0"><span class="am-bar"></span><span class="am-play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="am-live"><i></i>CÃES</span><video class="am-video" data-am-src="https://videos.pexels.com/video-files/8434087/8434087-sd_506_960_25fps.mp4" poster="https://images.pexels.com/videos/8434087/animal-animals-baby-blur-8434087.jpeg?auto=compress&cs=tinysrgb&w=400" muted loop playsinline preload="none" aria-label="Hora da ração"></video><figcaption class="am-cap"><b>Hora da ração</b><span>Premier, Golden, Fórmula Natural e Special Dog</span><a href="#ofertas">Ver rações</a></figcaption></figure><figure class="am-reel is-paused" style="margin:0"><span class="am-bar"></span><span class="am-play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="am-live"><i></i>BANHO E TOSA</span><video class="am-video" data-am-src="https://videos.pexels.com/video-files/10914654/10914654-sd_540_960_30fps.mp4" poster="https://images.pexels.com/videos/10914654/pexels-photo-10914654.jpeg?auto=compress&cs=tinysrgb&w=400" muted loop playsinline preload="none" aria-label="Banho e tosa"></video><figcaption class="am-cap"><b>Banho e tosa</b><span>Volta cheiroso, macio e feliz</span><a href="https://wa.me/5561999022443?text=Ol%C3%A1%2C%20Agropet%20Pets%21%20Vi%20o%20v%C3%ADdeo%20no%20site%20e%20quero%20agendar%20banho%20e%20tosa." target="_blank" rel="noopener">Agendar banho</a></figcaption></figure><figure class="am-reel is-paused" style="margin:0"><span class="am-bar"></span><span class="am-play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="am-live"><i></i>GATOS</span><video class="am-video" data-am-src="https://videos.pexels.com/video-files/13668983/13668983-sd_540_960_30fps.mp4" poster="https://images.pexels.com/videos/13668983/pexels-photo-13668983.jpeg?auto=compress&cs=tinysrgb&w=400" muted loop playsinline preload="none" aria-label="Gatos felizes"></video><figcaption class="am-cap"><b>Gatos felizes</b><span>Areia, petiscos, arranhadores e brinquedos</span><a href="#ofertas">Ver para gatos</a></figcaption></figure><figure class="am-reel is-paused" style="margin:0"><span class="am-bar"></span><span class="am-play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="am-live"><i></i>PÁSSAROS</span><video class="am-video" data-am-src="https://videos.pexels.com/video-files/15220045/15220045-sd_540_960_30fps.mp4" poster="https://images.pexels.com/videos/15220045/animal-bird-cockatiel-pet-15220045.jpeg?auto=compress&cs=tinysrgb&w=400" muted loop playsinline preload="none" aria-label="Calopsitas"></video><figcaption class="am-cap"><b>Calopsitas</b><span>Aves dóceis esperando por você</span><a href="https://wa.me/5561999022443?text=Ol%C3%A1%2C%20Agropet%20Pets%21%20Vi%20o%20v%C3%ADdeo%20no%20site%20e%20quero%20conhecer%20as%20calopsitas." target="_blank" rel="noopener">Quero conhecer</a></figcaption></figure><figure class="am-reel is-paused" style="margin:0"><span class="am-bar"></span><span class="am-play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="am-live"><i></i>PEIXES</span><video class="am-video" data-am-src="https://videos.pexels.com/video-files/5302702/5302702-sd_540_960_30fps.mp4" poster="https://images.pexels.com/videos/5302702/pexels-photo-5302702.jpeg?auto=compress&cs=tinysrgb&w=400" muted loop playsinline preload="none" aria-label="Aquarismo"></video><figcaption class="am-cap"><b>Aquarismo</b><span>Peixes ornamentais, aquários e ração</span><a href="https://wa.me/5561999022443?text=Ol%C3%A1%2C%20Agropet%20Pets%21%20Vi%20o%20v%C3%ADdeo%20no%20site%20e%20quero%20saber%20sobre%20peixes%20e%20aqu%C3%A1rios." target="_blank" rel="noopener">Perguntar</a></figcaption></figure><figure class="am-reel is-paused" style="margin:0"><span class="am-bar"></span><span class="am-play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span><span class="am-live"><i></i>ROEDORES</span><video class="am-video" data-am-src="https://videos.pexels.com/video-files/18816134/18816134-sd_540_960_30fps.mp4" poster="https://images.pexels.com/videos/18816134/pexels-photo-18816134.jpeg?auto=compress&cs=tinysrgb&w=400" muted loop playsinline preload="none" aria-label="Roedores"></video><figcaption class="am-cap"><b>Roedores</b><span>Ração, casinhas e serragem</span><a href="https://wa.me/5561999022443?text=Ol%C3%A1%2C%20Agropet%20Pets%21%20Vi%20o%20v%C3%ADdeo%20no%20site%20e%20quero%20saber%20sobre%20produtos%20para%20roedores." target="_blank" rel="noopener">Perguntar</a></figcaption></figure><div class="am-ugc"><b>Seu pet pode aparecer aqui!</b><span style="font-size:14px;line-height:1.4">Mande um vídeo curtinho do seu pet com a ração ou o brinquedo da Agropet. Toda semana o escolhido ganha um mimo na próxima compra.</span><a class="btn btn-green" style="min-height:44px;font-size:14px" target="_blank" rel="noopener" href="https://wa.me/5561999022443?text=Ol%C3%A1%2C%20Agropet%20Pets%21%20Quero%20mandar%20um%20v%C3%ADdeo%20do%20meu%20pet%20para%20o%20site.%20Ele%20se%20chama%3A%20">Mandar vídeo</a></div></div><p class="am-note">Vídeos ilustrativos de banco de imagens gratuito (Pexels). Na versão final, entram vídeos da própria loja e dos clientes.</p></section>
-
-
-  <!-- Encarte da semana -->
-  <section id="encarte" class="anchor" style="background: #D7191F; color: #ffffff; overflow: hidden;">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 64px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 44px;">
-      <div class="reveal" style="flex: 1 1 300px; min-width: 0; display: flex; justify-content: center;">
-        <img class="wiggle" src="img/ig-flyer.jpg" alt="Encarte de ofertas da Agropet Pets" style="width: min(330px, 100%); border-radius: 18px; border: 6px solid #ffffff; box-shadow: 0 24px 50px rgba(0,0,0,.35);">
-      </div>
-      <div class="reveal" style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 18px;">
-        <span style="font-weight: 900; font-size: 14px; letter-spacing: .08em; color: #FFE88A;">ENCARTE DA SEMANA</span>
-        <h2 class="disp" style="margin: 0; font-size: clamp(34px, 4.6vw, 56px); line-height: 1; font-weight: 800;">Cuidado, qualidade e amor para o seu melhor amigo!</h2>
-        <p style="margin: 0; font-size: 18px; line-height: 1.5; color: #FFE4E4;">Viu alguma oferta no encarte? Não precisa digitar nada: mande a foto do encarte no WhatsApp, diga o que quer e a gente monta seu pedido.</p>
-        <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-          <a class="btn btn-yellow pulse" href="#" data-wa="waFlyer" target="_blank" rel="noopener">Quero pedir do encarte</a>
-          <a class="btn btn-ghost" href="#ofertas">Ver ofertas no site</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Marcas parceiras -->
-  <section id="marcas" class="anchor" style="padding: 64px 0 28px; display: flex; flex-direction: column; gap: 26px;">
-    <div class="reveal" style="max-width: 1240px; width: 100%; margin: 0 auto; padding: 0 24px; display: flex; flex-direction: column; gap: 6px; text-align: center;">
-      <span style="color: #D7191F; font-weight: 900; font-size: 14px; text-transform: uppercase; letter-spacing: .08em;">Marcas parceiras</span>
-      <h2 class="disp" style="margin: 0; font-size: clamp(32px, 4vw, 48px); line-height: 1; color: #0F7A35; font-weight: 800;">As marcas que você confia, no preço que você procura</h2>
-    </div>
-    <div class="marquee-wrap" style="overflow: hidden; border-top: 1px solid #E7ECE8; border-bottom: 1px solid #E7ECE8; background: #FBFCFA;">
-      <div class="marquee-slow">
-        <div id="list-brandsLoop" style="display:contents"></div>
-      </div>
-    </div>
-    <div class="reveal" style="max-width: 1240px; width: 100%; margin: 0 auto; padding: 20px 24px 0;">
-      <div style="background: #0F7A35; color: #ffffff; border-radius: 28px; overflow: hidden; display: flex; flex-wrap: wrap; align-items: stretch;">
-        <div style="flex: 1 1 300px; min-height: 320px; position: relative;">
-          <img src="img/ig-carnaval.jpg" alt="Cachorro com colar de flores no Carnaval da Agropet" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
-        </div>
-        <div style="flex: 1 1 460px; min-width: 0; padding: 40px; display: flex; flex-direction: column; gap: 16px; justify-content: center;">
-          <span style="align-self: flex-start; background: #FFD21F; color: #14241A; font-weight: 900; font-size: 13px; padding: 6px 12px; border-radius: 999px;">PARCERIA OFICIAL</span>
-          <h3 class="disp" style="margin: 0; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.02; font-weight: 800;">Agropet + PremierPet + Cinoplan/Cinotec</h3>
-          <p style="margin: 0; font-size: 17px; line-height: 1.5; color: #E6F3EA;">Junto com a PremierPet e a Cinoplan/Cinotec, a gente garante a qualidade que seu pet merece para brilhar com muita energia e saúde. As linhas Premier e Golden estão sempre na loja.</p>
-          <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-            <a class="btn btn-yellow" href="#ofertas" data-action="showPremier">Ver produtos PremierPet</a>
-            <a class="btn btn-ghost" href="#" data-wa="waBrand" target="_blank" rel="noopener">Perguntar por outra marca</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Entrega -->
-  <section id="entrega" class="anchor" style="max-width: 1240px; margin: 0 auto; padding: 56px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 40px;">
-    <div class="reveal" style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 18px;">
-      <span style="color: #D7191F; font-weight: 900; font-size: 14px; text-transform: uppercase; letter-spacing: .08em;">Areal, tem novidade!</span>
-      <h2 class="disp" style="margin: 0; font-size: clamp(32px, 4vw, 50px); line-height: 1; color: #0F7A35; font-weight: 800;">A entrega mais rápida de Taguatinga Sul, agora na sua casa</h2>
-      <p style="margin: 0; font-size: 18px; line-height: 1.55; color: #33443A;">Ração pesada? Deixa com a gente. Você escolhe, manda pelo WhatsApp e a gente confirma se entrega no seu endereço e quanto fica a taxa — antes de você pagar qualquer coisa.</p>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 12px;">
-        <div style="display: flex; gap: 12px; align-items: center; background: #F3F6F4; border-radius: 16px; padding: 14px;"><span class="disp" style="flex: none; width: 40px; height: 40px; border-radius: 999px; background: #D7191F; color: #ffffff; font-weight: 800; font-size: 20px; display: flex; align-items: center; justify-content: center;">1</span><span style="font-weight: 800;">Escolha os produtos</span></div>
-        <div style="display: flex; gap: 12px; align-items: center; background: #F3F6F4; border-radius: 16px; padding: 14px;"><span class="disp" style="flex: none; width: 40px; height: 40px; border-radius: 999px; background: #D7191F; color: #ffffff; font-weight: 800; font-size: 20px; display: flex; align-items: center; justify-content: center;">2</span><span style="font-weight: 800;">Envie pelo WhatsApp</span></div>
-        <div style="display: flex; gap: 12px; align-items: center; background: #F3F6F4; border-radius: 16px; padding: 14px;"><span class="disp" style="flex: none; width: 40px; height: 40px; border-radius: 999px; background: #D7191F; color: #ffffff; font-weight: 800; font-size: 20px; display: flex; align-items: center; justify-content: center;">3</span><span style="font-weight: 800;">Receba em casa</span></div>
-      </div>
-      <a class="btn btn-red pulse-red" style="align-self: flex-start; min-height: 56px; font-size: 17px;" href="#" data-wa="waArea" target="_blank" rel="noopener">Vocês entregam no meu bairro?</a>
-    </div>
-    <div class="reveal delivery-visual">
-      <img src="img/ig-drone.jpg" alt="Vista aérea da avenida com a localização da loja" style="position: absolute; right: 0; top: 0; width: 56%; height: 360px; object-fit: cover; object-position: center 72%; border-radius: 24px; box-shadow: 0 16px 36px rgba(20,36,26,.18);">
-      <img class="floaty" src="img/ai-delivery.jpg" alt="Entregador entregando um saco de ração" style="position: absolute; left: 0; bottom: 0; width: 68%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 24px; border: 6px solid #ffffff; box-shadow: 0 22px 44px rgba(20,36,26,.25);">
-    </div>
-  </section>
-
-  <!-- Banho e tosa + calopsitas -->
-  <section style="max-width: 1240px; margin: 0 auto; padding: 16px 24px 64px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 22px;">
-    <div id="banho" class="reveal anchor" style="background: #0F7A35; color: #ffffff; border-radius: 28px; overflow: hidden; display: flex; flex-direction: column;">
-      <span class="am-wrap is-paused" style="height:260px"><video class="am-video" data-am-src="https://videos.pexels.com/video-files/6131725/6131725-sd_960_540_25fps.mp4" poster="img/ai-bath.jpg" muted loop playsinline preload="none" aria-label="Cachorro tomando banho" style="height:260px"></video><span class="am-play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></span>
-      <div style="padding: 30px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1;">
-        <span style="font-weight: 900; font-size: 13px; letter-spacing: .08em; color: #FFD21F;">BANHO E TOSA</span>
-        <h3 class="disp" style="margin: 0; font-size: 34px; line-height: 1.02; font-weight: 800;">Vamos que está na hora do banho!</h3>
-        <p style="margin: 0; font-size: 16px; line-height: 1.5; color: #E6F3EA; flex-grow: 1;">Transformando rabos abanando em sorrisos sinceros. Seu pet volta cheiroso, macio e feliz.</p>
-        <a class="btn btn-yellow" style="align-self: flex-start;" href="#" data-wa="waBath" target="_blank" rel="noopener">Agendar o banho agora</a>
-      </div>
-    </div>
-    <div id="calopsitas" class="reveal anchor" style="background: #FFF7D1; border-radius: 28px; overflow: hidden; display: flex; flex-direction: column;">
-      <img src="img/ig-calopsita.jpg" alt="Calopsita no dedo de um cliente na loja" style="width: 100%; height: 260px; object-fit: cover; object-position: 30% 48%; display: block;">
-      <div style="padding: 30px; display: flex; flex-direction: column; gap: 12px; flex-grow: 1;">
-        <span style="font-weight: 900; font-size: 13px; letter-spacing: .08em; color: #D7191F;">NOVO AMIGO</span>
-        <h3 class="disp" style="margin: 0; font-size: 34px; line-height: 1.02; font-weight: 800; color: #0F7A35;">Procurando um novo amigo para alegrar a sua casa?</h3>
-        <p style="margin: 0; font-size: 16px; line-height: 1.5; color: #33443A; flex-grow: 1;">As calopsitas são companheiras, inteligentes e super dóceis. Temos aves lindas esperando por você.</p>
-        <a class="btn btn-green" style="align-self: flex-start;" href="#" data-wa="waBird" target="_blank" rel="noopener">Quero conhecer as calopsitas</a>
-      </div>
-    </div>
-  </section>
-
-    <!-- AGRO-MOTION: calculadora de ração -->
-  <section id="calculadora" class="reveal" style="max-width:1240px;margin:0 auto;padding:0 24px 64px"><div class="am-calc"><div style="display:flex;flex-direction:column;gap:16px"><span style="font-weight:900;font-size:14px;letter-spacing:.06em;color:#D7191F">NUNCA MAIS FIQUE SEM RAÇÃO</span><h2 class="disp" style="margin:0;font-size:clamp(30px,4vw,44px);line-height:1;font-weight:800">Quanto tempo dura o pacote do seu pet?</h2><div class="am-seg" role="group" aria-label="Tipo de pet"><button type="button" data-am-pet="dog" aria-pressed="true">Cachorro</button><button type="button" data-am-pet="cat" aria-pressed="false">Gato</button></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><label>Peso do pet (kg)<input id="amKg" type="number" inputmode="decimal" min="1" max="80" step="0.5" value="10"></label><label>Tamanho do pacote<select id="amBag"><option value="1">1 kg</option><option value="2.5">2,5 kg</option><option value="3">3 kg</option><option value="10">10 kg</option><option value="15" selected>15 kg</option><option value="20">20 kg</option></select></label></div><label>Data da última compra<input id="amDate" type="date"></label></div><div class="am-out" aria-live="polite"><span style="font-weight:800;color:#3B4A41">Esse pacote dura cerca de</span><span class="am-days"><span id="amDays">--</span> dias</span><span id="amEnd" style="font-size:17px;font-weight:800"></span><span style="font-size:13px;color:#5B6B61">Estimativa para pet adulto com atividade normal. Siga sempre a tabela da embalagem e a orientação do veterinário.</span><a id="amRemind" class="btn btn-red" target="_blank" rel="noopener" href="#" style="min-height:54px">Me avise 3 dias antes no WhatsApp</a></div></div></section>
-
-
-  <!-- Avaliações -->
-  <section id="avaliacoes" class="anchor" style="background: #F3F6F4;">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 64px 24px; display: flex; flex-direction: column; gap: 28px;">
-      <div class="reveal" style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px;">
-        <h2 class="disp" style="margin: 0; font-size: clamp(30px, 4vw, 44px); color: #0F7A35; font-weight: 800; line-height: 1;">Quem compra, recomenda</h2>
-        <span style="display: inline-flex; align-items: center; gap: 4px; background: #ffffff; border-radius: 999px; padding: 8px 16px; font-weight: 900;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F2B200"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"></path></svg>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F2B200"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"></path></svg>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F2B200"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"></path></svg>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F2B200"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"></path></svg>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F2B200"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"></path></svg>
-          <span style="margin-left: 6px;">5,0 no Google</span>
-        </span>
-      </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 20px;">
-        <figure class="reveal card" style="margin: 0; padding: 26px; gap: 14px;">
-          <blockquote style="margin: 0; font-size: 18px; line-height: 1.45; font-weight: 800;">“A melhor loja de Brasília em ração, produtos e medicamentos pet está aqui.”</blockquote>
-          <figcaption style="color: #4B5A50; font-size: 14px;">Cliente no Google</figcaption>
-        </figure>
-        <figure class="reveal card" style="margin: 0; padding: 26px; gap: 14px;">
-          <blockquote style="margin: 0; font-size: 18px; line-height: 1.45; font-weight: 800;">“Ótimo atendimento, todos super prestativos e entregas pontuais.”</blockquote>
-          <figcaption style="color: #4B5A50; font-size: 14px;">Cliente no Google</figcaption>
-        </figure>
-        <figure class="reveal card" style="margin: 0; padding: 26px; gap: 14px;">
-          <blockquote style="margin: 0; font-size: 18px; line-height: 1.45; font-weight: 800;">“Compro tudo lá: vacinas, ração, petiscos.”</blockquote>
-          <figcaption style="color: #4B5A50; font-size: 14px;">Cliente no Google</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- Lojas -->
-  <section id="lojas" class="anchor" style="max-width: 1240px; margin: 0 auto; padding: 64px 24px; display: flex; flex-direction: column; gap: 28px;">
-    <h2 class="disp reveal" style="margin: 0; font-size: clamp(30px, 4vw, 44px); color: #0F7A35; font-weight: 800; line-height: 1;">Prefere vir pessoalmente? Venha conhecer e surpreenda-se!</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 22px;">
-      <div class="card reveal">
-        <div style="height: 200px; background: #0F7A35; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
-          <img src="img/ai-fish.jpg" alt="Peixe betta no aquário" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .9;">
-          <span style="position: absolute; left: 16px; bottom: 16px; background: #FFD21F; color: #14241A; font-weight: 900; font-size: 13px; padding: 6px 12px; border-radius: 999px;">Loja 1 · Taguatinga Sul</span>
-        </div>
-        <div style="padding: 24px; display: flex; flex-direction: column; gap: 12px;">
-          <strong style="font-size: 17px; line-height: 1.4;">QSE 2, Lote 1, Loja 5 — Av. Boca da Mata<br><span style="font-weight: 600; color: #4B5A50;">Próximo ao Santa Lúcia</span></strong>
-          <span>Das 9h às 20h</span>
-          <a class="btn btn-green" style="align-self: flex-start;" href="https://www.google.com/maps/search/?api=1&amp;query=Agropet+Pets+QSE+2+Taguatinga+Sul" target="_blank" rel="noopener">Traçar rota até a loja</a>
-        </div>
-      </div>
-      <div class="card reveal">
-        <div style="height: 200px; position: relative; overflow: hidden;">
-          <img src="img/ig-facade.jpg" alt="Fachada da segunda unidade da Agropet Pets" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 62%;">
-          <span style="position: absolute; left: 16px; bottom: 16px; background: #FFD21F; color: #14241A; font-weight: 900; font-size: 13px; padding: 6px 12px; border-radius: 999px;">Loja 2 · Vereda da Cruz · Nova!</span>
-        </div>
-        <div style="padding: 24px; display: flex; flex-direction: column; gap: 12px;">
-          <strong style="font-size: 17px; line-height: 1.4;">CHC 491, Lote 1B — Av. Vereda da Cruz<br><span style="font-weight: 600; color: #4B5A50;">Águas Claras · CEP 71996-395</span></strong>
-          <span>Das 8h30 às 19h</span>
-          <a class="btn btn-green" style="align-self: flex-start;" href="https://www.google.com/maps/search/?api=1&amp;query=Agropet+Pets+Vereda+da+Cruz" target="_blank" rel="noopener">Traçar rota até a loja</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA final -->
-  <section style="background: #0F7A35; color: #ffffff; overflow: hidden; position: relative;">
-    <div class="reveal" style="max-width: 1000px; margin: 0 auto; padding: 72px 24px; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center;">
-      <div style="display: flex; align-items: center;">
-        <img class="floaty" src="img/ai-bird.jpg" alt="" style="width: 76px; height: 76px; border-radius: 999px; object-fit: cover; border: 4px solid #FFD21F;">
-        <img class="floaty-2" src="img/ai-puppy.jpg" alt="" style="width: 92px; height: 92px; border-radius: 999px; object-fit: cover; border: 4px solid #FFD21F; margin-left: -14px;">
-        <img class="floaty" src="img/ai-hamster.jpg" alt="" style="width: 76px; height: 76px; border-radius: 999px; object-fit: cover; border: 4px solid #FFD21F; margin-left: -14px;">
-      </div>
-      <h2 class="disp" style="margin: 0; font-size: clamp(36px, 5vw, 62px); line-height: .98; font-weight: 800;">Seu pet está esperando.<br><span style="color: #FFD21F;">Que tal resolver isso agora?</span></h2>
-      <p style="margin: 0; font-size: 18px; color: #E6F3EA;"><span data-bind="closeLabel"></span></p>
-      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 14px;">
-        <a class="btn btn-yellow pulse" href="#ofertas" style="min-height: 58px; font-size: 18px;">Montar meu pedido</a>
-        <a class="btn btn-ghost" href="#" data-wa="waHello" target="_blank" rel="noopener" style="min-height: 58px;">Chamar no WhatsApp</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Rodapé -->
-  <footer style="background: #0A5626; color: #DCEFE2;">
-    <div style="max-width: 1240px; margin: 0 auto; padding: 44px 24px 100px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px;">
-      <div style="display: flex; flex-direction: column; gap: 8px; max-width: 420px;">
-        <span class="disp" style="font-weight: 800; font-size: 28px; color: #ffffff;">Agropet <span style="color: #FFD21F;">Pets</span></span>
-        <span style="line-height: 1.5;">Rações, banho e tosa, medicamentos, aquarismo, aves e acessórios. Loja mais completa da região!</span>
-      </div>
-      <div style="display: flex; flex-direction: column; gap: 8px;">
-        <strong style="color: #ffffff;">Fale com a gente</strong>
-        <a href="#" data-wa="waHello" target="_blank" rel="noopener" style="color: #FFD21F; font-weight: 900;">WhatsApp (61) 99902-2443</a>
-        <a href="https://www.instagram.com/agropet.pets/" target="_blank" rel="noopener" style="color: #DCEFE2;">Instagram @agropet.pets</a>
-      </div>
-      <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px;">
-        <span>Agropet Pets LTDA · CNPJ 39.422.801/0001-80</span>
-        <span><strong style="color:#FFD21F;">Site demonstrativo</strong> · proposta de Leandro Araújo para a Agropet Pets</span>
-        <span>Não é o site oficial. Preços, produtos e imagens são ilustrativos.</span>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Botões flutuantes -->
-  <div style="position: fixed; right: 20px; bottom: 20px; z-index: 30; display: flex; flex-direction: column; align-items: flex-end; gap: 12px;">
-    <div data-if="showFab" class="is-hidden" style="display:contents">
-      <button class="btn btn-red pop" data-action="openCart" style="min-height: 56px; padding: 0 22px; box-shadow: 0 12px 28px rgba(215,25,31,.4);">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6.2"></path><circle cx="10" cy="20" r="1.4"></circle><circle cx="17" cy="20" r="1.4"></circle></svg>
-        Finalizar · <span data-bind="totalLabel"></span>
-      </button>
-    </div>
-    <a class="pulse" href="#" data-wa="waHello" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp" style="width: 62px; height: 62px; border-radius: 999px; background: #0F7A35; color: #ffffff; display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 26px rgba(15,122,53,.45);">
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.2A8.5 8.5 0 1 1 20 11.5z"></path><path d="M9 9.5c.3 1.8 1.7 3.6 3.6 4.6l1.2-1 1.7.8-.4 1.6c-3.2.2-6.4-2.8-6.6-6l1.6-.4.7 1.7z"></path></svg>
-    </a>
-  </div>
-
-  <!-- Toast -->
-  <div data-if="showToast" class="is-hidden" style="display:contents">
-    <div class="toast" role="status" style="position: fixed; left: 50%; bottom: 28px; z-index: 35; background: #14241A; color: #ffffff; border-radius: 999px; padding: 12px 14px 12px 20px; display: flex; align-items: center; gap: 14px; box-shadow: 0 16px 34px rgba(0,0,0,.3); font-weight: 800; max-width: calc(100% - 32px);">
-      <span style="color: #FFD21F;">✓</span>
-      <span><span data-bind="toast"></span></span>
-      <button class="btn btn-yellow" style="min-height: 40px; font-size: 14px; padding: 0 16px;" data-action="openCart">Ver pedido</button>
-    </div>
-  </div>
-
-  <!-- Menu (hambúrguer) -->
-  <div data-if="menu" class="is-hidden" style="display:contents">
-    <div class="menu-wrap">
-      <button type="button" class="menu-overlay" data-action="closeMenu" aria-label="Fechar menu" tabindex="-1"></button>
-      <div class="menu-panel" id="menuPanel" role="dialog" aria-modal="true" aria-label="Menu do site">
-        <div class="menu-top">
-          <span class="disp" style="font-weight: 800; font-size: 26px; line-height: 1;">Agropet <span style="color: #FFD21F;">Pets</span></span>
-          <button type="button" id="menuClose" class="menu-close" data-action="closeMenu" aria-label="Fechar menu">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
-          </button>
-        </div>
-        <div class="menu-body">
-          <nav aria-label="Seções do site" style="display: flex; flex-direction: column; gap: 6px;">
-            <span class="menu-h">Navegue pelo site</span>
-            <ul class="menu-links">
-              <li><a href="#topo" data-menu-link>Início</a></li>
-              <li><a href="#ofertas" data-menu-link>Produtos e ofertas</a></li>
-              <li><a href="#encarte" data-menu-link>Encarte da semana</a></li>
-              <li><a href="#marcas" data-menu-link>Marcas parceiras</a></li>
-              <li><a href="#entrega" data-menu-link>Entrega em casa</a></li>
-              <li><a href="#banho" data-menu-link>Banho e tosa</a></li>
-              <li><a href="#calopsitas" data-menu-link>Calopsitas</a></li>
-              <li><a href="#lembrete" data-menu-link>Lembrete de ração</a></li>
-              <li><a href="#avaliacoes" data-menu-link>Avaliações</a></li>
-              <li><a href="#lojas" data-menu-link>Nossas lojas e horários</a></li>
-            </ul>
-          </nav>
-          <div style="display: flex; flex-direction: column; gap: 10px;">
-            <span class="menu-h">Comprar por categoria</span>
-            <div class="menu-cats" id="list-menuCats"></div>
-          </div>
-          <a class="btn btn-green" href="#" data-wa="waHello" data-menu-link target="_blank" rel="noopener" style="width: 100%;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.2A8.5 8.5 0 1 1 20 11.5z"></path></svg>
-            Falar com um atendente
-          </a>
-          <span style="font-size: 12px; line-height: 1.45; color: #4B5A50;"><strong>Site demonstrativo</strong>: proposta de Leandro Araújo para a Agropet Pets. Não é o site oficial da loja.</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Carrinho -->
-  <div data-if="open" class="is-hidden" style="display:contents">
-    <div style="position: fixed; inset: 0; z-index: 40; display: flex; justify-content: flex-end;">
-      <button aria-label="Fechar carrinho" data-action="closeCart" style="position: absolute; inset: 0; border: 0; background: rgba(20,36,26,.45); cursor: pointer;"></button>
-      <aside aria-label="Seu pedido" style="position: relative; width: min(440px, 100%); height: 100%; background: #ffffff; display: flex; flex-direction: column; box-shadow: -12px 0 40px rgba(0,0,0,.2);">
-        <div style="padding: 20px 22px; background: #0F7A35; color: #ffffff; display: flex; align-items: center; justify-content: space-between;">
-          <span class="disp" style="font-weight: 800; font-size: 26px;">Seu pedido</span>
-          <button aria-label="Fechar" data-action="closeCart" style="width: 44px; height: 44px; border-radius: 999px; border: 0; background: rgba(255,255,255,.15); color: #ffffff; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
-          </button>
-        </div>
-
-        <div style="flex: 1; overflow-y: auto; padding: 20px 22px; display: flex; flex-direction: column; gap: 18px;">
-          <div data-if="empty" class="is-hidden" style="display:contents">
-            <div style="padding: 28px 8px; text-align: center; display: flex; flex-direction: column; gap: 12px; align-items: center;">
-              <img src="img/ai-puppy.jpg" alt="" style="width: 110px; height: 110px; border-radius: 999px; object-fit: cover;">
-              <strong style="font-size: 18px;">O potinho ainda está vazio</strong>
-              <span style="color: #4B5A50;">Escolha os produtos e volte aqui pra mandar o pedido.</span>
-              <button class="btn btn-green" data-action="closeCart">Escolher produtos</button>
-            </div>
-          </div>
-
-          <div id="list-lines" style="display:contents"></div>
-
-          <div data-if="hasItems" class="is-hidden" style="display:contents">
-            <div style="display: flex; flex-direction: column; gap: 14px;">
-              <div style="background: #FFF7D1; border-radius: 14px; padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#14241A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"></path><circle cx="7" cy="17.5" r="1.6"></circle><circle cx="17" cy="17.5" r="1.6"></circle></svg>
-                <span style="font-size: 14px; line-height: 1.45;">Falta pouco! Diga seu bairro e a gente confirma no WhatsApp se entrega aí e qual é a taxa.</span>
-              </div>
-              <label class="field">Seu nome
-                <input type="text" data-change="onName" placeholder="Como podemos te chamar?">
-              </label>
-              <label class="field">Bairro / região
-                <select data-change="onBairro">
-                  <option value="">Selecione</option>
-                  <option>Taguatinga Sul</option>
-                  <option>Taguatinga Norte</option>
-                  <option>Águas Claras</option>
-                  <option>Areal</option>
-                  <option>Arniqueiras</option>
-                  <option>Vereda da Cruz</option>
-                  <option>Park Way</option>
-                  <option>Outra região</option>
-                </select>
-              </label>
-              <label class="field">Endereço
-                <input type="text" data-change="onAddr" placeholder="Quadra, conjunto, casa ou apto">
-              </label>
-              <label class="field">Forma de pagamento
-                <select data-change="onPay">
-                  <option>Pix</option>
-                  <option>Cartão na entrega</option>
-                  <option>Dinheiro</option>
-                </select>
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <div data-if="hasItems" class="is-hidden" style="display:contents">
-          <div style="padding: 18px 22px 22px; border-top: 1px solid #E7ECE8; display: flex; flex-direction: column; gap: 12px;">
-            <div style="display: flex; justify-content: space-between; align-items: baseline;">
-              <span style="font-weight: 800; color: #4B5A50;">Total dos produtos</span>
-              <span class="disp" style="font-weight: 800; font-size: 30px; color: #D7191F; line-height: 1;"><span data-bind="totalLabel"></span></span>
-            </div>
-            <span style="font-size: 13px; color: #B5121A; font-weight: 800;">Site demonstrativo: o envio abre o WhatsApp real da loja. Use só para testar a proposta.</span>
-            <a class="btn btn-green shine" style="width: 100%; min-height: 58px; font-size: 17px;" href="#" data-wa="waOrder" target="_blank" rel="noopener">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.2A8.5 8.5 0 1 1 20 11.5z"></path></svg>
-              Enviar meu pedido pelo WhatsApp
-            </a>
-          </div>
-        </div>
-      </aside>
-    </div>
+    </aside>
   </div>
 </div>
 
@@ -754,25 +452,21 @@ img{max-width:100%}
 (function () {
   'use strict';
   var PHONE = '5561999022443';
-  var PAW = '<svg width="16" height="16" viewBox="0 0 24 24" fill="#FFD21F" aria-hidden="true"><circle cx="6" cy="9" r="2.4"></circle><circle cx="10.5" cy="5.5" r="2.4"></circle><circle cx="15" cy="6" r="2.4"></circle><circle cx="18.5" cy="10" r="2.4"></circle><path d="M12 11c3 0 6 4 6 6.5 0 2-1.6 2.5-3 2.5-1.2 0-2-.6-3-.6s-1.8.6-3 .6c-1.4 0-3-.5-3-2.5C6 15 9 11 12 11z"></path></svg>';
-  var MINUS = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 12h14"></path></svg>';
-  var PLUS = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>';
-
   var PRODUCTS = [
-    { id: 1, name: 'Premier Nattu 2,5kg', cat: 'Cachorros', price: 84.99, from: false, tag: 'OFERTA', img: 'img/p-premier-nattu.jpg', photo: false, group: 'premierpet' },
-    { id: 2, name: 'Golden Gatos 10kg', cat: 'Gatos', price: 139.99, from: false, tag: 'MAIS VENDIDO', img: 'img/p-golden-gatos.jpg', photo: false, group: 'premierpet' },
-    { id: 3, name: 'Fórmula Natural Fresh Meat 2,5kg', cat: 'Cachorros', price: 94.99, from: true, tag: '', img: 'img/p-fn-freshmeat.jpg', photo: false, group: '' },
-    { id: 4, name: 'Fórmula Natural 2,5kg', cat: 'Cachorros', price: 64.99, from: true, tag: 'OFERTA', img: 'img/p-fn-25.jpg', photo: false, group: '' },
-    { id: 5, name: 'Special Dog Carne 20kg', cat: 'Cachorros', price: 129.99, from: false, tag: 'ECONOMIA', img: 'img/p-special-carne.jpg', photo: false, group: '' },
-    { id: 6, name: 'Quali Day Pro Sênior raças pequenas', cat: 'Cachorros', price: 0, from: false, tag: 'TERCEIRA IDADE', img: 'img/p-qualiday.jpg', photo: false, group: '' },
-    { id: 7, name: 'Bravecto antipulgas', cat: 'Farmácia', price: 129.99, from: false, tag: '', img: 'img/ai-pharmacy.jpg', photo: true, group: '' },
-    { id: 8, name: 'Colchonete pet', cat: 'Acessórios', price: 35.00, from: true, tag: '', img: 'img/p-colchonete.jpg', photo: true, group: '' },
-    { id: 9, name: 'Calopsitas', cat: 'Pássaros', price: 0, from: false, tag: 'NOVO AMIGO', img: 'img/ig-calopsita.jpg', photo: true, pos: '30% 45%', group: '' },
-    { id: 10, name: 'Peixes ornamentais e aquários', cat: 'Peixes', price: 0, from: false, tag: '', img: 'img/ai-fish.jpg', photo: true, group: '' },
-    { id: 11, name: 'Rações e casinhas para hamster', cat: 'Roedores', price: 0, from: false, tag: '', img: 'img/ai-hamster.jpg', photo: true, group: '' }
+    { id: 1, name: 'Premier Nattu 2,5kg', cat: 'Cachorros', price: 84.99, from: false, tag: 'OFERTA', img: 'img/p-premier-nattu.jpg' },
+    { id: 2, name: 'Golden Gatos 10kg', cat: 'Gatos', price: 139.99, from: false, tag: 'MAIS VENDIDO', img: 'img/p-golden-gatos.jpg' },
+    { id: 3, name: 'Fórmula Natural Fresh Meat 2,5kg', cat: 'Cachorros', price: 94.99, from: true, tag: '', img: 'img/p-fn-freshmeat.jpg' },
+    { id: 4, name: 'Fórmula Natural 2,5kg', cat: 'Cachorros', price: 64.99, from: true, tag: 'OFERTA', img: 'img/p-fn-25.jpg' },
+    { id: 5, name: 'Special Dog Carne 20kg', cat: 'Cachorros', price: 129.99, from: false, tag: '', img: 'img/p-special-carne.jpg' },
+    { id: 6, name: 'Quali Day Pro Sênior raças pequenas', cat: 'Cachorros', price: 0, from: false, tag: '', img: 'img/p-qualiday.jpg' },
+    { id: 7, name: 'Bravecto antipulgas', cat: 'Farmácia', price: 129.99, from: false, tag: '', img: 'img/ai-pharmacy.jpg', photo: true },
+    { id: 8, name: 'Colchonete pet', cat: 'Acessórios', price: 35.00, from: true, tag: '', img: 'img/p-colchonete.jpg', photo: true },
+    { id: 9, name: 'Calopsitas', cat: 'Pássaros', price: 0, from: false, tag: '', img: 'img/ig-calopsita.jpg', photo: true, pos: '30% 42%' },
+    { id: 10, name: 'Peixes ornamentais e aquários', cat: 'Peixes', price: 0, from: false, tag: '', img: 'img/ai-fish.jpg', photo: true },
+    { id: 11, name: 'Rações e casinhas para roedores', cat: 'Roedores', price: 0, from: false, tag: '', img: 'img/ai-hamster.jpg', photo: true }
   ];
   var CATS = [
-    { label: 'Todos', img: 'img/ai-puppy.jpg' },
+    { label: 'Todos' },
     { label: 'Cachorros', img: 'img/ai-puppy.jpg' },
     { label: 'Gatos', img: 'img/ai-cat.jpg' },
     { label: 'Pássaros', img: 'img/ai-bird.jpg' },
@@ -781,355 +475,151 @@ img{max-width:100%}
     { label: 'Farmácia', img: 'img/ai-pharmacy.jpg' },
     { label: 'Acessórios', img: 'img/p-colchonete.jpg' }
   ];
-  var BRANDS = ['PremierPet', 'Golden', 'Fórmula Natural', 'Special Dog', 'Quali Day', 'Fanny', 'Finotrato', 'Bravecto', 'Cinotec'];
-  var TICKER = ['Acabou a ração? A gente leva até você!', 'Peça pelo WhatsApp: (61) 99902-2443', 'Areal, tem novidade: agora entregamos aí!', 'Banho e tosa com hora marcada', 'Pague no Pix ou cartão na entrega'];
-
   var WA_TEXT = {
     waHello: 'Olá, Agropet Pets! Vim pelo site e queria tirar uma dúvida.',
+    waPhoto: 'Olá, Agropet Pets! Não achei no site o que meu pet usa. Vou mandar a foto do produto.',
     waBath: 'Olá, Agropet Pets! Quero agendar banho e tosa para o meu pet. Qual o próximo horário?',
-    waBird: 'Olá, Agropet Pets! Vi no site e quero conhecer as calopsitas.',
     waFlyer: 'Olá, Agropet Pets! Vi o encarte e quero fazer um pedido. Vou mandar a foto dos itens.',
-    waBrand: 'Olá, Agropet Pets! Vocês têm a marca: ',
-    waArea: 'Olá, Agropet Pets! Vocês entregam no meu bairro? Moro em: ',
-    waRemind: 'Olá, Agropet Pets! Quero ser lembrado quando a ração do meu pet estiver acabando. Ele come: '
+    waArea: 'Olá, Agropet Pets! Vocês entregam no meu bairro? Moro em: '
   };
 
-  var state = { cat: 'Todos', q: '', group: '', cart: {}, open: false, menu: false, name: '', bairro: '', addr: '', pay: 'Pix', toast: '', bump: 0 };
-  var toastTimer;
+  var state = { cat: 'Todos', q: '', cart: {}, open: false, name: '', bairro: '', addr: '', pay: 'Pix', toast: '' };
+  var toastTimer, opener = null;
 
   function brl(n) { return 'R$ ' + n.toFixed(2).replace('.', ','); }
   function norm(s) { return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
-  function pad(n) { return (n < 10 ? '0' : '') + n; }
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function wa(text) { return 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(text); }
-  function $(sel) { return document.querySelector(sel); }
-  function $all(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+  function $(s) { return document.querySelector(s); }
+  function $all(s) { return Array.prototype.slice.call(document.querySelectorAll(s)); }
   function byId(id) { return PRODUCTS.filter(function (p) { return p.id === id; })[0]; }
+  function bind(n, v) { $all('[data-bind="' + n + '"]').forEach(function (el) { el.textContent = v; }); }
+  function showIf(n, on) { $all('[data-if="' + n + '"]').forEach(function (el) { el.classList.toggle('is-hidden', !on); }); }
 
-  function bind(name, value) { $all('[data-bind="' + name + '"]').forEach(function (el) { el.textContent = value; }); }
-  function showIf(name, on) { $all('[data-if="' + name + '"]').forEach(function (el) { el.classList.toggle('is-hidden', !on); }); }
-
-  function reducedMotion() { return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
-
-  // Leva o cliente até o catálogo (usado pelas categorias do cabeçalho e do menu)
-  function goToProducts(moveFocus) {
-    var sec = document.getElementById('ofertas');
-    if (!sec) return;
-    sec.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'start' });
-    if (moveFocus) { try { sec.focus({ preventScroll: true }); } catch (err) { sec.focus(); } }
-  }
-
-  var menuOpener = null;
-  function openMenu(opener) {
-    menuOpener = opener || null;
-    state.open = false; state.toast = ''; state.menu = true;
-    render();
-    var c = $('#menuClose'); if (c) c.focus();
-  }
-  function closeMenu(returnFocus) {
-    if (!state.menu) return;
-    state.menu = false;
-    render();
-    if (returnFocus) { var b = (menuOpener && !menuOpener.closest('[inert]')) ? menuOpener : $('#menuBtn'); if (b) b.focus(); }
-  }
-
-  // Migalha de pão do catálogo: Início › Produtos › [categoria | marca] › [busca]
-  function crumbsHtml() {
-    var filtered = !!(state.group || state.cat !== 'Todos' || state.q);
-    var items = ['<li><a href="#topo">Início</a></li>'];
-    items.push(filtered
-      ? '<li><button type="button" data-cat="Todos" aria-label="Produtos: ver todos">Produtos</button></li>'
-      : '<li><span aria-current="location">Produtos</span></li>');
-    if (state.group) {
-      items.push('<li><span aria-current="location">Marca PremierPet</span></li>');
-    } else {
-      if (state.cat !== 'Todos') {
-        items.push(state.q
-          ? '<li><button type="button" data-cat="' + esc(state.cat) + '">' + esc(state.cat) + '</button></li>'
-          : '<li><span aria-current="location">' + esc(state.cat) + '</span></li>');
-      }
-      if (state.q) items.push('<li><span aria-current="location">Busca: “' + esc(state.q) + '”</span></li>');
-    }
-    return items.join('');
-  }
-
-  function setQty(id, qty) {
-    if (qty <= 0) { delete state.cart[id]; } else { state.cart[id] = qty; }
-    render();
-  }
+  function setQty(id, q) { if (q <= 0) delete state.cart[id]; else state.cart[id] = q; render(); }
   function addOne(id) {
-    var p = byId(id);
     setQty(id, (state.cart[id] || 0) + 1);
-    state.toast = p.name + ' no seu pedido!';
-    state.bump++;
+    state.toast = byId(id).name + ' no pedido';
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () { state.toast = ''; render(); }, 2600);
+    toastTimer = setTimeout(function () { state.toast = ''; render(); }, 2400);
     render();
   }
 
   function renderStatic() {
-    var t = TICKER.concat(TICKER).map(function (x) {
-      return '<span style="display:inline-flex;align-items:center;gap:14px;padding:10px 22px;white-space:nowrap;">' + PAW + esc(x) + '</span>';
-    }).join('');
-    $('#list-ticker').innerHTML = t;
-    $('#list-brandsLoop').innerHTML = BRANDS.concat(BRANDS).map(function (b) {
-      return '<span class="disp" style="display:inline-flex;align-items:center;padding:22px 34px;font-size:28px;font-weight:800;color:#0F7A35;white-space:nowrap;">' + esc(b) + '<span style="margin-left:34px;color:#FFD21F;">●</span></span>';
-    }).join('');
     $all('[data-wa]').forEach(function (a) {
       var k = a.getAttribute('data-wa');
       if (WA_TEXT[k]) { a.href = wa(WA_TEXT[k]); a.target = '_blank'; a.rel = 'noopener'; }
     });
-  }
-
-  function renderClock() {
-    var d = new Date();
-    var mins = d.getHours() * 60 + d.getMinutes();
-    var openNow = mins >= 8 * 60 + 30 && mins < 20 * 60;
-    var label;
-    if (openNow) {
-      var end = new Date(d); end.setHours(20, 0, 0, 0);
-      var left = Math.max(0, Math.floor((end - d) / 1000));
-      label = 'A loja fecha em ' + pad(Math.floor(left / 3600)) + ':' + pad(Math.floor(left % 3600 / 60)) + ':' + pad(left % 60) + ' — peça agora e a gente separa hoje';
-    } else {
-      label = 'Loja fechada agora — deixe seu pedido e a gente responde assim que abrir';
-    }
-    bind('closeLabel', label);
-    bind('openLabel', openNow ? 'Aberto agora · Entrega rápida' : 'Fechado agora · Deixe seu pedido');
+    var d = new Date(), m = d.getHours() * 60 + d.getMinutes();
+    bind('openLabel', m >= 8 * 60 + 30 && m < 20 * 60 ? 'Aberto agora · até 20h' : 'Fechado agora · deixe seu pedido');
   }
 
   function render() {
     var q = norm(state.q);
-
-    var catHtmlNav = '', catHtmlCircle = '', catHtmlMenu = '';
-    CATS.forEach(function (c) {
-      var on = c.label === state.cat && !state.group;
-      catHtmlNav += '<button class="navbtn' + (on ? ' navbtn-on' : '') + '" data-cat="' + esc(c.label) + '"' + (on ? ' aria-pressed="true"' : ' aria-pressed="false"') + '>' + esc(c.label) + '</button>';
-      catHtmlCircle += '<button class="catbtn' + (on ? ' catbtn-on' : '') + '" data-cat="' + esc(c.label) + '"' + (on ? ' aria-pressed="true"' : ' aria-pressed="false"') + '><div class="ring"><img src="' + c.img + '" alt="" loading="lazy"></div><span>' + esc(c.label) + '</span></button>';
-      catHtmlMenu += '<button type="button" class="menu-cat' + (on ? ' menu-cat-on' : '') + '" data-cat="' + esc(c.label) + '"' + (on ? ' aria-pressed="true"' : ' aria-pressed="false"') + '><img src="' + c.img + '" alt="" loading="lazy"><span>' + esc(c.label) + '</span></button>';
-    });
-    $('#list-cats').innerHTML = catHtmlNav;
-    $('#list-catCircles').innerHTML = catHtmlCircle;
-    $('#list-menuCats').innerHTML = catHtmlMenu;
-    $('#list-crumbs').innerHTML = crumbsHtml();
+    $('#list-cats').innerHTML = CATS.map(function (c) {
+      var on = c.label === state.cat;
+      return '<button type="button" class="chip' + (c.img ? '' : ' chip-all') + '" data-cat="' + esc(c.label) + '" aria-pressed="' + on + '">' +
+        (c.img ? '<img src="' + c.img + '" alt="" loading="lazy">' : '') + esc(c.label) + '</button>';
+    }).join('');
 
     var list = PRODUCTS.filter(function (p) {
-      if (state.group) return p.group === state.group;
       return (state.cat === 'Todos' || p.cat === state.cat) && (!q || norm(p.name + ' ' + p.cat).indexOf(q) >= 0);
     });
     $('#list-products').innerHTML = list.map(function (p) {
-      var inCart = state.cart[p.id] || 0;
-      var imgStyle = p.photo
-        ? 'width:100%;height:196px;object-fit:cover;border-radius:16px;max-width:86%;object-position:' + (p.pos || '50% 50%') + ';'
-        : 'max-width:86%;max-height:196px;object-fit:contain;';
+      var n = state.cart[p.id] || 0;
       var bottom = p.price > 0
-        ? '<div style="display:flex;flex-direction:column;gap:2px;"><span style="font-size:12px;color:#4B5A50;font-weight:700;">' + (p.from ? 'a partir de' : 'por apenas') + '</span><span class="disp" style="font-size:30px;font-weight:800;color:#D7191F;line-height:1;">' + brl(p.price) + '</span></div>' +
-          '<button class="btn btn-green" style="width:100%;" data-add="' + p.id + '">' + (inCart ? 'No pedido (' + inCart + ') · Quero mais 1' : 'Quero este') + '</button>'
-        : '<span class="disp" style="font-size:22px;font-weight:800;color:#0F7A35;line-height:1;">Consulte na loja</span>' +
-          '<a class="btn btn-yellow" style="width:100%;" target="_blank" rel="noopener" href="' + wa('Olá, Agropet Pets! Vi no site e quero saber o preço de: ' + p.name + '.') + '">Quero saber o preço</a>';
-      return '<article class="card reveal">' +
-        '<div style="position:relative;height:220px;background:#F6F8F4;display:flex;align-items:center;justify-content:center;overflow:hidden;">' +
-        (p.tag ? '<span class="wiggle" style="position:absolute;top:12px;left:12px;z-index:2;background:#D7191F;color:#ffffff;font-weight:900;font-size:12px;padding:6px 11px;border-radius:999px;">' + esc(p.tag) + '</span>' : '') +
-        '<img class="pimg" src="' + p.img + '" alt="' + esc(p.name) + '" loading="lazy" style="' + imgStyle + '"></div>' +
-        '<div style="padding:18px;display:flex;flex-direction:column;gap:10px;flex-grow:1;">' +
-        '<span style="font-size:12px;font-weight:900;color:#0F7A35;text-transform:uppercase;letter-spacing:.05em;">' + esc(p.cat) + '</span>' +
-        '<h3 style="margin:0;font-size:16px;line-height:1.3;font-weight:800;flex-grow:1;">' + esc(p.name) + '</h3>' + bottom + '</div></article>';
+        ? '<div class="price"><small>' + (p.from ? 'a partir de' : 'por') + '</small>' + brl(p.price) + '</div>' +
+          '<button class="btn btn-primary btn-sm" data-add="' + p.id + '">' + (n ? 'No pedido (' + n + ') · +1' : 'Adicionar') + '</button>'
+        : '<div class="ask">Consulte o preço</div>' +
+          '<a class="btn btn-outline btn-sm" target="_blank" rel="noopener" href="' + wa('Olá, Agropet Pets! Vi no site e quero saber o preço de: ' + p.name + '.') + '">Perguntar</a>';
+      return '<article class="card">' +
+        '<div class="card-img' + (p.photo ? ' photo' : '') + '">' + (p.tag ? '<span class="tag">' + esc(p.tag) + '</span>' : '') +
+        '<img src="' + p.img + '" alt="' + esc(p.name) + '" loading="lazy"' + (p.pos ? ' style="object-position:' + p.pos + '"' : '') + '></div>' +
+        '<div class="card-body"><span class="card-cat">' + esc(p.cat) + '</span><h3>' + esc(p.name) + '</h3>' + bottom + '</div></article>';
     }).join('');
     showIf('noResults', list.length === 0);
-    bind('catTitle', state.group ? '· PremierPet' : (state.cat === 'Todos' ? '' : '· ' + state.cat));
+    bind('catTitle', state.cat === 'Todos' ? '' : '· ' + state.cat);
 
     var lines = [], total = 0, count = 0;
-    PRODUCTS.forEach(function (p) {
-      var n = state.cart[p.id];
-      if (!n) return;
-      total += n * p.price; count += n;
-      lines.push({ p: p, n: n });
-    });
+    PRODUCTS.forEach(function (p) { var n = state.cart[p.id]; if (n) { total += n * p.price; count += n; lines.push({ p: p, n: n }); } });
     $('#list-lines').innerHTML = lines.map(function (l) {
-      return '<div style="display:flex;gap:12px;align-items:center;padding-bottom:14px;border-bottom:1px solid #E7ECE8;">' +
-        '<img src="' + l.p.img + '" alt="" style="width:54px;height:54px;object-fit:contain;background:#F6F8F4;border-radius:12px;flex:none;">' +
-        '<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;"><span style="font-weight:800;font-size:14px;line-height:1.3;">' + esc(l.p.name) + '</span><span style="color:#D7191F;font-weight:900;">' + brl(l.n * l.p.price) + '</span></div>' +
-        '<div style="display:flex;align-items:center;gap:8px;"><button class="qbtn" aria-label="Diminuir" data-dec="' + l.p.id + '">' + MINUS + '</button><span style="min-width:22px;text-align:center;font-weight:900;">' + l.n + '</span><button class="qbtn" aria-label="Aumentar" data-inc="' + l.p.id + '">' + PLUS + '</button></div></div>';
+      return '<div class="line"><img src="' + l.p.img + '" alt="">' +
+        '<div style="flex:1;min-width:0"><div style="font-weight:700;font-size:14px;line-height:1.3">' + esc(l.p.name) + '</div><div style="color:var(--red);font-weight:800">' + brl(l.n * l.p.price) + '</div></div>' +
+        '<div class="qty"><button class="qbtn" aria-label="Diminuir" data-dec="' + l.p.id + '">−</button><b style="min-width:20px;text-align:center">' + l.n + '</b><button class="qbtn" aria-label="Aumentar" data-inc="' + l.p.id + '">+</button></div></div>';
     }).join('');
 
     bind('count', count);
     bind('totalLabel', brl(total));
-    var cc = $('#cartCount');
-    if (cc && state.bump) { cc.classList.remove('bumpA', 'bumpB'); void cc.offsetWidth; cc.classList.add(state.bump % 2 ? 'bumpA' : 'bumpB'); }
     showIf('empty', count === 0);
     showIf('hasItems', count > 0);
-    showIf('showFab', count > 0 && !state.open && !state.menu);
     showIf('open', state.open);
-    showIf('menu', state.menu);
-    showIf('showToast', !!state.toast && !state.open && !state.menu);
+    showIf('showToast', !!state.toast && !state.open);
     bind('toast', state.toast);
-    $all('[data-action="openMenu"]').forEach(function (mb) { mb.setAttribute('aria-expanded', state.menu ? 'true' : 'false'); mb.setAttribute('aria-label', state.menu ? 'Fechar menu' : 'Abrir menu'); });
-    document.body.style.overflow = (state.open || state.menu) ? 'hidden' : '';
+    document.body.style.overflow = state.open ? 'hidden' : '';
 
     var msg = 'Olá, Agropet Pets! Quero fazer um pedido pelo site:\n\n' +
       lines.map(function (l) { return l.n + 'x ' + l.p.name + ' — ' + brl(l.n * l.p.price); }).join('\n') +
       '\n\nTotal dos produtos: ' + brl(total) +
-      '\n\nNome: ' + (state.name || '-') +
-      '\nBairro: ' + (state.bairro || '-') +
-      '\nEndereço: ' + (state.addr || '-') +
-      '\nPagamento: ' + state.pay +
+      '\n\nNome: ' + (state.name || '-') + '\nBairro: ' + (state.bairro || '-') + '\nEndereço: ' + (state.addr || '-') + '\nPagamento: ' + state.pay +
       '\n\nVocês entregam na minha região? Qual a taxa de entrega?';
-    $all('[data-wa="waOrder"]').forEach(function (a) { a.href = wa(msg); a.target = '_blank'; a.rel = 'noopener'; });
+    $all('[data-wa-order]').forEach(function (a) { a.href = wa(msg); });
   }
 
-  document.addEventListener('click', function (e) {
-    // Link do menu: fecha o painel e deixa o navegador rolar até a âncora
-    var ml = e.target.closest('[data-menu-link]');
-    if (ml) { closeMenu(false); return; }
+  function openCart(btn) { opener = btn || null; state.open = true; state.toast = ''; render(); var c = $('#cartClose'); if (c) c.focus(); }
+  function closeCart() { state.open = false; render(); if (opener) opener.focus(); }
 
+  document.addEventListener('click', function (e) {
     var t = e.target.closest('[data-cat],[data-add],[data-inc],[data-dec],[data-action]');
     if (!t) return;
-    if (t.hasAttribute('data-cat')) {
-      var fromMenu = !!t.closest('.menu-panel');
-      var fromHeader = !!t.closest('.site-header');
-      state.cat = t.getAttribute('data-cat'); state.group = ''; state.q = ''; $('#busca').value = '';
-      state.menu = false;
-      render();
-      if (fromMenu || fromHeader) goToProducts(fromMenu);
-      return;
-    }
+    if (t.hasAttribute('data-cat')) { state.cat = t.getAttribute('data-cat'); state.q = ''; $all('[data-search]').forEach(function (i) { i.value = ''; }); render(); return; }
     if (t.hasAttribute('data-add')) { addOne(+t.getAttribute('data-add')); return; }
     if (t.hasAttribute('data-inc')) { var i = +t.getAttribute('data-inc'); setQty(i, (state.cart[i] || 0) + 1); return; }
     if (t.hasAttribute('data-dec')) { var d = +t.getAttribute('data-dec'); setQty(d, (state.cart[d] || 0) - 1); return; }
     var a = t.getAttribute('data-action');
-    if (a === 'openMenu') { if (state.menu) closeMenu(true); else openMenu(t); }
-    else if (a === 'closeMenu') { closeMenu(true); }
-    else if (a === 'openCart') { state.menu = false; state.open = true; state.toast = ''; render(); }
-    else if (a === 'closeCart') { state.open = false; render(); }
-    else if (a === 'offerAdd') { addOne(1); }
-    else if (a === 'showPremier') { state.group = 'premierpet'; state.cat = 'Todos'; state.q = ''; $('#busca').value = ''; render(); }
+    if (a === 'openCart') openCart(t); else if (a === 'closeCart') closeCart();
   });
   document.addEventListener('input', function (e) {
-    var k = e.target.getAttribute && e.target.getAttribute('data-change');
-    if (!k) return;
-    var v = e.target.value;
-    if (k === 'onSearch') { state.q = v; state.group = ''; }
-    else if (k === 'onName') state.name = v;
-    else if (k === 'onBairro') state.bairro = v;
-    else if (k === 'onAddr') state.addr = v;
-    else if (k === 'onPay') state.pay = v;
-    render();
-  });
-  document.addEventListener('change', function (e) {
-    if (e.target.tagName === 'SELECT') e.target.dispatchEvent(new Event('input', { bubbles: true }));
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') {
-      if (state.menu) { closeMenu(true); return; }
-      if (state.open) { state.open = false; render(); }
+    var el = e.target;
+    if (el.hasAttribute && el.hasAttribute('data-search')) {
+      state.q = el.value; state.cat = 'Todos';
+      $all('[data-search]').forEach(function (i) { if (i !== el) i.value = el.value; });
+      render();
+      if (state.q.length === 1) { var s = $('#ofertas'); if (s && s.getBoundingClientRect().top > window.innerHeight * 0.6) s.scrollIntoView({ block: 'start' }); }
       return;
     }
-    // Mantém o Tab dentro do menu enquanto ele está aberto
-    if (e.key === 'Tab' && state.menu) {
-      var panel = $('#menuPanel');
-      var f = $all('#menuPanel a[href], #menuPanel button:not([disabled])');
-      if (!panel || !f.length) return;
-      var first = f[0], last = f[f.length - 1];
-      if (!panel.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
-      else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-    }
+    var f = el.getAttribute && el.getAttribute('data-field');
+    if (f) { state[f] = el.value; render(); }
   });
+  document.addEventListener('change', function (e) { if (e.target.tagName === 'SELECT' && e.target.hasAttribute('data-field')) e.target.dispatchEvent(new Event('input', { bubbles: true })); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && state.open) closeCart(); });
 
-  // Barra flutuante: aparece quando o cabeçalho sai da tela e acompanha até o rodapé
-  function setBar(on) {
-    var bar = document.getElementById('floatBar');
-    if (!bar) return;
-    bar.classList.toggle('is-on', on);
-    if (on) { bar.removeAttribute('inert'); bar.removeAttribute('aria-hidden'); }
-    else { bar.setAttribute('inert', ''); bar.setAttribute('aria-hidden', 'true'); }
-  }
-  (function () {
-    var hdr = document.querySelector('.site-header');
-    if (!hdr) return;
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (es) { setBar(!es[0].isIntersecting); }).observe(hdr);
-    } else {
-      var check = function () { setBar(hdr.getBoundingClientRect().bottom < 0); };
-      window.addEventListener('scroll', check, { passive: true });
-      check();
-    }
-  })();
-
-  renderStatic();
-  render();
-  renderClock();
-  setInterval(renderClock, 1000);
-})();
-
-</script>
-  <script src="https://assinatura-leandro.vercel.app/assinatura.js" data-cliente="Agropet Pets" defer></script>
-
-<script id="agro-motion-js">/* AGRO-MOTION */
-(function(){
-  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var save = navigator.connection && navigator.connection.saveData;
-  var vids = [].slice.call(document.querySelectorAll('video[data-am-src]'));
-  function load(v){ if(!v.getAttribute('src')){ v.src = v.getAttribute('data-am-src'); } }
-  function card(v){ return v.closest('.am-reel') || v.closest('.am-wrap'); }
-  function play(v){
-    if(reduce || save || v._amUserPaused) return;
-    load(v);
-    var p = v.play(); if(p && p.catch){ p.catch(function(){}); }
-    var c = card(v); if(c) c.classList.remove('is-paused');
-  }
-  function pause(v){ v.pause(); var c = card(v); if(c) c.classList.add('is-paused'); }
-  if('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(es){
-      es.forEach(function(e){ if(e.isIntersecting && e.intersectionRatio > .45){ play(e.target); } else { pause(e.target); } });
-    }, {threshold:[0,.45,.8]});
-    vids.forEach(function(v){ io.observe(v); });
-  } else { vids.forEach(play); }
-  vids.forEach(function(v){
-    v.addEventListener('timeupdate', function(){
-      var c = card(v); if(!c || !v.duration) return;
-      var b = c.querySelector('.am-bar'); if(b) b.style.width = (v.currentTime / v.duration * 100) + '%';
-    });
-    v.addEventListener('error', function(){ v.removeAttribute('src'); });
-  });
-  document.addEventListener('click', function(e){
-    var c = e.target.closest && (e.target.closest('.am-reel') || e.target.closest('.am-wrap'));
-    if(!c || e.target.closest('a')) return;
-    var v = c.querySelector('video'); if(!v) return;
-    if(v.paused){ v._amUserPaused = false; reduce = false; save = false; play(v); } else { v._amUserPaused = true; pause(v); }
-  });
-
-  // Calculadora de ração
-  var pet = 'dog';
-  var kg = document.getElementById('amKg'), bag = document.getElementById('amBag'), dt = document.getElementById('amDate');
-  if(!kg) return;
-  var today = new Date(); dt.value = today.toISOString().slice(0,10);
-  function grams(w){
+  // Lembrete de ração
+  var pet = 'dog', kg = $('#cKg'), bag = $('#cBag');
+  function grams(w) {
     w = Math.max(1, Math.min(80, parseFloat(String(w).replace(',', '.')) || 0));
-    // energia de manutenção: 70*kg^0,75 x fator / densidade média da ração seca
-    var f = pet === 'dog' ? 1.6 : 1.2, kcal = pet === 'dog' ? 3.6 : 3.8;
-    return 70 * Math.pow(w, .75) * f / kcal;
+    return 70 * Math.pow(w, 0.75) * (pet === 'dog' ? 1.6 : 1.2) / (pet === 'dog' ? 3.6 : 3.8);
   }
-  function fmt(d){ return d.toLocaleDateString('pt-BR', {day:'2-digit', month:'long'}); }
-  function calc(){
-    var g = grams(kg.value), days = Math.max(1, Math.floor(parseFloat(bag.value) * 1000 / g));
-    var start = dt.value ? new Date(dt.value + 'T12:00:00') : new Date();
-    var end = new Date(start.getTime() + days * 864e5), warn = new Date(end.getTime() - 3 * 864e5);
-    document.getElementById('amDays').textContent = days;
-    document.getElementById('amEnd').textContent = 'Acaba por volta de ' + fmt(end) + ' (cerca de ' + Math.round(g) + ' g por dia)';
-    var msg = 'Olá, Agropet Pets! Quero ser lembrado da ração. Meu ' + (pet === 'dog' ? 'cachorro' : 'gato') + ' pesa ' + kg.value + ' kg, comprei um pacote de ' + bag.options[bag.selectedIndex].text + ' em ' + fmt(start) + '. Pode me chamar por volta de ' + fmt(warn) + '? A ração dele é: ';
-    document.getElementById('amRemind').href = 'https://wa.me/5561999022443?text=' + encodeURIComponent(msg);
+  function calc() {
+    var days = Math.max(1, Math.floor(parseFloat(bag.value) * 1000 / grams(kg.value)));
+    var warn = new Date(Date.now() + Math.max(0, days - 3) * 864e5).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long' });
+    $('#cDays').textContent = days;
+    $('#cRemind').href = wa('Olá, Agropet Pets! Quero um lembrete da ração. Meu ' + (pet === 'dog' ? 'cachorro' : 'gato') + ' pesa ' + kg.value + ' kg e comprei hoje um pacote de ' + bag.options[bag.selectedIndex].text + '. Pode me chamar por volta de ' + warn + '? A ração dele é: ');
   }
-  [].forEach.call(document.querySelectorAll('[data-am-pet]'), function(b){
-    b.addEventListener('click', function(){
-      pet = b.getAttribute('data-am-pet');
-      [].forEach.call(document.querySelectorAll('[data-am-pet]'), function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-      if(pet === 'cat' && parseFloat(kg.value) > 9){ kg.value = 4; bag.value = '3'; }
+  $all('[data-pet]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      pet = b.getAttribute('data-pet');
+      $all('[data-pet]').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      if (pet === 'cat' && parseFloat(kg.value) > 9) { kg.value = 4; bag.value = '3'; }
       calc();
     });
   });
-  [kg, bag, dt].forEach(function(el){ el.addEventListener('input', calc); el.addEventListener('change', calc); });
+  [kg, bag].forEach(function (el) { el.addEventListener('input', calc); el.addEventListener('change', calc); });
+
+  renderStatic();
+  render();
   calc();
 })();
 </script>
+<script src="https://assinatura-leandro.vercel.app/assinatura.js" data-cliente="Agropet Pets" defer></script>
 </body>
 </html>
