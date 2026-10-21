@@ -506,8 +506,37 @@ body{background:#FFFCF5}
   .ptile-go{display:none}
   .fam-grid{grid-template-rows:repeat(3,90px)}
 }
+
+/* Menu hambúrguer (celular e tablet) */
+.burger{display:none;flex:none;width:44px;height:44px;border:0;border-radius:12px;background:var(--green-soft);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:0}
+.burger span{display:block;width:20px;height:2.5px;border-radius:2px;background:var(--green-dark);transition:transform .25s,opacity .2s}
+.mnav{position:fixed;inset:0;z-index:60}
+.mnav-bg{position:absolute;inset:0;background:rgba(20,36,26,.45);opacity:0;transition:opacity .25s}
+.mnav-panel{position:absolute;left:0;top:0;bottom:0;width:min(84vw,340px);background:#FFFCF5;display:flex;flex-direction:column;box-shadow:12px 0 30px rgba(0,0,0,.15);transform:translateX(-100%);transition:transform .3s cubic-bezier(.2,.7,.2,1);overflow-y:auto}
+.mnav.open .mnav-bg{opacity:1}
+.mnav.open .mnav-panel{transform:none}
+.mnav-h{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line)}
+.mnav-x{width:44px;height:44px;border:0;border-radius:12px;background:var(--soft);color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center}
+.mnav-links{display:flex;flex-direction:column;padding:10px}
+.mnav-links a{display:flex;align-items:center;gap:12px;min-height:50px;padding:0 12px;border-radius:14px;color:var(--ink);font-weight:800;font-size:16px;text-decoration:none}
+.mnav-links a i{font-style:normal;width:36px;height:36px;border-radius:50%;background:var(--cream-2);display:flex;align-items:center;justify-content:center;font-size:17px}
+.mnav-links a:hover,.mnav-links a[aria-current="true"]{background:var(--green-soft);color:var(--green-dark)}
+.mnav-f{margin-top:auto;padding:16px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:10px}
+.mnav-f p{margin:0;font-size:13px;color:var(--muted)}
+.nav a[aria-current="true"]{background:var(--green-soft);color:var(--green-dark)}
+body.locked{overflow:hidden}
+/* Migalha de pão */
+.crumbs{margin:0 0 10px;font-size:14px}
+.crumbs ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:4px}
+.crumbs li{display:flex;align-items:center;gap:4px;color:var(--muted);font-weight:700}
+.crumbs li+li::before{content:"›";color:var(--muted);margin-right:2px}
+.crumbs a{color:var(--green);text-decoration:none;font-weight:800}
+.crumbs a:hover{text-decoration:underline}
+.crumbs [aria-current]{color:var(--ink)}
+@media (max-width:900px){.burger{display:flex}}
+@media (max-width:720px){.hdr-in{gap:10px}.hdr-in .logo{margin-right:auto}}
 /* Movimento reduzido: só esmaecer, sem deslocamentos nem repetições */
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ig-track{scroll-behavior:auto}.rv{transform:none;transition:opacity .4s ease}.hero .rise{transform:none;animation-name:fade}.status i,.fab-wa,.kicker i{animation:none}.hs-track{transition:none}.slide-img .frame img,.slide.on .slide-img .frame img{transform:none;transition:none}.float,.fam-heart{animation:none}.ptile:hover,.ptile:hover .ptile-img img{transform:none}.slide .rise{opacity:1;transform:none}.slide.on .rise{animation:none}.vcard:hover{transform:none}.qstep.on{animation:none}.pet:hover .pet-img img{transform:none}.coupon{transition:opacity .3s}.card:hover,.chip:hover,.perks li:hover .perk-ic{transform:none}.card:hover .card-img img,.ig-item:hover .ig-img img{transform:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ig-track{scroll-behavior:auto}.rv{transform:none;transition:opacity .4s ease}.hero .rise{transform:none;animation-name:fade}.status i,.fab-wa,.kicker i{animation:none}.hs-track{transition:none}.slide-img .frame img,.slide.on .slide-img .frame img{transform:none;transition:none}.mnav-panel,.mnav-bg{transition:none}.float,.fam-heart{animation:none}.ptile:hover,.ptile:hover .ptile-img img{transform:none}.slide .rise{opacity:1;transform:none}.slide.on .rise{animation:none}.vcard:hover{transform:none}.qstep.on{animation:none}.pet:hover .pet-img img{transform:none}.coupon{transition:opacity .3s}.card:hover,.chip:hover,.perks li:hover .perk-ic{transform:none}.card:hover .card-img img,.ig-item:hover .ig-img img{transform:none}}
 @keyframes fade{to{opacity:1}}
 </style>
 </head>
@@ -518,6 +547,7 @@ body{background:#FFFCF5}
 <header class="hdr">
   <div class="wrap">
     <div class="hdr-in">
+      <button type="button" class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button>
       <a class="logo" href="#topo" aria-label="Agropet Pets, início">
         <span class="logo-badge" aria-hidden="true"><span>Agropet</span><span>PETS</span></span>
         <span class="logo-name">Agropet <span>Pets</span></span>
@@ -548,6 +578,20 @@ body{background:#FFFCF5}
     </div>
   </div>
 </header>
+<div class="mnav" id="mnav" hidden>
+  <div class="mnav-bg" data-mclose></div>
+  <aside class="mnav-panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="mnav-h">
+      <span class="logo"><span class="logo-badge" aria-hidden="true"><span>Agropet</span><span>PETS</span></span><span class="logo-name">Agropet <span>Pets</span></span></span>
+      <button type="button" class="mnav-x" data-mclose aria-label="Fechar menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <nav class="mnav-links" aria-label="Seções do site"><a href="#ofertas"><i aria-hidden="true">🏷️</i>Ofertas da semana</a><a href="#pets"><i aria-hidden="true">🐾</i>Compre por pet</a><a href="#servicos"><i aria-hidden="true">✂️</i>Serviços</a><a href="#agendar"><i aria-hidden="true">📅</i>Agendar banho e tosa</a><a href="#quiz"><i aria-hidden="true">🥣</i>Quiz da ração ideal</a><a href="#instagram"><i aria-hidden="true">📸</i>Instagram</a><a href="#galeria"><i aria-hidden="true">🏆</i>Pet da semana</a><a href="#lembrete"><i aria-hidden="true">⏰</i>Lembrete de ração</a><a href="#lojas"><i aria-hidden="true">📍</i>Nossas lojas</a></nav>
+    <div class="mnav-f">
+      <a class="btn btn-primary" href="#" data-wa="waHello">Falar no WhatsApp</a>
+      <p>Taguatinga Sul · 9h às 20h<br>Vereda da Cruz · 8h30 às 19h</p>
+    </div>
+  </aside>
+</div>
 
 <main>
   <section id="topo" class="hero" aria-label="Destaques">
@@ -577,6 +621,7 @@ body{background:#FFFCF5}
 
   <section id="ofertas" class="sec" tabindex="-1">
     <div class="wrap">
+      <nav class="crumbs" aria-label="Você está aqui"><ol><li><a href="#topo">Início</a></li><li id="crOf"><a href="#ofertas" data-cat="Todos">Ofertas</a></li><li id="crCur" aria-current="page" hidden></li></ol></nav>
       <div class="sec-h rv">
         <div>
           <h2>Ofertas da semana <span data-bind="catTitle" style="color:var(--green)"></span></h2>
@@ -935,6 +980,12 @@ body{background:#FFFCF5}
     }).join('');
     showIf('noResults', list.length === 0);
     bind('catTitle', state.cat === 'Todos' ? '' : '· ' + state.cat);
+    var cur = $('#crCur'), crOf = $('#crOf');
+    if (cur) {
+      var label = state.q ? 'Busca: “' + state.q + '”' : (state.cat !== 'Todos' ? state.cat : '');
+      cur.hidden = !label; cur.textContent = label;
+      if (label) crOf.removeAttribute('aria-current'); else crOf.setAttribute('aria-current', 'page');
+    }
 
     var lines = [], total = 0, count = 0;
     PRODUCTS.forEach(function (p) { var n = state.cart[p.id]; if (n) { total += n * p.price; count += n; lines.push({ p: p, n: n }); } });
@@ -1051,6 +1102,31 @@ body{background:#FFFCF5}
     window.addEventListener('resize', syncIg);
     syncIg();
   }
+
+  // Menu hambúrguer
+  (function () {
+    var m = $('#mnav'), b = $('#burger'); if (!m || !b) return;
+    function open() { m.hidden = false; document.body.classList.add('locked'); b.setAttribute('aria-expanded', 'true'); requestAnimationFrame(function () { m.classList.add('open'); }); setTimeout(function () { var a = m.querySelector('.mnav-links a'); if (a) a.focus(); }, 60); }
+    function close(back) { m.classList.remove('open'); document.body.classList.remove('locked'); b.setAttribute('aria-expanded', 'false'); setTimeout(function () { m.hidden = true; }, 300); if (back) b.focus(); }
+    b.addEventListener('click', open);
+    m.addEventListener('click', function (e) { if (e.target.closest('[data-mclose]')) close(true); else if (e.target.closest('.mnav-links a,.mnav-f a')) close(false); });
+    document.addEventListener('keydown', function (e) {
+      if (m.hidden) return;
+      if (e.key === 'Escape') close(true);
+      if (e.key === 'Tab') { var f = $all('#mnav a,#mnav button'), first = f[0], last = f[f.length - 1]; if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); } else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); } }
+    });
+    window.addEventListener('resize', function () { if (!m.hidden && innerWidth > 900) close(false); });
+  })();
+
+  // Seção atual destacada no menu
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    var links = $all('.nav a, .mnav-links a');
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { var id = '#' + en.target.id; links.forEach(function (a) { var h = a.getAttribute('href'); a.setAttribute('aria-current', (h === id || (id === '#agendar' && h === '#quiz')) ? 'true' : 'false'); }); } });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    $all('main section[id], section[id]').forEach(function (sec) { io.observe(sec); });
+  })();
 
   // Carrossel do topo
   (function () {
