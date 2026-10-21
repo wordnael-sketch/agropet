@@ -257,6 +257,11 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
 .lead-f label{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:700;color:#DDEFE3}
 .lead-f input,.lead-f select{min-height:46px;border:0;border-radius:12px;padding:0 12px;font:600 15px 'Nunito Sans',sans-serif;color:var(--ink);background:#fff;width:100%}
 .lead-f .full{grid-column:1/-1}
+.lead-f em{font-style:normal;font-weight:600;color:#BFE0CA}
+.lead-f .bday{border:0;margin:0;padding:0;display:grid;grid-template-columns:1fr 2fr;gap:10px;min-width:0}
+.lead-f .bday legend{padding:0;margin-bottom:4px;font-size:13px;font-weight:700;color:#DDEFE3}
+.lead-f .consent{flex-direction:row;align-items:flex-start;gap:10px;font-weight:600;font-size:13px;line-height:1.4;cursor:pointer}
+.lead-f .consent input{width:20px;min-height:20px;height:20px;flex:none;margin-top:1px;accent-color:var(--yellow)}
 .lead small{font-size:12px;color:#BFE0CA}
 .lead .err{color:var(--yellow);font-size:13px;font-weight:700;min-height:1em}
 .near .calc{display:flex;flex-direction:column;gap:14px;align-items:stretch}
@@ -539,17 +544,23 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
   <section id="perto" class="wrap" aria-label="Fique por perto">
     <div class="near">
       <form class="panel lead rv" id="leadForm" novalidate>
-        <h2>Receba as ofertas da semana <span>no seu WhatsApp</span></h2>
-        <p>O encarte novo chega primeiro para quem está na lista. Sem spam: só ofertas e avisos da loja.</p>
+        <h2>Clube do Aniversário <span>Agropet</span></h2>
+        <p>Cadastre seu pet e receba um mimo no mês do aniversário dele, além das ofertas da semana em primeira mão.</p>
         <div class="lead-f">
-          <label>Seu nome<input name="nome" type="text" autocomplete="given-name" required></label>
+          <label>Nome do responsável<input name="nome" type="text" autocomplete="name" required></label>
+          <label><span>Nome do pet <em>(opcional)</em></span><input name="petNome" type="text" autocomplete="off" placeholder="Ex.: Thor"></label>
+          <fieldset class="bday full">
+            <legend>Aniversário do pet</legend>
+            <select name="dia" aria-label="Dia" required><option value="">Dia</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select>
+            <select name="mes" aria-label="Mês" required><option value="">Mês</option><option value="1">Janeiro</option><option value="2">Fevereiro</option><option value="3">Março</option><option value="4">Abril</option><option value="5">Maio</option><option value="6">Junho</option><option value="7">Julho</option><option value="8">Agosto</option><option value="9">Setembro</option><option value="10">Outubro</option><option value="11">Novembro</option><option value="12">Dezembro</option></select>
+          </fieldset>
+          <label>E-mail<input name="email" type="email" inputmode="email" autocomplete="email" placeholder="voce@email.com" required></label>
           <label>WhatsApp<input name="tel" type="tel" inputmode="tel" autocomplete="tel" placeholder="(61) 9 9999-9999" required></label>
-          <label>Seu pet<select name="pet"><option>Cachorro</option><option>Gato</option><option>Cachorro e gato</option><option>Pássaro</option><option>Peixe</option><option>Roedor</option></select></label>
-          <label>Bairro<select name="bairro"><option>Taguatinga Sul</option><option>Taguatinga Norte</option><option>Águas Claras</option><option>Areal</option><option>Arniqueiras</option><option>Vereda da Cruz</option><option>Outra região</option></select></label>
+          <label class="consent full"><input name="ok" type="checkbox" required> Autorizo a Agropet Pets a usar estes dados para enviar ofertas e a mensagem de aniversário do meu pet, por e-mail e WhatsApp. Posso cancelar quando quiser.</label>
         </div>
         <span class="err" id="leadErr" aria-live="polite"></span>
-        <button class="btn btn-yellow" type="submit">Quero receber as ofertas</button>
-        <small>Ao enviar, abre o WhatsApp da loja com seus dados para confirmar. Você pode sair da lista quando quiser.</small>
+        <button class="btn btn-yellow" type="submit">Cadastrar meu pet</button>
+        <small>Não sabe o dia exato? Use a data de adoção. Seus dados não são compartilhados com terceiros.</small>
       </form>
       <div class="panel calc rv" id="lembrete">
         <div>
@@ -902,16 +913,24 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
     syncIg();
   }
 
-  // Captação de leads: lista de ofertas no WhatsApp
+  // Captação de leads: Clube do Aniversário (responsável, aniversário do pet, e-mail e WhatsApp)
   var lf = $('#leadForm');
   if (lf) lf.addEventListener('submit', function (e) {
     e.preventDefault();
-    var f = lf.elements, nome = f.nome.value.trim(), tel = f.tel.value.replace(/\D/g, '');
-    var err = $('#leadErr');
-    if (!nome) { err.textContent = 'Diga seu nome.'; f.nome.focus(); return; }
-    if (tel.length < 10 || tel.length > 13) { err.textContent = 'Confira o número de WhatsApp, com DDD.'; f.tel.focus(); return; }
+    var f = lf.elements, err = $('#leadErr');
+    var nome = f.nome.value.trim(), pet = f.petNome.value.trim(), email = f.email.value.trim(), tel = f.tel.value.replace(/\D/g, '');
+    var dia = +f.dia.value, mes = +f.mes.value;
+    function bad(msg, el) { err.textContent = msg; el.focus(); }
+    if (nome.length < 2) return bad('Informe o nome do responsável.', f.nome);
+    if (!dia) return bad('Escolha o dia do aniversário do pet.', f.dia);
+    if (!mes) return bad('Escolha o mês do aniversário do pet.', f.mes);
+    if (dia > [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][mes - 1]) return bad('Esse dia não existe no mês escolhido.', f.dia);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return bad('Confira o e-mail.', f.email);
+    if (tel.length < 10 || tel.length > 13) return bad('Confira o número de WhatsApp, com DDD.', f.tel);
+    if (!f.ok.checked) return bad('Marque a autorização para podermos falar com você.', f.ok);
     err.textContent = '';
-    window.open(wa('Olá, Agropet Pets! Quero entrar na lista de ofertas da semana.\n\nNome: ' + nome + '\nWhatsApp: ' + f.tel.value.trim() + '\nPet: ' + f.pet.value + '\nBairro: ' + f.bairro.value), '_blank', 'noopener');
+    var data = (dia < 10 ? '0' : '') + dia + '/' + (mes < 10 ? '0' : '') + mes;
+    window.open(wa('Olá, Agropet Pets! Quero entrar no Clube do Aniversário.\n\nResponsável: ' + nome + (pet ? '\nPet: ' + pet : '') + '\nAniversário do pet: ' + data + '\nE-mail: ' + email + '\nWhatsApp: ' + f.tel.value.trim() + '\n\nAutorizo o contato por e-mail e WhatsApp.'), '_blank', 'noopener');
     lf.querySelector('[type=submit]').textContent = 'Pronto! Confirme no WhatsApp';
   });
 
