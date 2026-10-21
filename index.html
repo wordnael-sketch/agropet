@@ -389,8 +389,123 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
   .coupon{left:16px;bottom:84px}
 }
 @media (min-width:721px) and (max-width:1000px){.ig-item{flex-basis:calc((100% - 28px)/3)}}
+
+/* ===== Visual 2.0: mais humano e divertido (creme quente, formas orgânicas, recortes com afeto) ===== */
+:root{--cream:#FFF7E6;--cream-2:#FFEFC9;--red-soft:#FFE1DC;--shadow:0 10px 30px rgba(20,36,26,.08)}
+body{background:#FFFCF5}
+.hdr{background:rgba(255,252,245,.92);backdrop-filter:blur(8px);border-bottom:0;box-shadow:0 2px 0 rgba(15,122,53,.06)}
+.sec-h h2{position:relative;padding-left:40px}
+.sec-h h2::before{content:"";position:absolute;left:0;top:50%;width:30px;height:30px;transform:translateY(-55%) rotate(-14deg);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='%230F7A35'%3E%3Cellipse cx='32' cy='42' rx='14' ry='12'/%3E%3Cellipse cx='14' cy='26' rx='6' ry='8'/%3E%3Cellipse cx='26' cy='15' rx='6' ry='8'/%3E%3Cellipse cx='38' cy='15' rx='6' ry='8'/%3E%3Cellipse cx='50' cy='26' rx='6' ry='8'/%3E%3C/svg%3E") center/contain no-repeat}
+/* Topo */
+.hero{background:var(--cream);color:var(--ink);overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='%23FFD21F'%3E%3Cellipse cx='32' cy='42' rx='14' ry='12'/%3E%3Cellipse cx='14' cy='26' rx='6' ry='8'/%3E%3Cellipse cx='26' cy='15' rx='6' ry='8'/%3E%3Cellipse cx='38' cy='15' rx='6' ry='8'/%3E%3Cellipse cx='50' cy='26' rx='6' ry='8'/%3E%3C/svg%3E") 6% 18%/34px no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='%23FFD21F'%3E%3Cellipse cx='32' cy='42' rx='14' ry='12'/%3E%3Cellipse cx='14' cy='26' rx='6' ry='8'/%3E%3Cellipse cx='26' cy='15' rx='6' ry='8'/%3E%3Cellipse cx='38' cy='15' rx='6' ry='8'/%3E%3Cellipse cx='50' cy='26' rx='6' ry='8'/%3E%3C/svg%3E") 44% 88%/26px no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='%23FFD21F'%3E%3Cellipse cx='32' cy='42' rx='14' ry='12'/%3E%3Cellipse cx='14' cy='26' rx='6' ry='8'/%3E%3Cellipse cx='26' cy='15' rx='6' ry='8'/%3E%3Cellipse cx='38' cy='15' rx='6' ry='8'/%3E%3Cellipse cx='50' cy='26' rx='6' ry='8'/%3E%3C/svg%3E") 40% 10%/20px no-repeat;opacity:.55;pointer-events:none}
+.slide{min-height:0;grid-template-columns:1fr 1fr}
+.slide-txt{padding-bottom:84px}
+.kicker{background:#fff;color:var(--green);box-shadow:var(--shadow)}
+.slide h1,.slide h2{color:var(--green-dark)}
+.slide h1 span,.slide h2 span{color:var(--red)}
+.slide p{color:#3D4F44}
+.slide .link{color:var(--green)}
+.hero .btn-yellow{background:var(--green);color:#fff}
+.hero .btn-yellow:hover{background:var(--green-dark);color:#fff}
+.slide-img{background:transparent;overflow:visible;display:flex;align-items:flex-end;justify-content:center;height:470px;align-self:end}
+.slide-img::before{display:none}
+.slide-img .blob{position:absolute;left:50%;bottom:-70px;width:min(92%,440px);aspect-ratio:1;transform:translateX(-50%);border-radius:46% 54% 50% 50%/55% 45% 55% 45%;background:radial-gradient(circle at 35% 30%,#FFE36B,var(--yellow) 60%,#F6C200)}
+.slide-img img{position:relative;inset:auto;width:auto;height:94%;max-width:92%;object-fit:contain;object-position:bottom;transform:translateY(16px);opacity:0;transition:transform .9s cubic-bezier(.2,.7,.2,1),opacity .6s;filter:drop-shadow(0 18px 24px rgba(20,36,26,.18))}
+.slide.on .slide-img img{transform:none;opacity:1}
+.slide-img .paw{position:absolute;width:44px;height:44px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='%230F7A35'%3E%3Cellipse cx='32' cy='42' rx='14' ry='12'/%3E%3Cellipse cx='14' cy='26' rx='6' ry='8'/%3E%3Cellipse cx='26' cy='15' rx='6' ry='8'/%3E%3Cellipse cx='38' cy='15' rx='6' ry='8'/%3E%3Cellipse cx='50' cy='26' rx='6' ry='8'/%3E%3C/svg%3E") center/contain no-repeat;opacity:.9}
+.slide-img .p1{right:6%;top:12%;transform:rotate(18deg)}
+.slide-img .p2{left:8%;top:30%;width:28px;height:28px;transform:rotate(-20deg);opacity:.6}
+.float{position:absolute;z-index:2;background:#fff;color:var(--ink);font-weight:800;font-size:14px;padding:8px 14px;border-radius:999px;box-shadow:var(--shadow);white-space:nowrap;animation:bob 4s ease-in-out infinite}
+.float.f1{left:4%;top:44%}
+.float.f2{right:4%;bottom:18%;animation-delay:-2s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.ph-tag{background:rgba(255,255,255,.85);color:var(--muted)}
+.hs-dot{background:rgba(15,122,53,.18)}
+.hs-dot i{background:var(--green)}
+.hs-btn{border-color:rgba(15,122,53,.35);color:var(--green)}
+.hs-btn:hover{background:rgba(15,122,53,.08)}
+.wave{background:var(--cream);line-height:0;margin-top:-1px}
+.wave svg{width:100%;height:46px;display:block}
+.wave path{fill:var(--green-dark)}
+/* Faixa de vantagens */
+.perks{background:var(--green-dark);border:0;color:#fff}
+.perks ul{padding:10px 20px 22px}
+.perks li span{color:#BFE0CA}
+.perks li b{color:#fff}
+.perk-ic{background:var(--yellow);color:var(--green-dark);border-radius:50%}
+/* Compre por pet */
+.pets-sec{padding-bottom:16px}
+.ptiles{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.ptile{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;padding:14px 10px 16px;border-radius:24px;text-decoration:none;color:var(--ink);transition:transform .2s,box-shadow .2s;overflow:hidden}
+.ptile:hover{transform:translateY(-4px) rotate(-1deg);box-shadow:var(--shadow)}
+.ptile-img{height:120px;width:100%;display:flex;align-items:flex-end;justify-content:center}
+.ptile-img img{max-height:100%;max-width:100%;object-fit:contain;transition:transform .25s}
+.ptile:hover .ptile-img img{transform:scale(1.06) translateY(-3px)}
+.ptile b{font-family:'Baloo 2',sans-serif;font-size:20px;margin-top:8px}
+.ptile-go{font-size:13px;font-weight:800;color:var(--green)}
+.t1{background:#FFE9A3}.t2{background:#D6EFDF}.t3{background:var(--red-soft)}.t4{background:#E6F4EA}.t5{background:var(--cream-2)}.t6{background:#DCEFE3}
+/* Cards e blocos mais macios */
+.chip{background:#fff}
+.card{border:0;border-radius:22px;box-shadow:0 2px 0 rgba(15,122,53,.05),0 6px 18px rgba(20,36,26,.06)}
+.card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.card-img{background:var(--cream);margin:8px;border-radius:16px}
+.card-img.photo{margin:0;border-radius:0}
+.tag{border-radius:999px;padding:3px 10px}
+.flyer{border-radius:26px;background:var(--yellow-soft)}
+.vcard,.box,.rev,.store{border:0;box-shadow:0 6px 18px rgba(20,36,26,.06);border-radius:24px}
+.vbox{border-radius:18px;margin:8px}
+.calc{border-radius:26px}
+.rev{background:#fff;position:relative;padding-top:34px}
+.rev::before{content:"“";position:absolute;left:18px;top:-6px;font:800 64px/1 'Baloo 2',serif;color:var(--yellow)}
+/* Pet é família */
+.fam{background:var(--cream);position:relative;overflow:hidden}
+.fam::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='%23FFD21F'%3E%3Cellipse cx='32' cy='42' rx='14' ry='12'/%3E%3Cellipse cx='14' cy='26' rx='6' ry='8'/%3E%3Cellipse cx='26' cy='15' rx='6' ry='8'/%3E%3Cellipse cx='38' cy='15' rx='6' ry='8'/%3E%3Cellipse cx='50' cy='26' rx='6' ry='8'/%3E%3C/svg%3E") 96% 12%/38px no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='%23FFD21F'%3E%3Cellipse cx='32' cy='42' rx='14' ry='12'/%3E%3Cellipse cx='14' cy='26' rx='6' ry='8'/%3E%3Cellipse cx='26' cy='15' rx='6' ry='8'/%3E%3Cellipse cx='38' cy='15' rx='6' ry='8'/%3E%3Cellipse cx='50' cy='26' rx='6' ry='8'/%3E%3C/svg%3E") 52% 92%/24px no-repeat;opacity:.6;pointer-events:none}
+.fam-in{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;position:relative}
+.fam-grid{position:relative;display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:repeat(3,120px);gap:12px}
+.fg{overflow:hidden;border-radius:24px;box-shadow:var(--shadow)}
+.fg img{width:100%;height:100%;object-fit:cover}
+.fg.a{grid-row:1/4;border-radius:120px 120px 24px 24px}
+.fg.b{border-radius:24px 60px 24px 24px}
+.fg.c img{object-position:50% 30%}
+.fg.d{border-radius:24px 24px 60px 24px}
+.fam-heart{position:absolute;left:52%;top:46%;width:58px;height:58px;border-radius:50%;background:var(--red);color:#fff;font-size:28px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(215,25,31,.35);transform:translate(-50%,-50%);animation:beat 1.8s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:translate(-50%,-50%) scale(1)}12%{transform:translate(-50%,-50%) scale(1.14)}24%{transform:translate(-50%,-50%) scale(1)}}
+.kicker-s{display:inline-block;font-weight:800;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+.fam-txt h2{font-size:clamp(30px,3.6vw,42px);color:var(--green-dark)}
+.fam-txt h2 span{color:var(--green)}
+.fam-txt p{color:#3D4F44;font-size:17px}
+.fam-facts{list-style:none;margin:6px 0 22px;padding:0;display:grid;gap:10px}
+.fam-facts li{display:flex;align-items:center;gap:12px}
+.fam-facts b{flex:none;width:52px;height:52px;border-radius:16px;background:#fff;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:center;font:800 22px 'Baloo 2',sans-serif;color:var(--green)}
+.fam-note{display:block;margin-top:14px;font-size:12px;color:var(--muted)}
+/* Rodapé com onda */
+.ftr{position:relative;margin-top:40px}
+.ftr::before{content:"";position:absolute;left:0;right:0;top:-38px;height:40px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none'%3E%3Cpath fill='%230A5626' d='M0 22C240 -6 480 40 720 20S1200 0 1440 18V40H0z'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+@media (max-width:900px){
+  .slide-img{height:400px}
+  .ptiles{grid-template-columns:repeat(3,1fr)}
+  .fam-in{grid-template-columns:1fr;gap:28px}
+}
+@media (max-width:720px){
+  .slide{min-height:0;grid-template-columns:1fr}
+  .slide-img{aspect-ratio:auto;height:290px;margin-top:8px;order:-1;align-self:auto}
+  .slide-img{overflow:hidden}
+  .slide-img .blob{width:270px;bottom:-50px}
+  .slide-img img{height:100%}
+  .float{font-size:12px;padding:6px 10px}
+  .float.f1{left:12px;top:auto;bottom:40%}
+  .float.f2{right:12px;bottom:10%}
+  .slide-txt{padding:18px 20px 70px}
+  .ptiles{grid-template-columns:repeat(3,1fr);gap:10px}
+  .ptile{padding:10px 6px 12px;border-radius:18px}
+  .ptile-img{height:78px}
+  .ptile b{font-size:16px}
+  .ptile-go{display:none}
+  .fam-grid{grid-template-rows:repeat(3,90px)}
+}
 /* Movimento reduzido: só esmaecer, sem deslocamentos nem repetições */
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ig-track{scroll-behavior:auto}.rv{transform:none;transition:opacity .4s ease}.hero .rise{transform:none;animation-name:fade}.status i,.fab-wa,.kicker i{animation:none}.hs-track{transition:none}.slide-img img{transform:none;transition:none}.slide .rise{opacity:1;transform:none}.slide.on .rise{animation:none}.vcard:hover{transform:none}.qstep.on{animation:none}.pet:hover .pet-img img{transform:none}.coupon{transition:opacity .3s}.card:hover,.chip:hover,.perks li:hover .perk-ic{transform:none}.card:hover .card-img img,.ig-item:hover .ig-img img{transform:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ig-track{scroll-behavior:auto}.rv{transform:none;transition:opacity .4s ease}.hero .rise{transform:none;animation-name:fade}.status i,.fab-wa,.kicker i{animation:none}.hs-track{transition:none}.slide-img img{transform:none;transition:opacity .4s}.float,.fam-heart{animation:none}.ptile:hover,.ptile:hover .ptile-img img{transform:none}.slide .rise{opacity:1;transform:none}.slide.on .rise{animation:none}.vcard:hover{transform:none}.qstep.on{animation:none}.pet:hover .pet-img img{transform:none}.coupon{transition:opacity .3s}.card:hover,.chip:hover,.perks li:hover .perk-ic{transform:none}.card:hover .card-img img,.ig-item:hover .ig-img img{transform:none}}
 @keyframes fade{to{opacity:1}}
 </style>
 </head>
@@ -435,11 +550,12 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
 <main>
   <section id="topo" class="hero" aria-label="Destaques">
     <div class="hs" id="hs" aria-roledescription="carrossel">
-      <div class="hs-track" id="hsTrack" aria-live="off"><article class="slide on" role="group" aria-roledescription="banner" aria-label="1 de 3"><div class="slide-txt"><span class="kicker rise"><i></i><span data-bind="openLabel">Disk ração</span></span><h1 class="rise d1">Acabou a ração?<br><span>A gente leva até você.</span></h1><p class="rise d2">Monte o pedido aqui, envie pelo WhatsApp e a loja confirma a entrega no seu bairro antes de você pagar.</p><div class="hero-ctas rise d3"><a class="btn btn-yellow" href="#ofertas">Ver ofertas</a><a class="link" style="color:#fff" href="#" data-wa="waArea">Entregam no meu bairro? →</a></div></div><div class="slide-img"><img src="https://images.pexels.com/photos/33061399/pexels-photo-33061399.jpeg?auto=compress&cs=tinysrgb&w=1200" srcset="https://images.pexels.com/photos/33061399/pexels-photo-33061399.jpeg?auto=compress&cs=tinysrgb&w=800 800w, https://images.pexels.com/photos/33061399/pexels-photo-33061399.jpeg?auto=compress&cs=tinysrgb&w=1200 1200w, https://images.pexels.com/photos/33061399/pexels-photo-33061399.jpeg?auto=compress&cs=tinysrgb&w=1600 1600w" sizes="(max-width:720px) 100vw, 60vw" alt="Cachorro beagle espiando dentro de um saco de ração" style="object-position:42% 58%" width="1600" height="1067"><span class="ph-tag">Foto ilustrativa</span></div></article><article class="slide" role="group" aria-roledescription="banner" aria-label="2 de 3"><div class="slide-txt"><span class="kicker rise">Banho e tosa</span><h2 class="rise d1">Seu pet cheiroso,<br><span>com hora marcada.</span></h2><p class="rise d2">Banho, tosa completa ou higiênica. Escolha o dia e o período e a gente confirma o horário no WhatsApp.</p><div class="hero-ctas rise d3"><a class="btn btn-yellow" href="#agendar">Agendar horário</a><a class="link" style="color:#fff" href="#servicos">Ver como funciona →</a></div></div><div class="slide-img"><img src="https://images.pexels.com/photos/19145876/pexels-photo-19145876.jpeg?auto=compress&cs=tinysrgb&w=1200" srcset="https://images.pexels.com/photos/19145876/pexels-photo-19145876.jpeg?auto=compress&cs=tinysrgb&w=800 800w, https://images.pexels.com/photos/19145876/pexels-photo-19145876.jpeg?auto=compress&cs=tinysrgb&w=1200 1200w, https://images.pexels.com/photos/19145876/pexels-photo-19145876.jpeg?auto=compress&cs=tinysrgb&w=1600 1600w" sizes="(max-width:720px) 100vw, 60vw" alt="Cachorro shih-tzu sendo tosado em um salão de banho e tosa" style="object-position:50% 38%" fetchpriority="low" width="1600" height="1067"><span class="ph-tag">Foto ilustrativa</span></div></article><article class="slide" role="group" aria-roledescription="banner" aria-label="3 de 3"><div class="slide-txt"><span class="kicker rise">Farmácia veterinária</span><h2 class="rise d1">Remédios e vacinas<br><span>sem sair do bairro.</span></h2><p class="rise d2">Antipulgas, vermífugos, vacinas e medicamentos. Mande a receita ou o nome do produto e a loja separa para você.</p><div class="hero-ctas rise d3"><a class="btn btn-yellow" href="#" data-wa="waPharma">Perguntar pelo WhatsApp</a><a class="link" style="color:#fff" href="#ofertas" data-cat-go="Farmácia">Ver farmácia →</a></div></div><div class="slide-img"><img src="https://images.pexels.com/photos/6235648/pexels-photo-6235648.jpeg?auto=compress&cs=tinysrgb&w=1200" srcset="https://images.pexels.com/photos/6235648/pexels-photo-6235648.jpeg?auto=compress&cs=tinysrgb&w=800 800w, https://images.pexels.com/photos/6235648/pexels-photo-6235648.jpeg?auto=compress&cs=tinysrgb&w=1200 1200w, https://images.pexels.com/photos/6235648/pexels-photo-6235648.jpeg?auto=compress&cs=tinysrgb&w=1600 1600w" sizes="(max-width:720px) 100vw, 60vw" alt="Profissional examinando um cachorro lulu com estetoscópio" style="object-position:50% 72%" fetchpriority="low" width="1600" height="1067"><span class="ph-tag">Foto ilustrativa</span></div></article></div>
+      <div class="hs-track" id="hsTrack" aria-live="off"><article class="slide on" role="group" aria-roledescription="banner" aria-label="1 de 3"><div class="slide-txt"><span class="kicker rise"><i></i><span data-bind="openLabel">Disk ração</span></span><h1 class="rise d1">Acabou a ração?<br><span>A gente leva até você.</span></h1><p class="rise d2">Monte o pedido aqui, envie pelo WhatsApp e a loja confirma a entrega no seu bairro antes de você pagar.</p><div class="hero-ctas rise d3"><a class="btn btn-yellow" href="#ofertas">Ver ofertas</a><a class="link" href="#" data-wa="waArea">Entregam no meu bairro? →</a></div></div><div class="slide-img"><span class="blob" aria-hidden="true"></span><span class="paw p1" aria-hidden="true"></span><span class="paw p2" aria-hidden="true"></span><img src="img/hero-tutor-cao.webp" alt="Menina abraçando e beijando seu cachorro" width="781" height="900"><span class="float f1">★ 5,0 no Google</span><span class="float f2">🚚 Entrega no bairro</span><span class="ph-tag">Foto ilustrativa</span></div></article><article class="slide" role="group" aria-roledescription="banner" aria-label="2 de 3"><div class="slide-txt"><span class="kicker rise">Banho e tosa</span><h2 class="rise d1">Seu pet cheiroso,<br><span>com hora marcada.</span></h2><p class="rise d2">Banho, tosa completa ou higiênica. Escolha o dia e o período e a gente confirma o horário no WhatsApp.</p><div class="hero-ctas rise d3"><a class="btn btn-yellow" href="#agendar">Agendar horário</a><a class="link" href="#servicos">Ver como funciona →</a></div></div><div class="slide-img"><span class="blob" aria-hidden="true"></span><span class="paw p1" aria-hidden="true"></span><span class="paw p2" aria-hidden="true"></span><img src="img/hero-carinho-gato.webp" alt="Tutora abraçando e beijando sua gata" width="849" height="900" fetchpriority="low"><span class="float f1">🛁 Banho com hora marcada</span><span class="float f2">💛 Carinho em cada detalhe</span><span class="ph-tag">Foto ilustrativa</span></div></article><article class="slide" role="group" aria-roledescription="banner" aria-label="3 de 3"><div class="slide-txt"><span class="kicker rise">Farmácia veterinária</span><h2 class="rise d1">Remédios e vacinas<br><span>sem sair do bairro.</span></h2><p class="rise d2">Antipulgas, vermífugos, vacinas e medicamentos. Mande a receita ou o nome do produto e a loja separa para você.</p><div class="hero-ctas rise d3"><a class="btn btn-yellow" href="#" data-wa="waPharma">Perguntar pelo WhatsApp</a><a class="link" href="#ofertas" data-cat-go="Farmácia">Ver farmácia →</a></div></div><div class="slide-img"><span class="blob" aria-hidden="true"></span><span class="paw p1" aria-hidden="true"></span><span class="paw p2" aria-hidden="true"></span><img src="img/hero-tutora-gato.webp" alt="Menina sorrindo com o rosto colado ao de seu gato" width="900" height="798" fetchpriority="low"><span class="float f1">💊 Farmácia veterinária</span><span class="float f2">📍 2 lojas no DF</span><span class="ph-tag">Foto ilustrativa</span></div></article></div>
       <div class="hs-ui"><div class="hs-dots" id="hsDots"><button type="button" class="hs-dot" aria-label="Banner 1: entrega" aria-current="true"><i></i></button><button type="button" class="hs-dot" aria-label="Banner 2: banho e tosa"><i></i></button><button type="button" class="hs-dot" aria-label="Banner 3: farmácia"><i></i></button></div><button type="button" class="hs-btn" id="hsPause" aria-label="Pausar banners"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></button></div>
     </div>
   </section>
 
+  <div class="wave" aria-hidden="true"><svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path d="M0 34C240 64 480 0 720 22s480 44 720 4V60H0z"/></svg></div>
   <section class="perks" aria-label="Vantagens">
     <ul class="wrap rv">
       <li><span class="perk-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg></span><span><b>Entrega rápida</b><span>Taguatinga Sul, Areal e região</span></span></li>
@@ -447,6 +563,14 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
       <li><span class="perk-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg></span><span><b>Nota 5,0</b><span>22 avaliações no Google</span></span></li>
       <li><span class="perk-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><span><b>Duas lojas</b><span>Taguatinga Sul e Vereda da Cruz</span></span></li>
     </ul>
+  </section>
+
+
+  <section id="pets" class="sec pets-sec" aria-label="Compre por pet">
+    <div class="wrap">
+      <div class="sec-h rv"><div><h2>Para quem é hoje?</h2><p>Escolha o seu pet e veja as ofertas certas para ele.</p></div></div>
+      <div class="ptiles"><a class="ptile t1 rv" href="#ofertas" data-cat-go="Cachorros"><span class="ptile-img"><img src="img/pet-cao.webp" alt="" loading="lazy"></span><b>Cachorros</b><span class="ptile-go">Ver ofertas →</span></a><a class="ptile t2 rv" href="#ofertas" data-cat-go="Gatos"><span class="ptile-img"><img src="img/pet-gato.webp" alt="" loading="lazy"></span><b>Gatos</b><span class="ptile-go">Ver ofertas →</span></a><a class="ptile t3 rv" href="#ofertas" data-cat-go="Pássaros"><span class="ptile-img"><img src="img/pet-passaro.webp" alt="" loading="lazy"></span><b>Pássaros</b><span class="ptile-go">Ver ofertas →</span></a><a class="ptile t4 rv" href="#ofertas" data-cat-go="Peixes"><span class="ptile-img"><img src="img/pet-peixe.webp" alt="" loading="lazy"></span><b>Peixes</b><span class="ptile-go">Ver ofertas →</span></a><a class="ptile t5 rv" href="#ofertas" data-cat-go="Roedores"><span class="ptile-img"><img src="img/pet-roedor.webp" alt="" loading="lazy"></span><b>Roedores</b><span class="ptile-go">Ver ofertas →</span></a><a class="ptile t6 rv" href="#ofertas" data-cat-go="Farmácia"><span class="ptile-img"><img src="img/pet-farmacia.webp" alt="" loading="lazy"></span><b>Farmácia</b><span class="ptile-go">Ver ofertas →</span></a></div>
+    </div>
   </section>
 
   <section id="ofertas" class="sec" tabindex="-1">
@@ -472,6 +596,30 @@ h2{font-size:clamp(26px,3.2vw,34px);font-weight:800}
         <p>Mande a foto do encarte no WhatsApp e diga o que quer. A gente monta o pedido.</p>
       </div>
       <a class="btn btn-primary" href="#" data-wa="waFlyer">Pedir pelo encarte</a>
+    </div>
+  </section>
+
+  <section id="familia" class="sec fam" aria-label="Pet é família">
+    <div class="wrap fam-in">
+      <div class="fam-grid rv" aria-hidden="true">
+        <span class="fg a"><img src="https://images.pexels.com/photos/7788655/pexels-photo-7788655.jpeg?auto=compress&cs=tinysrgb&w=700" alt="" loading="lazy"></span>
+        <span class="fg b"><img src="https://images.pexels.com/photos/5257630/pexels-photo-5257630.jpeg?auto=compress&cs=tinysrgb&w=500" alt="" loading="lazy"></span>
+        <span class="fg c"><img src="https://images.pexels.com/photos/9631820/pexels-photo-9631820.jpeg?auto=compress&cs=tinysrgb&w=500" alt="" loading="lazy"></span>
+        <span class="fg d"><img src="https://images.pexels.com/photos/8498848/pexels-photo-8498848.jpeg?auto=compress&cs=tinysrgb&w=500" alt="" loading="lazy"></span>
+        <span class="fam-heart">♥</span>
+      </div>
+      <div class="fam-txt rv">
+        <span class="kicker-s">Feito por quem ama bicho</span>
+        <h2>Aqui o seu pet é tratado <span>como da família.</span></h2>
+        <p>Desde a ração do dia a dia até o banho de sábado, a Agropet cuida de cada pet como se fosse nosso. É por isso que quem compra uma vez volta e indica.</p>
+        <ul class="fam-facts">
+          <li><b>5,0</b><span>nota no Google, com 22 avaliações</span></li>
+          <li><b>2</b><span>lojas: Taguatinga Sul e Vereda da Cruz</span></li>
+          <li><b>🐾</b><span>cães, gatos, pássaros, peixes e roedores</span></li>
+        </ul>
+        <div class="hero-ctas"><a class="btn btn-primary" href="#agendar">Agendar um banho</a><a class="link" href="#" data-wa="waHello">Falar com a loja →</a></div>
+        <small class="fam-note">Fotos ilustrativas de banco de imagens. Na versão final, entram fotos dos clientes e pets da Agropet.</small>
+      </div>
     </div>
   </section>
 
